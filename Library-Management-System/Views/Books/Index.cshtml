@@ -1,0 +1,42 @@
+﻿@* Dòng dưới phải đúng namespace của class Book trong dự án của bạn *@
+@model IEnumerable<LibraryManagementSystem.DAL.Entities.Book>
+@* Nếu dòng trên báo đỏ, hãy thử bỏ ".DAL" hoặc kiểm tra lại file Book.cs *@
+
+@{
+    ViewData["Title"] = "Danh sách Sách";
+}
+
+<div class="container mt-4">
+    <h2 class="text-primary">📚 Kho Sách Thư Viện</h2>
+    <hr />
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Tên sách</th>
+                <th>Nhà xuất bản</th>
+                <th>Năm XB</th>
+                <th>ISBN</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Publisher</td>
+                        <td>@item.PublishedYear</td>                      
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center">Chưa có dữ liệu sách</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
