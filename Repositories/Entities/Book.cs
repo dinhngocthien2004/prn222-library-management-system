@@ -21,7 +21,7 @@ public partial class Book
 
     public DateTime? DateAdded { get; set; }
 
-    public virtual ICollection<BookCopy> BookCopies { get; set; } = new List<BookCopy>();
+    public virtual ICollection<BookStatus> BookStatuses { get; set; } = new List<BookStatus>();
 
     public virtual ICollection<Author> Authors { get; set; } = new List<Author>();
 

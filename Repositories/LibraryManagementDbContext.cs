@@ -21,7 +21,7 @@ public partial class LibraryManagementDbContext : DbContext
 
     public virtual DbSet<Book> Books { get; set; }
 
-    public virtual DbSet<BookCopy> BookCopies { get; set; }
+    public virtual DbSet<BookStatus> BookStatuses { get; set; }
 
     public virtual DbSet<Category> Categories { get; set; }
 
@@ -34,8 +34,8 @@ public partial class LibraryManagementDbContext : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
         => optionsBuilder.UseSqlServer(GetConnectionString());
+
     private string GetConnectionString()
     {
         IConfiguration config = new ConfigurationBuilder()
@@ -50,7 +50,7 @@ public partial class LibraryManagementDbContext : DbContext
     {
         modelBuilder.Entity<Author>(entity =>
         {
-            entity.HasKey(e => e.AuthorId).HasName("PK__Authors__70DAFC1458E880C0");
+            entity.HasKey(e => e.AuthorId).HasName("PK__Authors__70DAFC1465B58DC1");
 
             entity.Property(e => e.AuthorId).HasColumnName("AuthorID");
             entity.Property(e => e.FullName).HasMaxLength(100);
@@ -58,9 +58,9 @@ public partial class LibraryManagementDbContext : DbContext
 
         modelBuilder.Entity<Book>(entity =>
         {
-            entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C227844B1536");
+            entity.HasKey(e => e.BookId).HasName("PK__Books__3DE0C2270DE99A76");
 
-            entity.HasIndex(e => e.Isbn, "UQ__Books__447D36EAEE68B2C8").IsUnique();
+            entity.HasIndex(e => e.Isbn, "UQ__Books__447D36EA617C6B02").IsUnique();
 
             entity.Property(e => e.BookId).HasColumnName("BookID");
             entity.Property(e => e.DateAdded)
@@ -85,7 +85,7 @@ public partial class LibraryManagementDbContext : DbContext
                         .HasConstraintName("FK_BookAuthors_Books"),
                     j =>
                     {
-                        j.HasKey("BookId", "AuthorId").HasName("PK__BookAuth__6AED6DE6E4D29BF6");
+                        j.HasKey("BookId", "AuthorId").HasName("PK__BookAuth__6AED6DE6520DC547");
                         j.ToTable("BookAuthors");
                         j.IndexerProperty<int>("BookId").HasColumnName("BookID");
                         j.IndexerProperty<int>("AuthorId").HasColumnName("AuthorID");
@@ -102,18 +102,20 @@ public partial class LibraryManagementDbContext : DbContext
                         .HasConstraintName("FK_BookCategories_Books"),
                     j =>
                     {
-                        j.HasKey("BookId", "CategoryId").HasName("PK__BookCate__9C70518596404260");
+                        j.HasKey("BookId", "CategoryId").HasName("PK__BookCate__9C705185CDD02C82");
                         j.ToTable("BookCategories");
                         j.IndexerProperty<int>("BookId").HasColumnName("BookID");
                         j.IndexerProperty<int>("CategoryId").HasColumnName("CategoryID");
                     });
         });
 
-        modelBuilder.Entity<BookCopy>(entity =>
+        modelBuilder.Entity<BookStatus>(entity =>
         {
-            entity.HasKey(e => e.CopyId).HasName("PK__BookCopi__C26CCCE5EBF1DD7F");
+            entity.HasKey(e => e.CopyId).HasName("PK__BookStat__C26CCCE5EA784D8E");
 
-            entity.HasIndex(e => e.Barcode, "UQ__BookCopi__177800D3C9118DB5").IsUnique();
+            entity.ToTable("BookStatus");
+
+            entity.HasIndex(e => e.Barcode, "UQ__BookStat__177800D3FE97B560").IsUnique();
 
             entity.Property(e => e.CopyId).HasColumnName("CopyID");
             entity.Property(e => e.Barcode)
@@ -122,16 +124,16 @@ public partial class LibraryManagementDbContext : DbContext
             entity.Property(e => e.BookId).HasColumnName("BookID");
             entity.Property(e => e.Status).HasDefaultValue(1);
 
-            entity.HasOne(d => d.Book).WithMany(p => p.BookCopies)
+            entity.HasOne(d => d.Book).WithMany(p => p.BookStatuses)
                 .HasForeignKey(d => d.BookId)
-                .HasConstraintName("FK_BookCopies_Books");
+                .HasConstraintName("FK_BookStatus_Books");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A2BBEACE7BF");
+            entity.HasKey(e => e.CategoryId).HasName("PK__Categori__19093A2B504AA14C");
 
-            entity.HasIndex(e => e.CategoryName, "UQ__Categori__8517B2E050CB85B5").IsUnique();
+            entity.HasIndex(e => e.CategoryName, "UQ__Categori__8517B2E04F1AAFA0").IsUnique();
 
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.CategoryName).HasMaxLength(50);
@@ -139,9 +141,9 @@ public partial class LibraryManagementDbContext : DbContext
 
         modelBuilder.Entity<Fine>(entity =>
         {
-            entity.HasKey(e => e.FineId).HasName("PK__Fines__9D4A9BCCC4102E01");
+            entity.HasKey(e => e.FineId).HasName("PK__Fines__9D4A9BCCAA350BF3");
 
-            entity.HasIndex(e => e.LoanId, "UQ__Fines__4F5AD436E101BB6F").IsUnique();
+            entity.HasIndex(e => e.LoanId, "UQ__Fines__4F5AD436342707C8").IsUnique();
 
             entity.Property(e => e.FineId).HasColumnName("FineID");
             entity.Property(e => e.Amount).HasColumnType("decimal(10, 2)");
@@ -159,7 +161,7 @@ public partial class LibraryManagementDbContext : DbContext
 
         modelBuilder.Entity<Loan>(entity =>
         {
-            entity.HasKey(e => e.LoanId).HasName("PK__Loans__4F5AD43783E4F5F2");
+            entity.HasKey(e => e.LoanId).HasName("PK__Loans__4F5AD4372E2A6534");
 
             entity.Property(e => e.LoanId).HasColumnName("LoanID");
             entity.Property(e => e.CopyId).HasColumnName("CopyID");
@@ -174,7 +176,7 @@ public partial class LibraryManagementDbContext : DbContext
             entity.HasOne(d => d.Copy).WithMany(p => p.Loans)
                 .HasForeignKey(d => d.CopyId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Loans_BookCopies");
+                .HasConstraintName("FK_Loans_BookStatus");
 
             entity.HasOne(d => d.User).WithMany(p => p.Loans)
                 .HasForeignKey(d => d.UserId)
@@ -184,9 +186,9 @@ public partial class LibraryManagementDbContext : DbContext
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("PK__Roles__8AFACE3ACCBBD4CD");
+            entity.HasKey(e => e.RoleId).HasName("PK__Roles__8AFACE3AECA443E9");
 
-            entity.HasIndex(e => e.RoleName, "UQ__Roles__8A2B6160FCA95E0B").IsUnique();
+            entity.HasIndex(e => e.RoleName, "UQ__Roles__8A2B6160D8D5B27F").IsUnique();
 
             entity.Property(e => e.RoleId).HasColumnName("RoleID");
             entity.Property(e => e.Description).HasMaxLength(200);
@@ -195,9 +197,9 @@ public partial class LibraryManagementDbContext : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC601AEA65");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC205E561F");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D105342EB1BDB2").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D105347A1574A3").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Email).HasMaxLength(100);

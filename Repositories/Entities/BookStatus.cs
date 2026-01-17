@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LibraryManagementSystem.DAL.Entities;
 
-public partial class BookCopy
+public partial class BookStatus
 {
     public int CopyId { get; set; }
 

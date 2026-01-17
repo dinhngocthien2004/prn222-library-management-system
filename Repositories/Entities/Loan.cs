@@ -19,7 +19,7 @@ public partial class Loan
 
     public int? Status { get; set; }
 
-    public virtual BookCopy Copy { get; set; } = null!;
+    public virtual BookStatus Copy { get; set; } = null!;
 
     public virtual Fine? Fine { get; set; }
 
