@@ -1,42 +1,90 @@
-﻿@* Dòng dưới phải đúng namespace của class Book trong dự án của bạn *@
-@model IEnumerable<LibraryManagementSystem.DAL.Entities.Book>
-@* Nếu dòng trên báo đỏ, hãy thử bỏ ".DAL" hoặc kiểm tra lại file Book.cs *@
+﻿@using LibraryManagementSystem.DAL.Entities
+@model IEnumerable<Book>
 
 @{
     ViewData["Title"] = "Danh sách Sách";
 }
 
 <div class="container mt-4">
-    <h2 class="text-primary">📚 Kho Sách Thư Viện</h2>
-    <hr />
+    <h2 class="text-primary mb-3">📚 Danh sách Sách</h2>
 
-    <table class="table table-bordered table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>Tên sách</th>
-                <th>Nhà xuất bản</th>
-                <th>Năm XB</th>
-                <th>ISBN</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (Model != null)
-            {
-                foreach (var item in Model)
+    <div class="mb-3">
+        <a asp-action="Create" class="btn btn-success">
+            ➕ Thêm sách mới
+        </a>
+    </div>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning text-center">
+            Chưa có dữ liệu sách
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-striped table-hover align-middle">
+            <thead class="table-dark text-center">
+                <tr>
+                    <th>ID</th>
+                    <th>Tên sách</th>
+                    <th>ISBN</th>
+                    <th>Nhà xuất bản</th>
+                    <th>Năm XB</th>
+                    <th>Ngày thêm</th>
+                    <th width="200">Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Title</td>
-                        <td>@item.Publisher</td>
-                        <td>@item.PublishedYear</td>                      
+                        <td class="text-center">@item.BookId</td>
+
+                        <td>
+                            <strong>@item.Title</strong>
+                        </td>
+
+                        <td>
+                            @(string.IsNullOrEmpty(item.Isbn) ? "—" : item.Isbn)
+                        </td>
+
+                        <td>
+                            @(string.IsNullOrEmpty(item.Publisher) ? "—" : item.Publisher)
+                        </td>
+
+                        <td class="text-center">
+                            @(item.PublishedYear.HasValue? item.PublishedYear.ToString() : "—")
+                        </td>
+
+                        <td class="text-center">
+                            @(item.DateAdded.HasValue
+                                                ? item.DateAdded.Value.ToString("dd/MM/yyyy")
+                                                : "—")
+                </td>
+
+                        <td class="text-center">
+                            <a asp-action="Details"
+                               asp-route-id="@item.BookId"
+                               class="btn btn-info btn-sm">
+                                🔍 Chi tiết
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@item.BookId"
+                               class="btn btn-warning btn-sm mx-1">
+                                ✏️ Sửa
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.BookId"
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Bạn có chắc muốn xóa sách này?');">
+                                🗑️ Xóa
+                            </a>
+                        </td>
                     </tr>
-                }
-            }
-            else
-            {
-                <tr>
-                    <td colspan="4" class="text-center">Chưa có dữ liệu sách</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                        }
+            </tbody>
+        </table>
+    }
 </div>
