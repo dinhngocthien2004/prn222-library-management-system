@@ -1,90 +1,71 @@
-﻿@using LibraryManagementSystem.DAL.Entities
-@model IEnumerable<Book>
+﻿@model IEnumerable<LibraryManagementSystem.DAL.Entities.Book>
 
 @{
-    ViewData["Title"] = "Danh sách Sách";
+    ViewData["Title"] = "Index";
 }
 
-<div class="container mt-4">
-    <h2 class="text-primary mb-3">📚 Danh sách Sách</h2>
+<h1>Index</h1>
 
-    <div class="mb-3">
-        <a asp-action="Create" class="btn btn-success">
-            ➕ Thêm sách mới
-        </a>
-    </div>
-
-    @if (Model == null || !Model.Any())
-    {
-        <div class="alert alert-warning text-center">
-            Chưa có dữ liệu sách
-        </div>
-    }
-    else
-    {
-        <table class="table table-bordered table-striped table-hover align-middle">
-            <thead class="table-dark text-center">
-                <tr>
-                    <th>ID</th>
-                    <th>Tên sách</th>
-                    <th>ISBN</th>
-                    <th>Nhà xuất bản</th>
-                    <th>Năm XB</th>
-                    <th>Ngày thêm</th>
-                    <th width="200">Chức năng</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="text-center">@item.BookId</td>
-
-                        <td>
-                            <strong>@item.Title</strong>
-                        </td>
-
-                        <td>
-                            @(string.IsNullOrEmpty(item.Isbn) ? "—" : item.Isbn)
-                        </td>
-
-                        <td>
-                            @(string.IsNullOrEmpty(item.Publisher) ? "—" : item.Publisher)
-                        </td>
-
-                        <td class="text-center">
-                            @(item.PublishedYear.HasValue? item.PublishedYear.ToString() : "—")
-                        </td>
-
-                        <td class="text-center">
-                            @(item.DateAdded.HasValue
-                                                ? item.DateAdded.Value.ToString("dd/MM/yyyy")
-                                                : "—")
-                </td>
-
-                        <td class="text-center">
-                            <a asp-action="Details"
-                               asp-route-id="@item.BookId"
-                               class="btn btn-info btn-sm">
-                                🔍 Chi tiết
-                            </a>
-
-                            <a asp-action="Edit"
-                               asp-route-id="@item.BookId"
-                               class="btn btn-warning btn-sm mx-1">
-                                ✏️ Sửa
-                            </a>
-
-                            <a asp-action="Delete"
-                               asp-route-id="@item.BookId"
-                               class="btn btn-danger btn-sm"
-                               onclick="return confirm('Bạn có chắc muốn xóa sách này?');">
-                                🗑️ Xóa
-                            </a>
-                        </td>
-                    </tr>
-                        }
-            </tbody>
-        </table>
-    }
-</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Isbn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PublishedYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Isbn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishedYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImageUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
