@@ -20,10 +20,18 @@ namespace Library_Management_System.Controllers
         }
 
         // GET: Books
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string keyword)
         {
-            return View(await _context.Books.ToListAsync());
+            var books = _context.Books.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                books = books.Where(b => b.Title.Contains(keyword));
+            }
+
+            return View(await books.ToListAsync());
         }
+
 
         // GET: Books/Details/5
         public async Task<IActionResult> Details(int? id)
