@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Library-Management-System",
-    "\\Library-Management-System\\bin"
+    "\\Library-Management-System\\bin",
+    "\\Services",
+    "\\Services\\Services"
   ],
+  "SelectedNode": "\\Services\\Services\\BookService.cs",
   "PreviewInSolutionExplorer": false
 }
