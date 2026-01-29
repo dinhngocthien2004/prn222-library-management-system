@@ -1,0 +1,15 @@
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\bin\Debug\net8.0\LibraryManagementSystem.DAL.deps.json
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\bin\Debug\net8.0\LibraryManagementSystem.DAL.runtimeconfig.json
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\bin\Debug\net8.0\LibraryManagementSystem.DAL.dll
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\bin\Debug\net8.0\LibraryManagementSystem.DAL.pdb
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.csproj.AssemblyReference.cache
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.AssemblyInfoInputs.cache
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.AssemblyInfo.cs
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.sourcelink.json
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.dll
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\refint\LibraryManagementSystem.DAL.dll
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.pdb
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\LibraryManagementSystem.DAL.genruntimeconfig.cache
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Repositories\obj\Debug\net8.0\ref\LibraryManagementSystem.DAL.dll
