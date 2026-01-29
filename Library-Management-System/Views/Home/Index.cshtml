@@ -2,7 +2,73 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid hero-section text-center">
+    <h1 class="display-4 fw-bold">Hệ thống Quản lý Thư viện</h1>
+    <p class="lead mb-4">Quản lý sách, độc giả và quy trình mượn trả hiệu quả.</p>
+
+    <div class="search-box">
+        <form class="d-flex bg-white p-2 rounded-pill">
+            <input class="form-control border-0 rounded-pill ps-3" type="search" placeholder="Tìm kiếm tên sách, tác giả..." aria-label="Search">
+            <button class="btn btn-primary rounded-pill px-4" type="submit">Tìm kiếm</button>
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 stats-card p-3 text-center">
+                <div class="card-body">
+                    <div class="icon-large">📚</div>
+                    <h5 class="card-title">Quản lý Sách</h5>
+                    <p class="card-text text-muted">Xem danh mục, thêm sách mới hoặc chỉnh sửa thông tin sách.</p>
+                    <a href="#" class="btn btn-outline-primary w-100">Xem Kho Sách</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 stats-card p-3 text-center">
+                <div class="card-body">
+                    <div class="icon-large">👥</div>
+                    <h5 class="card-title">Độc giả</h5>
+                    <p class="card-text text-muted">Quản lý thông tin thành viên và thẻ thư viện.</p>
+                    <a href="#" class="btn btn-outline-primary w-100">Danh sách Độc giả</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 stats-card p-3 text-center">
+                <div class="card-body">
+                    <div class="icon-large">🔄</div>
+                    <h5 class="card-title">Mượn & Trả</h5>
+                    <p class="card-text text-muted">Tạo phiếu mượn mới hoặc ghi nhận trả sách.</p>
+                    <a href="#" class="btn btn-outline-primary w-100">Tạo Phiếu Mượn</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="mb-3 border-bottom pb-2">Thống kê hôm nay</h3>
+        </div>
+        <div class="col-md-3 col-6 text-center">
+            <h2 class="fw-bold text-primary">1,250</h2>
+            <p>Tổng đầu sách</p>
+        </div>
+        <div class="col-md-3 col-6 text-center">
+            <h2 class="fw-bold text-success">45</h2>
+            <p>Đang được mượn</p>
+        </div>
+        <div class="col-md-3 col-6 text-center">
+            <h2 class="fw-bold text-warning">12</h2>
+            <p>Quá hạn</p>
+        </div>
+        <div class="col-md-3 col-6 text-center">
+            <h2 class="fw-bold text-info">300</h2>
+            <p>Thành viên</p>
+        </div>
+    </div>
 </div>

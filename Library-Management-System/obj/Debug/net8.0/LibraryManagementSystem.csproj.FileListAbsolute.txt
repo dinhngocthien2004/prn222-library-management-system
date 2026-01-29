@@ -79,7 +79,6 @@ C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\System.Reflection.MetadataLoadContext.dll
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\System.Runtime.Caching.dll
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\af\Humanizer.resources.dll
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\ar\Humanizer.resources.dll
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\az\Humanizer.resources.dll
@@ -245,12 +244,6 @@ C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets\msbuild.LibraryManagementSystem.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets\msbuild.LibraryManagementSystem.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets\msbuild.build.LibraryManagementSystem.props
-C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.LibraryManagementSystem.props
-C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.LibraryManagementSystem.props
-C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\LibraryM.4D120AE7.Up2Date
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\LibraryManagementSystem.dll
@@ -258,3 +251,8 @@ C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\LibraryManagementSystem.pdb
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\LibraryManagementSystem.genruntimeconfig.cache
 C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\ref\LibraryManagementSystem.dll
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\ADMIN\source\repos\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\staticwebassets.build.json.cache
