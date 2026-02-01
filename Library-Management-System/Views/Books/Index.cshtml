@@ -1,77 +1,61 @@
 ﻿@model IEnumerable<LibraryManagementSystem.DAL.Entities.Book>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Quản lý sách";
 }
 
-<<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Books List</h2>
-    <a asp-action="Create" class="btn btn-success">
-        + Add Book
-    </a>
-</div>
+<h2 class="mb-3">📚 Quản lý sách</h2>
 
+<form method="get" class="row mb-3">
+    <div class="col-md-8">
+        <input type="text" name="keyword" class="form-control"
+               placeholder="Nhập tên sách cần tìm..." />
+    </div>
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-primary">🔍 Tìm kiếm</button>
+        <a asp-action="Create" class="btn btn-success ms-2">➕ Thêm sách</a>
+    </div>
+</form>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table table-bordered table-hover">
-    <thead>
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Isbn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Publisher)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PublishedYear)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateAdded)
-            </th>
-            <th></th>
+            <th>Tiêu đề</th>
+            <th>Mã định danh</th>
+            <th>Nhà xuất bản</th>
+            <th>Năm xuất bản</th>
+            <th style="width: 260px;">Chức năng</th>
+
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Isbn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Publisher)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishedYear)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateAdded)
-            </td>
-            <td>
-                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.BookId">Edit</a>
-                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.BookId">View</a>
-                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Isbn</td>
+                <td>@item.Publisher</td>
+                <td>@item.PublishedYear</td>
+                <td>
+                    <div class="d-flex gap-1">
+                        <a asp-action="Details" asp-route-id="@item.BookId"
+                           class="btn btn-outline-info btn-sm">
+                            👁 Xem
+                        </a>
+
+                        <a asp-action="Edit" asp-route-id="@item.BookId"
+                           class="btn btn-outline-warning btn-sm">
+                            ✏ Sửa
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.BookId"
+                           class="btn btn-outline-danger btn-sm">
+                            🗑 Xóa
+                        </a>
+                    </div>
+                </td>
+
+            </tr>
+        }
     </tbody>
 </table>
