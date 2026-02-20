@@ -28,6 +28,8 @@ namespace Library_Management_System
             builder.Services.AddScoped<BookRepository>();
             builder.Services.AddScoped<BookService>();
 
+            builder.Services.AddScoped<LoanRepository>();
+            builder.Services.AddScoped<LoanService>();
             // ================== KẾT THÚC CẤU HÌNH DỊCH VỤ ==================
 
             var app = builder.Build(); // <-- Dòng này chốt sổ, không viết code đăng ký dịch vụ sau dòng này

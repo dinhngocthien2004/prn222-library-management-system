@@ -1,0 +1,18 @@
+﻿@model LibraryManagementSystem.DAL.Entities.Loan
+
+<h2>Tạo Phiếu Mượn</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Book ID</label>       
+    </div>
+
+    <div class="form-group">
+        <label>User ID</label>
+        <input asp-for="UserId" class="form-control" />
+    </div>
+
+    <button class="btn btn-primary mt-2">
+        Lưu
+    </button>
+</form>

@@ -1,0 +1,25 @@
+﻿@model List<LibraryManagementSystem.DAL.Entities.Loan>
+
+<h2>🔄 Mượn & Trả</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">
+    Tạo Phiếu Mượn
+</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Book</th>
+        <th>User</th>
+        <th>Ngày mượn</th>
+        <th>Trạng thái</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>          
+            <td>@item.UserId</td>
+            <td>@item.LoanDate.ToShortDateString()</td>
+        </tr>
+    }
+</table>

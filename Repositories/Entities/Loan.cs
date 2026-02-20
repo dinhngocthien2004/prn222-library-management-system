@@ -11,7 +11,7 @@ public partial class Loan
 
     public int CopyId { get; set; }
 
-    public DateTime? LoanDate { get; set; }
+    public DateTime LoanDate { get; set; }
 
     public DateTime DueDate { get; set; }
 
