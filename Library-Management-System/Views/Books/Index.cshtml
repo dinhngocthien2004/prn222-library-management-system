@@ -1,21 +1,15 @@
-﻿@model IEnumerable<LibraryManagementSystem.DAL.Entities.Book>
+﻿@model IEnumerable<BusinessObjects.Entities.Book>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Books List</h2>
-    <a asp-action="Create" class="btn btn-success">
-        + Add Book
-    </a>
-</div>
-
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-bordered table-hover">
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -38,6 +32,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
             </th>
             <th></th>
         </tr>
@@ -67,9 +64,12 @@
                 @Html.DisplayFor(modelItem => item.DateAdded)
             </td>
             <td>
-                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.BookId">Edit</a>
-                    <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.BookId">View</a>
-                    <a class="btn btn-sm btn-danger" asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BookId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BookId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BookId">Delete</a>
             </td>
         </tr>
 }

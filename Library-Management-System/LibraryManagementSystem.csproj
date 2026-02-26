@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Services\LibraryManagementSystem.BLL.csproj">
+    <ProjectReference Include="..\Servicess\Servicess.csproj">
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

@@ -2705,32 +2705,57 @@
           "lib/netcoreapp2.1/_._": {}
         }
       },
-      "LibraryManagementSystem.BLL/1.0.0": {
+      "BusinessObjects/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "LibraryManagementSystem.DAL": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/LibraryManagementSystem.BLL.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/LibraryManagementSystem.BLL.dll": {}
-        }
-      },
-      "LibraryManagementSystem.DAL/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore": "8.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
           "Microsoft.Extensions.Configuration.Json": "8.0.0"
         },
         "compile": {
-          "bin/placeholder/LibraryManagementSystem.DAL.dll": {}
+          "bin/placeholder/BusinessObjects.dll": {}
         },
         "runtime": {
-          "bin/placeholder/LibraryManagementSystem.DAL.dll": {}
+          "bin/placeholder/BusinessObjects.dll": {}
+        }
+      },
+      "DataAccessObjects/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "BusinessObjects": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DataAccessObjects.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccessObjects.dll": {}
+        }
+      },
+      "Repositoriess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "DataAccessObjects": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repositoriess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repositoriess.dll": {}
+        }
+      },
+      "Servicess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Repositoriess": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Servicess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Servicess.dll": {}
         }
       }
     }
@@ -7632,22 +7657,32 @@
         "version.txt"
       ]
     },
-    "LibraryManagementSystem.BLL/1.0.0": {
+    "BusinessObjects/1.0.0": {
       "type": "project",
-      "path": "../Services/LibraryManagementSystem.BLL.csproj",
-      "msbuildProject": "../Services/LibraryManagementSystem.BLL.csproj"
+      "path": "../BusinessObjects/BusinessObjects.csproj",
+      "msbuildProject": "../BusinessObjects/BusinessObjects.csproj"
     },
-    "LibraryManagementSystem.DAL/1.0.0": {
+    "DataAccessObjects/1.0.0": {
       "type": "project",
-      "path": "../Repositories/LibraryManagementSystem.DAL.csproj",
-      "msbuildProject": "../Repositories/LibraryManagementSystem.DAL.csproj"
+      "path": "../DataAccessObjects/DataAccessObjects.csproj",
+      "msbuildProject": "../DataAccessObjects/DataAccessObjects.csproj"
+    },
+    "Repositoriess/1.0.0": {
+      "type": "project",
+      "path": "../Repositoriess/Repositoriess.csproj",
+      "msbuildProject": "../Repositoriess/Repositoriess.csproj"
+    },
+    "Servicess/1.0.0": {
+      "type": "project",
+      "path": "../Servicess/Servicess.csproj",
+      "msbuildProject": "../Servicess/Servicess.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "LibraryManagementSystem.BLL >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.23",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.23"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.23",
+      "Servicess >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -7682,8 +7717,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\prn222-library-management-system\\Services\\LibraryManagementSystem.BLL.csproj": {
-              "projectPath": "D:\\prn222-library-management-system\\Services\\LibraryManagementSystem.BLL.csproj"
+            "D:\\prn222-library-management-system\\Servicess\\Servicess.csproj": {
+              "projectPath": "D:\\prn222-library-management-system\\Servicess\\Servicess.csproj"
             }
           }
         }

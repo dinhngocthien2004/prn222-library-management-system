@@ -1,4 +1,4 @@
-﻿@model List<LibraryManagementSystem.DAL.Entities.Loan>
+﻿@model List<BusinessObjects.Entities.Loan>
 
 <h2>🔄 Mượn & Trả</h2>
 
@@ -19,7 +19,6 @@
     {
         <tr>          
             <td>@item.UserId</td>
-            <td>@item.LoanDate.ToShortDateString()</td>
         </tr>
     }
 </table>
