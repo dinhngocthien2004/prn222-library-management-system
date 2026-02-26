@@ -1,22 +1,122 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\",
+  "WorkspaceRootPath": "D:\\prn222-library-management-system\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\books\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\books\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\books\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\books\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|d:\\prn222-library-management-system\\businessobjects\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B164EA4-C20D-4FCB-8A02-5535A6D46019}|DataAccessObjects\\DataAccessObjects.csproj|d:\\prn222-library-management-system\\dataaccessobjects\\librarymanagementdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B164EA4-C20D-4FCB-8A02-5535A6D46019}|DataAccessObjects\\DataAccessObjects.csproj|solutionrelative:dataaccessobjects\\librarymanagementdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|d:\\prn222-library-management-system\\businessobjects\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\entities\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|d:\\prn222-library-management-system\\businessobjects\\entities\\bookcopy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\entities\\bookcopy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|d:\\prn222-library-management-system\\businessobjects\\entities\\fine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\entities\\fine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|d:\\prn222-library-management-system\\businessobjects\\businessobjects.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3FED58A6-C0AE-4818-BCF8-2535D396DE16}|BusinessObjects\\BusinessObjects.csproj|solutionrelative:businessobjects\\businessobjects.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|d:\\prn222-library-management-system\\servicess\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|solutionrelative:servicess\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|d:\\prn222-library-management-system\\servicess\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|solutionrelative:servicess\\icategoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|d:\\prn222-library-management-system\\repositoriess\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|solutionrelative:repositoriess\\categoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|d:\\prn222-library-management-system\\repositoriess\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|solutionrelative:repositoriess\\icategoryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|d:\\prn222-library-management-system\\repositoriess\\repositoriess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|solutionrelative:repositoriess\\repositoriess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B164EA4-C20D-4FCB-8A02-5535A6D46019}|DataAccessObjects\\DataAccessObjects.csproj|d:\\prn222-library-management-system\\dataaccessobjects\\categorydao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B164EA4-C20D-4FCB-8A02-5535A6D46019}|DataAccessObjects\\DataAccessObjects.csproj|solutionrelative:dataaccessobjects\\categorydao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\loan\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\loan\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\loan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\loan\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\librarymanagementsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\librarymanagementsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|d:\\prn222-library-management-system\\servicess\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|solutionrelative:servicess\\bookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|d:\\prn222-library-management-system\\servicess\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|solutionrelative:servicess\\ibookservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|d:\\prn222-library-management-system\\servicess\\servicess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7FA8D9F3-58B3-40CB-B3A5-0FCB57799F4B}|Servicess\\Servicess.csproj|solutionrelative:servicess\\servicess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|d:\\prn222-library-management-system\\repositoriess\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|solutionrelative:repositoriess\\bookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|d:\\prn222-library-management-system\\repositoriess\\ibookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EA56AE7F-D4D2-4E51-9CD2-D751F45C642D}|Repositoriess\\Repositoriess.csproj|solutionrelative:repositoriess\\ibookrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B164EA4-C20D-4FCB-8A02-5535A6D46019}|DataAccessObjects\\DataAccessObjects.csproj|d:\\prn222-library-management-system\\dataaccessobjects\\bookdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B164EA4-C20D-4FCB-8A02-5535A6D46019}|DataAccessObjects\\DataAccessObjects.csproj|solutionrelative:dataaccessobjects\\bookdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,60 +126,356 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Library-Management-System\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAUwE4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-27T02:41:10.67Z",
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "Library-Management-System\\Controllers\\BooksController.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "Library-Management-System\\Controllers\\BooksController.cs",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAqwDoAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:58:47.557Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Library-Management-System\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-27T02:40:19.286Z"
+              "DocumentIndex": 5,
+              "Title": "LibraryManagementDbContext.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\DataAccessObjects\\LibraryManagementDbContext.cs",
+              "RelativeDocumentMoniker": "DataAccessObjects\\LibraryManagementDbContext.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\DataAccessObjects\\LibraryManagementDbContext.cs",
+              "RelativeToolTip": "DataAccessObjects\\LibraryManagementDbContext.cs",
+              "ViewState": "AgIAAN0AAAAAAAAAAAAuwC4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:50:10.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Book.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\BusinessObjects\\Entities\\Book.cs",
+              "RelativeDocumentMoniker": "BusinessObjects\\Entities\\Book.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\BusinessObjects\\Entities\\Book.cs",
+              "RelativeToolTip": "BusinessObjects\\Entities\\Book.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAIwAkAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:49:44.495Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "BooksController.cs",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Controllers\\BooksController.cs",
-              "RelativeDocumentMoniker": "Library-Management-System\\Controllers\\BooksController.cs",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Controllers\\BooksController.cs",
-              "RelativeToolTip": "Library-Management-System\\Controllers\\BooksController.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAIwJwAAAAzAAAAAAAAAA==",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Books\\Create.cshtml",
+              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Books\\Create.cshtml",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Books\\Create.cshtml",
+              "RelativeToolTip": "Library-Management-System\\Views\\Books\\Create.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACwAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:00:20.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Library-Management-System\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Library-Management-System\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T07:15:55.514Z"
+              "WhenOpened": "2026-02-26T16:04:16.218Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\BusinessObjects\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "BusinessObjects\\Entities\\Category.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\BusinessObjects\\Entities\\Category.cs",
+              "RelativeToolTip": "BusinessObjects\\Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:07:57.082Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Books\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Books\\Edit.cshtml",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Books\\Edit.cshtml",
+              "RelativeToolTip": "Library-Management-System\\Views\\Books\\Edit.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T18:12:32.296Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Library-Management-System\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T17:56:21.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BookCopy.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\BusinessObjects\\Entities\\BookCopy.cs",
+              "RelativeDocumentMoniker": "BusinessObjects\\Entities\\BookCopy.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\BusinessObjects\\Entities\\BookCopy.cs",
+              "RelativeToolTip": "BusinessObjects\\Entities\\BookCopy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:07:54.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "Library-Management-System\\Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "Library-Management-System\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:12:24.212Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Fine.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\BusinessObjects\\Entities\\Fine.cs",
+              "RelativeDocumentMoniker": "BusinessObjects\\Entities\\Fine.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\BusinessObjects\\Entities\\Fine.cs",
+              "RelativeToolTip": "BusinessObjects\\Entities\\Fine.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T18:08:14.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\appsettings.json",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\appsettings.json",
               "RelativeDocumentMoniker": "Library-Management-System\\appsettings.json",
-              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\appsettings.json",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\appsettings.json",
               "RelativeToolTip": "Library-Management-System\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-17T07:15:28.312Z"
+              "WhenOpened": "2026-02-26T07:04:24.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Program.cs",
+              "RelativeDocumentMoniker": "Library-Management-System\\Program.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Program.cs",
+              "RelativeToolTip": "Library-Management-System\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:17:54.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ICategoryService.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Servicess\\ICategoryService.cs",
+              "RelativeDocumentMoniker": "Servicess\\ICategoryService.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Servicess\\ICategoryService.cs",
+              "RelativeToolTip": "Servicess\\ICategoryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:29:05.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CategoryRepository.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Repositoriess\\CategoryRepository.cs",
+              "RelativeDocumentMoniker": "Repositoriess\\CategoryRepository.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Repositoriess\\CategoryRepository.cs",
+              "RelativeToolTip": "Repositoriess\\CategoryRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:28:22.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BusinessObjects.csproj",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj",
+              "RelativeDocumentMoniker": "BusinessObjects\\BusinessObjects.csproj",
+              "ToolTip": "D:\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj",
+              "RelativeToolTip": "BusinessObjects\\BusinessObjects.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-26T17:06:06.078Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ICategoryRepository.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Repositoriess\\ICategoryRepository.cs",
+              "RelativeDocumentMoniker": "Repositoriess\\ICategoryRepository.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Repositoriess\\ICategoryRepository.cs",
+              "RelativeToolTip": "Repositoriess\\ICategoryRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:27:49.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CategoryService.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Servicess\\CategoryService.cs",
+              "RelativeDocumentMoniker": "Servicess\\CategoryService.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Servicess\\CategoryService.cs",
+              "RelativeToolTip": "Servicess\\CategoryService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:29:37.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CategoryDAO.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\DataAccessObjects\\CategoryDAO.cs",
+              "RelativeDocumentMoniker": "DataAccessObjects\\CategoryDAO.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\DataAccessObjects\\CategoryDAO.cs",
+              "RelativeToolTip": "DataAccessObjects\\CategoryDAO.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:26:19.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Repositoriess.csproj",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Repositoriess\\Repositoriess.csproj",
+              "RelativeDocumentMoniker": "Repositoriess\\Repositoriess.csproj",
+              "ToolTip": "D:\\prn222-library-management-system\\Repositoriess\\Repositoriess.csproj",
+              "RelativeToolTip": "Repositoriess\\Repositoriess.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-26T17:11:20.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "LibraryManagementSystem.csproj",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj",
+              "RelativeDocumentMoniker": "Library-Management-System\\LibraryManagementSystem.csproj",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj",
+              "RelativeToolTip": "Library-Management-System\\LibraryManagementSystem.csproj",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-26T17:17:11.661Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Loan\\Index.cshtml",
+              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Loan\\Index.cshtml",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Loan\\Index.cshtml",
+              "RelativeToolTip": "Library-Management-System\\Views\\Loan\\Index.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAABQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T17:18:29.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Loan\\Create.cshtml",
+              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Loan\\Create.cshtml",
+              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Loan\\Create.cshtml",
+              "RelativeToolTip": "Library-Management-System\\Views\\Loan\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-26T17:19:08.15Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "BookService.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Servicess\\BookService.cs",
+              "RelativeDocumentMoniker": "Servicess\\BookService.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Servicess\\BookService.cs",
+              "RelativeToolTip": "Servicess\\BookService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:14:19.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Servicess.csproj",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Servicess\\Servicess.csproj",
+              "RelativeDocumentMoniker": "Servicess\\Servicess.csproj",
+              "ToolTip": "D:\\prn222-library-management-system\\Servicess\\Servicess.csproj",
+              "RelativeToolTip": "Servicess\\Servicess.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-02-26T17:12:55.014Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IBookService.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Servicess\\IBookService.cs",
+              "RelativeDocumentMoniker": "Servicess\\IBookService.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Servicess\\IBookService.cs",
+              "RelativeToolTip": "Servicess\\IBookService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:13:16.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "BookRepository.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Repositoriess\\BookRepository.cs",
+              "RelativeDocumentMoniker": "Repositoriess\\BookRepository.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Repositoriess\\BookRepository.cs",
+              "RelativeToolTip": "Repositoriess\\BookRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:12:31.838Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IBookRepository.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\Repositoriess\\IBookRepository.cs",
+              "RelativeDocumentMoniker": "Repositoriess\\IBookRepository.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\Repositoriess\\IBookRepository.cs",
+              "RelativeToolTip": "Repositoriess\\IBookRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:12:10.836Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "BookDAO.cs",
+              "DocumentMoniker": "D:\\prn222-library-management-system\\DataAccessObjects\\BookDAO.cs",
+              "RelativeDocumentMoniker": "DataAccessObjects\\BookDAO.cs",
+              "ToolTip": "D:\\prn222-library-management-system\\DataAccessObjects\\BookDAO.cs",
+              "RelativeToolTip": "DataAccessObjects\\BookDAO.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBQAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T17:11:04.045Z"
             }
           ]
         }
