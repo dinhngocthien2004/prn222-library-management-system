@@ -226,4 +226,9 @@ public partial class LibraryManagementDbContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public User? FindByEmail(string email)
+    {
+        return Users.AsNoTracking().FirstOrDefault(c => c.Email == email);
+    }
 }

@@ -1,0 +1,19 @@
+﻿using BusinessObjects.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataAccessObjects
+{
+    public class UserDAO
+    {
+        private readonly LibraryManagementDbContext _ctx;
+        public UserDAO(LibraryManagementDbContext ctx) => _ctx = ctx;
+
+        public User? FindByEmail(string email) =>
+            _ctx.Users.AsNoTracking().FirstOrDefault(c => c.Email == email);
+    }
+}
