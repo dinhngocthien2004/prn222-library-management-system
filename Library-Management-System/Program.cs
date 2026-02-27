@@ -25,8 +25,8 @@ namespace Library_Management_System
 
             // 4. Đăng ký các lớp DAL và BLL (Dependency Injection)
             // Mỗi khi tạo thêm Repository hay Service mới, bạn phải khai báo thêm ở đây
-            builder.Services.AddScoped<BookRepository>();
-            builder.Services.AddScoped<BookService>();
+            //builder.Services.AddScoped<BookRepository>();
+            //builder.Services.AddScoped<BookService>();
 
             // ================== KẾT THÚC CẤU HÌNH DỊCH VỤ ==================
 
