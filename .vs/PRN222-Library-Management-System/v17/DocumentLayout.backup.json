@@ -3,32 +3,8 @@
   "WorkspaceRootPath": "D:\\prn222-library-management-system\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|d:\\prn222-library-management-system\\library-management-system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -46,11 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Library-Management-System\\Controllers\\HomeController.cs",
@@ -58,35 +34,12 @@
               "RelativeToolTip": "Library-Management-System\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-27T04:07:25.174Z"
+              "WhenOpened": "2026-02-27T04:07:25.174Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Program.cs",
-              "RelativeDocumentMoniker": "Library-Management-System\\Program.cs",
-              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Program.cs",
-              "RelativeToolTip": "Library-Management-System\\Program.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBwAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-27T04:07:07.565Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "Library-Management-System\\Views\\_ViewImports.cshtml",
-              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "Library-Management-System\\Views\\_ViewImports.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-31T03:54:07.605Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "Library-Management-System\\Views\\Home\\Privacy.cshtml",
@@ -98,56 +51,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Models\\ErrorViewModel.cs",
-              "RelativeDocumentMoniker": "Library-Management-System\\Models\\ErrorViewModel.cs",
-              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Models\\ErrorViewModel.cs",
-              "RelativeToolTip": "Library-Management-System\\Models\\ErrorViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-01T12:36:32.991Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Library-Management-System\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-27T02:41:10.67Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\appsettings.json",
-              "RelativeDocumentMoniker": "Library-Management-System\\appsettings.json",
-              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\appsettings.json",
-              "RelativeToolTip": "Library-Management-System\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-01-17T07:15:28.312Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "Library-Management-System\\Views\\_ViewStart.cshtml",
-              "ToolTip": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "Library-Management-System\\Views\\_ViewStart.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-01-31T03:54:10.016Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Library-Management-System\\Views\\Home\\Index.cshtml",
