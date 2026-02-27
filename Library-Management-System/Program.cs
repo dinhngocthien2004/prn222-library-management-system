@@ -1,7 +1,8 @@
-﻿using LibraryManagementSystem.BLL.Services;
-using LibraryManagementSystem.DAL;
-using LibraryManagementSystem.DAL.Repositoties;
+﻿
+using DataAccessObjects;
 using Microsoft.EntityFrameworkCore;
+using Repositories;
+using Services;
 
 namespace Library_Management_System
 {
@@ -27,6 +28,16 @@ namespace Library_Management_System
             // Mỗi khi tạo thêm Repository hay Service mới, bạn phải khai báo thêm ở đây
             //builder.Services.AddScoped<BookRepository>();
             //builder.Services.AddScoped<BookService>();
+
+            builder.Services.AddScoped<BookDAO>();
+            builder.Services.AddScoped<CategoryDAO>();
+
+            builder.Services.AddScoped<IBookRepository, BookRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
+
+            builder.Services.AddScoped<IBookService, BookService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
 
             // ================== KẾT THÚC CẤU HÌNH DỊCH VỤ ==================
 
