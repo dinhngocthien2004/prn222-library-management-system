@@ -31,13 +31,20 @@ namespace Library_Management_System
 
             builder.Services.AddScoped<BookDAO>();
             builder.Services.AddScoped<CategoryDAO>();
+            // builder.Services.AddScoped<LoanDAO>();
+            
+            builder.Services.AddScoped<UserDAO>();
 
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 
 
             builder.Services.AddScoped<IBookService, BookService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ILoanService, LoanService>();
 
             // ================== KẾT THÚC CẤU HÌNH DỊCH VỤ ==================
 
