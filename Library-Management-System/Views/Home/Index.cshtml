@@ -22,7 +22,11 @@
                     <div class="icon-large">📚</div>
                     <h5 class="card-title">Quản lý Sách</h5>
                     <p class="card-text text-muted">Xem danh mục, thêm sách mới hoặc chỉnh sửa thông tin sách.</p>
-                    <a href="#" class="btn btn-outline-primary w-100">Xem Kho Sách</a>
+                    <a asp-controller="Books"
+                       asp-action="Index"
+                       class="btn btn-outline-primary w-100">
+                        Xem Kho Sách
+                    </a>
                 </div>
             </div>
         </div>
