@@ -173,14 +173,13 @@ namespace Library_Management_System.Controllers
         private readonly ILoanService _loans;
         private readonly IBookCopyService _bookcopies;
         private readonly IUserService _user;
-        private readonly LibraryManagementDbContext _context;
-
-        public LoansController(ILoanService loans, IBookCopyService bookcopies, IUserService users, LibraryManagementDbContext context)
+     
+        public LoansController(ILoanService loans, IBookCopyService bookcopies, IUserService users)
         {
             _loans = loans;
             _bookcopies = bookcopies;
             _user = users;
-            _context = context;
+           
         }
 
         public IActionResult Index()
@@ -201,9 +200,23 @@ namespace Library_Management_System.Controllers
         public IActionResult Create()
         {
             ViewData["CopyId"] = new SelectList(_bookcopies.GetBookCopies(), "CopyId", "Barcode");
-            ViewData["UserId"] = new SelectList(_context.Users, "UserId", "Barcode");
+            ViewData["UserId"] = new SelectList(_user.GetUsers(), "UserId", "Email");
             return View();
         }
+
+        //[HttpPost, ValidateAntiForgeryToken]
+        //public IActionResult Create([Bind("LoanId,UserId,CopyId,LoanDate,DueDate,ReturnDate,Status")] Loan p)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        ViewData["CopyId"] = new SelectList(_bookcopies.GetBookCopies(), "CopyId", "Barcode", p.CopyId);
+        //        ViewData["UserId"] = new SelectList(_user.GetUsers(), "UserId", "Email", p.UserId);
+        //        return View(p);
+        //    }
+
+        //    _loans.SaveLoan(p);
+        //    return RedirectToAction(nameof(Index));
+        //}
 
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create([Bind("LoanId,UserId,CopyId,LoanDate,DueDate,ReturnDate,Status")] Loan p)
@@ -211,12 +224,15 @@ namespace Library_Management_System.Controllers
             if (!ModelState.IsValid)
             {
                 ViewData["CopyId"] = new SelectList(_bookcopies.GetBookCopies(), "CopyId", "Barcode", p.CopyId);
+                ViewData["UserId"] = new SelectList(_user.GetUsers(), "UserId", "Email", p.UserId);
                 return View(p);
             }
+            p.LoanDate = DateTime.Now;
+            p.DueDate = DateTime.Now.AddDays(7);
+
             _loans.SaveLoan(p);
             return RedirectToAction(nameof(Index));
         }
-
 
         public IActionResult Edit(int? id)
         {
@@ -224,16 +240,18 @@ namespace Library_Management_System.Controllers
             var p = _loans.GetLoanById(id.Value);
             if (p is null) return NotFound();
             ViewData["CopyId"] = new SelectList(_bookcopies.GetBookCopies(), "CopyId", "Barcode", p.CopyId);
+            ViewData["UserId"] = new SelectList(_bookcopies.GetBookCopies(), "UserId", "Email", p.UserId);
             return View(p);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("LoanId,UserId,CopyId,LoanDate,DueDate,ReturnDate,Status")] Loan p)
+        public IActionResult Edit(int? id, [Bind("LoanId,UserId,CopyId,LoanDate,DueDate,ReturnDate,Status")] Loan p)
         {
             if (id != p.LoanId) return NotFound();
             if (!ModelState.IsValid)
             {
                 ViewData["CopyId"] = new SelectList(_bookcopies.GetBookCopies(), "CopyId", "Barcode", p.CopyId);
+                ViewData["UserId"] = new SelectList(_bookcopies.GetBookCopies(), "UserId", "Email", p.UserId);
                 return View(p);
             }
             _loans.UpdateLoan(p);

@@ -9,7 +9,7 @@ namespace Repositories
 {
     public interface IUserRepository
     {
-        //IEnumerable<User> GetUsers();
+        public IEnumerable<User> GetUsers();
         User? FindByEmail(string email);
     }
 }

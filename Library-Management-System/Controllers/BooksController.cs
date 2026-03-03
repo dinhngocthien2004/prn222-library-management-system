@@ -34,7 +34,7 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Index()
         {
-            // if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+             //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             var list = _books.GetBooks();
             return View(list.ToList());
         }
@@ -50,7 +50,7 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Create()
         {
-            // if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+             //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName");
             return View();
         }
@@ -58,7 +58,7 @@ namespace Library_Management_System.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl")] Book p)
         {
-            //  if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+             //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             if (!ModelState.IsValid)
             {
                 ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
@@ -104,7 +104,7 @@ namespace Library_Management_System.Controllers
         [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+           // if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             var p = _books.GetBookById(id);
             if (p is not null) _books.DeleteBook(p);
             return RedirectToAction(nameof(Index));
