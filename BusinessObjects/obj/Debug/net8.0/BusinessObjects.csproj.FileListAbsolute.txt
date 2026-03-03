@@ -1,0 +1,15 @@
+D:\prn222-library-management-system\BusinessObjects\bin\Debug\net8.0\BusinessObjects.deps.json
+D:\prn222-library-management-system\BusinessObjects\bin\Debug\net8.0\BusinessObjects.runtimeconfig.json
+D:\prn222-library-management-system\BusinessObjects\bin\Debug\net8.0\BusinessObjects.dll
+D:\prn222-library-management-system\BusinessObjects\bin\Debug\net8.0\BusinessObjects.pdb
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.csproj.AssemblyReference.cache
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.GeneratedMSBuildEditorConfig.editorconfig
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.AssemblyInfoInputs.cache
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.AssemblyInfo.cs
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.csproj.CoreCompileInputs.cache
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.sourcelink.json
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.dll
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\refint\BusinessObjects.dll
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.pdb
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\BusinessObjects.genruntimeconfig.cache
+D:\prn222-library-management-system\BusinessObjects\obj\Debug\net8.0\ref\BusinessObjects.dll

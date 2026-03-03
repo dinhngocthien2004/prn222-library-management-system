@@ -231,4 +231,6 @@ public partial class LibraryManagementDbContext : DbContext
     {
         return Users.AsNoTracking().FirstOrDefault(c => c.Email == email);
     }
+
+    
 }

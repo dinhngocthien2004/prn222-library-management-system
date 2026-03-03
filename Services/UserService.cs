@@ -12,7 +12,7 @@ namespace Services
     {
         private readonly IUserRepository _repo;
         public UserService(IUserRepository repo) => _repo = repo;
-
+        //public IEnumerable<User> GetUsers() => _repo.GetUsers();
         public User? Login(string email, string password)
         {
             var user = _repo.FindByEmail(email);

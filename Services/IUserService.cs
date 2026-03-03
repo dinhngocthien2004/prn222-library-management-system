@@ -9,6 +9,7 @@ namespace Services
 {
     public interface IUserService
     {
+        //IEnumerable<User> GetUsers();
         User? Login(string email, string password);
     }
 }

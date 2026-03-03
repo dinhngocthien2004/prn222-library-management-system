@@ -9,10 +9,10 @@ namespace Services
 {
     public interface ILoanService
     {
-        List<Loan> GetAllLoans();
+        IEnumerable<Loan> GetLoans();
         Loan? GetLoanById(int id);
-        void CreateLoan(Loan loan);
-        void UpdateLoan(Loan loan);
-        void DeleteLoan(int id);
+        void SaveLoan(Loan p);
+        void UpdateLoan(Loan p);
+        void DeleteLoan(Loan p);
     }
 }
