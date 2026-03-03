@@ -1,0 +1,16 @@
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\bin\Debug\net8.0\DataAccessObjects.deps.json
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\bin\Debug\net8.0\DataAccessObjects.dll
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\bin\Debug\net8.0\DataAccessObjects.pdb
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\bin\Debug\net8.0\BusinessObjects.dll
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\bin\Debug\net8.0\BusinessObjects.pdb
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.csproj.AssemblyReference.cache
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.AssemblyInfoInputs.cache
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.AssemblyInfo.cs
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.sourcelink.json
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAcce.79975846.Up2Date
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.dll
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\refint\DataAccessObjects.dll
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\DataAccessObjects.pdb
+C:\Users\Admin\source\repos\prn222-library-management-system\DataAccessObjects\obj\Debug\net8.0\ref\DataAccessObjects.dll
