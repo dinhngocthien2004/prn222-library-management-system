@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,7 +30,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "Library-Management-System\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "Library-Management-System\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAqwCMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-03-04T08:12:21.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\appsettings.json",
               "RelativeDocumentMoniker": "Library-Management-System\\appsettings.json",
@@ -38,13 +55,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Library-Management-System\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Library-Management-System\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAHkAAAAAAAAAAAAQwIwAAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-01-27T02:40:19.286Z",
               "EditorCaption": ""

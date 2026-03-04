@@ -1,4 +1,4 @@
-html {
+﻿html {
   font-size: 14px;
 }
 
@@ -19,4 +19,38 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%; /* full chiều rộng container */
+    max-width: 1260px; /* bằng container Bootstrap */
+    margin: 0 auto 40px auto; /* tạo khoảng cách với 3 khung bên dưới */
+    padding: 10px 20px;
+    border: 2px solid #d0d7de;
+    border-radius: 50px;
+    background-color: #ffffff;
+    transition: 0.3s ease;
+}
+
+    /* Khi bấm vào input thì viền đổi màu */
+    .search-form:focus-within {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
+    }
+
+.search-input {
+    flex: 1;
+    border: none !important;
+    outline: none !important;
+    padding: 10px 15px;
+    font-size: 16px;
+    box-shadow: none !important;
+}
+
+.search-button {
+    border-radius: 40px;
+    padding: 10px 25px;
 }
