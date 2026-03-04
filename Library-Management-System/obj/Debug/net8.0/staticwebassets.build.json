@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "m96uTXny0ob6B6TAekwVoIvZG2IJXyWr+yWZQ+9cbm8=",
+  "Hash": "4CePfmYP2Uu/w7EDj3X4nwqnBZx5ue8zo6DlZkdKTnU=",
   "Source": "LibraryManagementSystem",
   "BasePath": "_content/LibraryManagementSystem",
   "Mode": "Default",
@@ -1343,7 +1343,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Mar 2026 08:19:18 GMT"
+          "Value": "Wed, 04 Mar 2026 08:19:49 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1380,7 +1380,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 04 Mar 2026 08:19:18 GMT"
+          "Value": "Wed, 04 Mar 2026 08:19:49 GMT"
         },
         {
           "Name": "Cache-Control",
