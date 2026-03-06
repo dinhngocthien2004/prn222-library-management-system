@@ -13,8 +13,8 @@ namespace DataAccessObjects
         private readonly LibraryManagementDbContext _ctx;
         public LoanDAO(LibraryManagementDbContext ctx) => _ctx = ctx;
 
-        public IEnumerable<Loan> GetAll() => _ctx.Loans.AsNoTracking().Include(p => p.Copy).ToList();
-        public Loan? GetById(int id) => _ctx.Loans.Include(p => p.Copy).FirstOrDefault(p => p.LoanId == id);
+        public IEnumerable<Loan> GetAll() => _ctx.Loans.AsNoTracking().Include(p => p.User).ToList();
+        public Loan? GetById(int id) => _ctx.Loans.Include(p => p.User).FirstOrDefault(p => p.LoanId == id);
 
         public void Create(Loan p) { _ctx.Loans.Add(p); _ctx.SaveChanges(); }
         public void Update(Loan p) { _ctx.Loans.Update(p); _ctx.SaveChanges(); }
