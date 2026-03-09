@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Services
+namespace Repositories
 {
-    public interface IUserService
+    public interface IBookCopyRepository
     {
-        IEnumerable<User> GetUsers();
-        User? Login(string email, string password);
+        IEnumerable<BookCopy> GetBookCopies();
+        BookCopy? GetBookCopyById(int id);
     }
 }

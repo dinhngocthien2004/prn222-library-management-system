@@ -12,7 +12,7 @@ namespace DataAccessObjects
     {
         private readonly LibraryManagementDbContext _ctx;
         public UserDAO(LibraryManagementDbContext ctx) => _ctx = ctx;
-
+        public IEnumerable<User> GetAll() => _ctx.Users.AsNoTracking().ToList();
         public User? FindByEmail(string email) =>
             _ctx.Users.AsNoTracking().FirstOrDefault(c => c.Email == email);
     }

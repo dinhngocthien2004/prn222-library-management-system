@@ -20,9 +20,11 @@ namespace Library_Management_System
             // 2. Đọc chuỗi kết nối
             var connectionString = builder.Configuration.GetConnectionString("LibraryConn");
 
-            // 3. Đăng ký Entity Framework Core (Kết nối SQL)
+            // 3. Đăng ký Entity Framework Core (Kết nối SQL)       
             builder.Services.AddDbContext<LibraryManagementDbContext>(options =>
-                options.UseSqlServer(connectionString));
+            options.UseSqlServer(
+            builder.Configuration.GetConnectionString("DefaultConnection"),
+            b => b.MigrationsAssembly("LibraryManagementSystem")));
 
             // 4. Đăng ký các lớp DAL và BLL (Dependency Injection)
             // Mỗi khi tạo thêm Repository hay Service mới, bạn phải khai báo thêm ở đây
@@ -31,13 +33,22 @@ namespace Library_Management_System
 
             builder.Services.AddScoped<BookDAO>();
             builder.Services.AddScoped<CategoryDAO>();
+            builder.Services.AddScoped<LoanDAO>();
+            builder.Services.AddScoped<BookCopyDAO>();
+            builder.Services.AddScoped<UserDAO>();
 
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ILoanRepository, LoanRepository>();
+            builder.Services.AddScoped<IBookCopyRepository, BookCopyRepository>();
 
 
             builder.Services.AddScoped<IBookService, BookService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ILoanService, LoanService>();
+            builder.Services.AddScoped<IBookCopyService, BookCopyService>();
 
             // ================== KẾT THÚC CẤU HÌNH DỊCH VỤ ==================
 

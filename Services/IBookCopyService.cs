@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public interface IUserService
+    public interface IBookCopyService
     {
-        IEnumerable<User> GetUsers();
-        User? Login(string email, string password);
+        IEnumerable<BookCopy> GetBookCopies();
+        BookCopy? GetBookCopyById(int id);
     }
 }
