@@ -22,26 +22,26 @@ namespace Library_Management_System.Controllers
             _categories = categories;
         }
 
-        //private bool EnsureLogin()
-        //{
-        //    if (HttpContext.Session.GetString("UserId") == null)
-        //    {
-        //        RedirectToAction("Login", "Account");
-        //        return false;
-        //    }
-        //    return true;
-        //}
+        private bool EnsureLogin()
+        {
+            if (HttpContext.Session.GetString("UserId") == null)
+            {
+                RedirectToAction("Login", "Account");
+                return false;
+            }
+            return true;
+        }
 
         public IActionResult Index()
         {
-             //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             var list = _books.GetBooks();
             return View(list.ToList());
         }
 
         public IActionResult Details(int? id)
         {
-            //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             if (id is null) return NotFound();
             var p = _books.GetBookById(id.Value);
             if (p is null) return NotFound();
@@ -50,7 +50,7 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Create()
         {
-             //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName");
             return View();
         }
@@ -58,7 +58,7 @@ namespace Library_Management_System.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl")] Book p)
         {
-             //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             if (!ModelState.IsValid)
             {
                 ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
@@ -70,7 +70,7 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Edit(int? id)
         {
-            //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             if (id is null) return NotFound();
             var p = _books.GetBookById(id.Value);
             if (p is null) return NotFound();
@@ -81,7 +81,7 @@ namespace Library_Management_System.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl")] Book p)
         {
-            //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             if (id != p.BookId) return NotFound();
             if (!ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Delete(int? id)
         {
-            //if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             if (id is null) return NotFound();
             var p = _books.GetBookById(id.Value);
             if (p is null) return NotFound();
@@ -104,7 +104,7 @@ namespace Library_Management_System.Controllers
         [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-           // if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
             var p = _books.GetBookById(id);
             if (p is not null) _books.DeleteBook(p);
             return RedirectToAction(nameof(Index));

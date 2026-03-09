@@ -12,10 +12,11 @@ using System.Threading.Tasks;
 
 namespace Library_Management_System.Controllers
 {
-    public class UsersController : Controller
+    public class AccountController : Controller
     {
+
         private readonly IUserService _accounts;
-        public UsersController(IUserService accounts) => _accounts = accounts;
+        public AccountController(IUserService accounts) => _accounts = accounts;
 
         [HttpGet]
         public IActionResult Login() => View();

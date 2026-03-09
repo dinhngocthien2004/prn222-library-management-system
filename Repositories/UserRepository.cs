@@ -10,8 +10,8 @@ namespace Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly UserDAO _dao;
-        public UserRepository(UserDAO dao) => _dao = dao;
+        private readonly AccountDAO _dao;
+        public UserRepository(AccountDAO dao) => _dao = dao;
         public IEnumerable<User> GetUsers() => _dao.GetAll();
         public User? FindByEmail(string email) => _dao.FindByEmail(email);
 

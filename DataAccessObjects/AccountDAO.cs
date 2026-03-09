@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessObjects
 {
-    public class UserDAO
+    public class AccountDAO
     {
         private readonly LibraryManagementDbContext _ctx;
-        public UserDAO(LibraryManagementDbContext ctx) => _ctx = ctx;
+        public AccountDAO(LibraryManagementDbContext ctx) => _ctx = ctx;
         public IEnumerable<User> GetAll() => _ctx.Users.AsNoTracking().ToList();
         public User? FindByEmail(string email) =>
             _ctx.Users.AsNoTracking().FirstOrDefault(c => c.Email == email);

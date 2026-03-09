@@ -17,6 +17,13 @@ namespace Library_Management_System
             // 1. Thêm dịch vụ MVC (Controllers và Views)
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             // 2. Đọc chuỗi kết nối
             var connectionString = builder.Configuration.GetConnectionString("LibraryConn");
 
@@ -35,7 +42,7 @@ namespace Library_Management_System
             builder.Services.AddScoped<CategoryDAO>();
             builder.Services.AddScoped<LoanDAO>();
             builder.Services.AddScoped<BookCopyDAO>();
-            builder.Services.AddScoped<UserDAO>();
+            builder.Services.AddScoped<AccountDAO>();
 
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
@@ -49,6 +56,10 @@ namespace Library_Management_System
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ILoanService, LoanService>();
             builder.Services.AddScoped<IBookCopyService, BookCopyService>();
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+
 
             // ================== KẾT THÚC CẤU HÌNH DỊCH VỤ ==================
 
@@ -65,7 +76,7 @@ namespace Library_Management_System
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseSession();
             app.UseAuthorization();
 
             app.MapControllerRoute(
@@ -73,34 +84,7 @@ namespace Library_Management_System
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
-            //+++++++++++++++++++++++++++++++
-            //var builder = WebApplication.CreateBuilder(args);
-
-            //// Add services to the container.
-            //builder.Services.AddControllersWithViews();
-
-            //var app = builder.Build();
-
-            //// Configure the HTTP request pipeline.
-            //if (!app.Environment.IsDevelopment())
-            //{
-            //    app.UseExceptionHandler("/Home/Error");
-            //    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-            //    app.UseHsts();
-            //}
-
-            //app.UseHttpsRedirection();
-            //app.UseStaticFiles();
-
-            //app.UseRouting();
-
-            //app.UseAuthorization();
-
-            //app.MapControllerRoute(
-            //    name: "default",
-            //    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            //app.Run();
+           
         }
     }
 }
