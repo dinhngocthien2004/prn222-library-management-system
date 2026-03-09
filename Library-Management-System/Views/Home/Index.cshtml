@@ -6,10 +6,16 @@
     <h1 class="display-4 fw-bold">Hệ thống Quản lý Thư viện</h1>
     <p class="lead mb-4">Quản lý sách, độc giả và quy trình mượn trả hiệu quả.</p>
 
-    <div class="search-box">
-        <form class="d-flex bg-white p-2 rounded-pill">
-            <input class="form-control border-0 rounded-pill ps-3" type="search" placeholder="Tìm kiếm tên sách, tác giả..." aria-label="Search">
-            <button class="btn btn-primary rounded-pill px-4" type="submit">Tìm kiếm</button>
+    <div class="search-box mt-4">
+        <form class="search-form">
+            <input class="form-control search-input"
+                   type="search"
+                   placeholder="Tìm kiếm tên sách, tác giả..."
+                   aria-label="Search">
+
+            <button class="btn btn-primary search-button" type="submit">
+                Tìm kiếm
+            </button>
         </form>
     </div>
 </div>
@@ -18,57 +24,128 @@
     <div class="row g-4">
         <div class="col-md-4">
             <div class="card h-100 stats-card p-3 text-center">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     <div class="icon-large">📚</div>
                     <h5 class="card-title">Quản lý Sách</h5>
-                    <p class="card-text text-muted">Xem danh mục, thêm sách mới hoặc chỉnh sửa thông tin sách.</p>
-                    <a href="#" class="btn btn-outline-primary w-100">Xem Kho Sách</a>
+                    <p class="card-text text-muted">
+                        Xem danh mục, thêm sách mới hoặc chỉnh sửa thông tin sách.
+                    </p>
+                    <a asp-controller="Books"
+                       asp-action="Index"
+                       class="btn btn-outline-primary w-100 mt-auto">
+                        Xem Kho Sách
+                    </a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="card h-100 stats-card p-3 text-center">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     <div class="icon-large">👥</div>
                     <h5 class="card-title">Độc giả</h5>
-                    <p class="card-text text-muted">Quản lý thông tin thành viên và thẻ thư viện.</p>
-                    <a href="#" class="btn btn-outline-primary w-100">Danh sách Độc giả</a>
+                    <p class="card-text text-muted">
+                        Quản lý thông tin thành viên và thẻ thư viện.
+                    </p>
+                    <a href="#" class="btn btn-outline-primary w-100 mt-auto">
+                        Danh sách Độc giả
+                    </a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="card h-100 stats-card p-3 text-center">
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     <div class="icon-large">🔄</div>
                     <h5 class="card-title">Mượn & Trả</h5>
-                    <p class="card-text text-muted">Tạo phiếu mượn mới hoặc ghi nhận trả sách.</p>
-                    <a asp-controller="Loans" asp-action="Index" class="btn btn-outline-primary w-100">Tạo Phiếu Mượn</a>
+                    <p class="card-text text-muted">
+                        Tạo phiếu mượn mới hoặc ghi nhận trả sách.
+                    </p>
+                    <a href="#" class="btn btn-outline-primary w-100 mt-auto">
+                        Tạo Phiếu Mượn
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Thống kê hôm nay -->
     <div class="row mt-5">
         <div class="col-12">
             <h3 class="mb-3 border-bottom pb-2">Thống kê hôm nay</h3>
         </div>
+
         <div class="col-md-3 col-6 text-center">
             <h2 class="fw-bold text-primary">1,250</h2>
             <p>Tổng đầu sách</p>
         </div>
+
         <div class="col-md-3 col-6 text-center">
             <h2 class="fw-bold text-success">45</h2>
             <p>Đang được mượn</p>
         </div>
+
         <div class="col-md-3 col-6 text-center">
             <h2 class="fw-bold text-warning">12</h2>
             <p>Quá hạn</p>
         </div>
+
         <div class="col-md-3 col-6 text-center">
             <h2 class="fw-bold text-info">300</h2>
             <p>Thành viên</p>
         </div>
     </div>
+
+    <!-- Biểu đồ minh họa -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card shadow-sm p-4">
+                <h4 class="text-center mb-4">Biểu đồ thống kê</h4>
+                <canvas id="libraryChart" height="100"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('libraryChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Tổng đầu sách', 'Đang được mượn', 'Quá hạn', 'Thành viên'],
+                datasets: [{
+                    label: 'Thống kê hôm nay',
+                    data: [1250, 45, 12, 300],
+                    backgroundColor: [
+                        '#0d6efd',
+                        '#198754',
+                        '#ffc107',
+                        '#0dcaf0'
+                    ],
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                animation: {
+                    duration: 1500
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
