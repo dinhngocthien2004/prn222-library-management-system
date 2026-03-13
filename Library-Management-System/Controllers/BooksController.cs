@@ -16,7 +16,9 @@ namespace Library_Management_System.Controllers
             _categories = categories;
         }
 
-        // Kiểm tra login
+        // ================================
+        // CHECK LOGIN
+        // ================================
         private IActionResult EnsureLogin()
         {
             if (HttpContext.Session.GetString("UserId") == null)
@@ -26,7 +28,9 @@ namespace Library_Management_System.Controllers
             return null;
         }
 
-        // Kiểm tra role member
+        // ================================
+        // CHECK ROLE
+        // ================================
         private bool IsMember()
         {
             var role = HttpContext.Session.GetInt32("RoleID");
@@ -34,30 +38,53 @@ namespace Library_Management_System.Controllers
         }
 
         // ================================
-        // LIST BOOK
+        // LIST BOOK + SEARCH + FILTER
         // ================================
-        public IActionResult Index(string keyword)
+        public IActionResult Index(string keyword, int? year, int? categoryId)
         {
             var check = EnsureLogin();
             if (check != null) return check;
 
-            var list = _books.GetBooks();
+            var books = _books.GetBooks();
 
             // SEARCH
             if (!string.IsNullOrEmpty(keyword))
             {
                 keyword = keyword.ToLower();
 
-                list = list.Where(b =>
-                       b.Title.ToLower().Contains(keyword)
+                books = books.Where(b =>
+                       (b.Title != null && b.Title.ToLower().Contains(keyword))
                     || (b.Publisher != null && b.Publisher.ToLower().Contains(keyword))
                     || (b.Description != null && b.Description.ToLower().Contains(keyword))
+                    || (b.Isbn != null && b.Isbn.ToLower().Contains(keyword))
+                    || b.PublishedYear.ToString().Contains(keyword)
                 );
             }
 
-            ViewBag.Keyword = keyword;
+            // FILTER YEAR
+            if (year.HasValue)
+            {
+                books = books.Where(b => b.PublishedYear == year.Value);
+            }
 
-            return View(list.ToList());
+            // FILTER CATEGORY
+            if (categoryId.HasValue)
+            {
+                books = books.Where(b => b.CategoryId == categoryId.Value);
+            }
+
+            // CATEGORY DROPDOWN
+            ViewBag.Categories = new SelectList(
+                _categories.GetCategories(),
+                "CategoryId",
+                "CategoryName"
+            );
+
+            ViewBag.Keyword = keyword;
+            ViewBag.Year = year;
+            ViewBag.CategoryId = categoryId;
+
+            return View(books.ToList());
         }
 
         // ================================
@@ -88,7 +115,11 @@ namespace Library_Management_System.Controllers
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
-            ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName");
+            ViewData["CategoryId"] = new SelectList(
+                _categories.GetCategories(),
+                "CategoryId",
+                "CategoryName"
+            );
 
             return View();
         }
@@ -105,7 +136,12 @@ namespace Library_Management_System.Controllers
 
             if (!ModelState.IsValid)
             {
-                ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
+                ViewData["CategoryId"] = new SelectList(
+                    _categories.GetCategories(),
+                    "CategoryId",
+                    "CategoryName",
+                    p.CategoryId
+                );
                 return View(p);
             }
 
@@ -131,7 +167,12 @@ namespace Library_Management_System.Controllers
 
             if (p == null) return NotFound();
 
-            ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
+            ViewData["CategoryId"] = new SelectList(
+                _categories.GetCategories(),
+                "CategoryId",
+                "CategoryName",
+                p.CategoryId
+            );
 
             return View(p);
         }
@@ -150,7 +191,12 @@ namespace Library_Management_System.Controllers
 
             if (!ModelState.IsValid)
             {
-                ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
+                ViewData["CategoryId"] = new SelectList(
+                    _categories.GetCategories(),
+                    "CategoryId",
+                    "CategoryName",
+                    p.CategoryId
+                );
                 return View(p);
             }
 
