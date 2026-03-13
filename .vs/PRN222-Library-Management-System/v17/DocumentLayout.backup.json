@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -13,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\library-management-system\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{81D09B15-925E-4036-963A-6B030BFC3C5D}|Library-Management-System\\LibraryManagementSystem.csproj|solutionrelative:library-management-system\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{08B37523-8C2D-41AA-AD3C-E76157F9F3B8}|DataAccessObjects\\DataAccessObjects.csproj|c:\\users\\admin\\source\\repos\\prn222-library-management-system\\dataaccessobjects\\librarymanagementdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -43,45 +47,58 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Library-Management-System\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Library-Management-System\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAiwLEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-13T14:45:56.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Books\\Details.cshtml",
               "RelativeDocumentMoniker": "Library-Management-System\\Views\\Books\\Details.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Books\\Details.cshtml",
               "RelativeToolTip": "Library-Management-System\\Views\\Books\\Details.cshtml",
-              "ViewState": "AgIAAFIAAAAAAAAAAAAwwGsAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAiwGsAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-13T07:50:28.452Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Books\\Index.cshtml",
               "RelativeDocumentMoniker": "Library-Management-System\\Views\\Books\\Index.cshtml",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Views\\Books\\Index.cshtml",
               "RelativeToolTip": "Library-Management-System\\Views\\Books\\Index.cshtml",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAwwG0AAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-03-13T03:37:26.242Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "BooksController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Controllers\\BooksController.cs",
               "RelativeDocumentMoniker": "Library-Management-System\\Controllers\\BooksController.cs",
               "ToolTip": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Controllers\\BooksController.cs",
               "RelativeToolTip": "Library-Management-System\\Controllers\\BooksController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAALAAAAAAAAAAAAAwwMkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-13T03:34:08.062Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Library-Management-System\\Controllers\\AccountController.cs",
@@ -89,12 +106,11 @@
               "RelativeToolTip": "Library-Management-System\\Controllers\\AccountController.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAwwDYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-13T03:33:23.196Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-13T03:33:23.196Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "LibraryManagementDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\DataAccessObjects\\LibraryManagementDbContext.cs",
               "RelativeDocumentMoniker": "DataAccessObjects\\LibraryManagementDbContext.cs",
@@ -106,7 +122,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\appsettings.json",
               "RelativeDocumentMoniker": "Library-Management-System\\appsettings.json",
@@ -114,8 +130,7 @@
               "RelativeToolTip": "Library-Management-System\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-12T00:56:52.728Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-12T00:56:52.728Z"
             }
           ]
         }
