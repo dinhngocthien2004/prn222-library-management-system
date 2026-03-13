@@ -33,15 +33,36 @@ namespace Library_Management_System.Controllers
             return role == 3;
         }
 
-        public IActionResult Index()
+        // ================================
+        // LIST BOOK
+        // ================================
+        public IActionResult Index(string keyword)
         {
             var check = EnsureLogin();
             if (check != null) return check;
 
             var list = _books.GetBooks();
+
+            // SEARCH
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                keyword = keyword.ToLower();
+
+                list = list.Where(b =>
+                       b.Title.ToLower().Contains(keyword)
+                    || (b.Publisher != null && b.Publisher.ToLower().Contains(keyword))
+                    || (b.Description != null && b.Description.ToLower().Contains(keyword))
+                );
+            }
+
+            ViewBag.Keyword = keyword;
+
             return View(list.ToList());
         }
 
+        // ================================
+        // DETAILS
+        // ================================
         public IActionResult Details(int? id)
         {
             var check = EnsureLogin();
@@ -56,16 +77,19 @@ namespace Library_Management_System.Controllers
             return View(p);
         }
 
+        // ================================
+        // CREATE
+        // ================================
         public IActionResult Create()
         {
             var check = EnsureLogin();
             if (check != null) return check;
 
-            // Member không được thêm
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
             ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName");
+
             return View();
         }
 
@@ -86,15 +110,18 @@ namespace Library_Management_System.Controllers
             }
 
             _books.SaveBook(p);
+
             return RedirectToAction(nameof(Index));
         }
 
+        // ================================
+        // EDIT
+        // ================================
         public IActionResult Edit(int? id)
         {
             var check = EnsureLogin();
             if (check != null) return check;
 
-            // Member không được sửa
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
@@ -132,12 +159,14 @@ namespace Library_Management_System.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // ================================
+        // DELETE
+        // ================================
         public IActionResult Delete(int? id)
         {
             var check = EnsureLogin();
             if (check != null) return check;
 
-            // Member không được xóa
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
