@@ -26,6 +26,12 @@ namespace Library_Management_System.Controllers
             return true;
         }
 
+        private bool IsMember()
+        {
+            var role = HttpContext.Session.GetInt32("RoleID");
+            return role == 3;
+        }
+
         public IActionResult Index()
         {
             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
@@ -36,8 +42,11 @@ namespace Library_Management_System.Controllers
         public IActionResult Details(int? id)
         {
             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+
             if (id is null) return NotFound();
+
             var p = _books.GetBookById(id.Value);
+
             if (p == null) return NotFound();
 
             return View(p);
@@ -46,6 +55,11 @@ namespace Library_Management_System.Controllers
         public IActionResult Create()
         {
             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+
+            // ❌ Member không được thêm
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName");
             return View();
         }
@@ -55,6 +69,10 @@ namespace Library_Management_System.Controllers
         public IActionResult Create([Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book p)
         {
             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             if (!ModelState.IsValid)
             {
                 ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
@@ -68,8 +86,15 @@ namespace Library_Management_System.Controllers
         public IActionResult Edit(int? id)
         {
             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+
+            // ❌ Member không được sửa
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             if (id is null) return NotFound();
+
             var p = _books.GetBookById(id.Value);
+
             if (p == null) return NotFound();
 
             ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
@@ -82,6 +107,10 @@ namespace Library_Management_System.Controllers
         public IActionResult Edit(int id, [Bind("BookId,Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book p)
         {
             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             if (id != p.BookId) return NotFound();
 
             if (!ModelState.IsValid)
@@ -98,8 +127,15 @@ namespace Library_Management_System.Controllers
         public IActionResult Delete(int? id)
         {
             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+
+            // ❌ Member không được xóa
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             if (id is null) return NotFound();
+
             var p = _books.GetBookById(id.Value);
+
             if (p == null) return NotFound();
 
             return View(p);
@@ -110,6 +146,10 @@ namespace Library_Management_System.Controllers
         public IActionResult DeleteConfirmed(int id)
         {
             if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             var p = _books.GetBookById(id);
 
             if (p != null)

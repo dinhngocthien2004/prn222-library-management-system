@@ -32,6 +32,7 @@ namespace Library_Management_System.Controllers
             }
             HttpContext.Session.SetString("UserId", user.UserId.ToString());
             HttpContext.Session.SetString("Username", user.FullName);
+            HttpContext.Session.SetInt32("RoleID", user.RoleId);
             return RedirectToAction("Index", "Books");
         }
 
