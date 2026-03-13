@@ -2,91 +2,107 @@
 
 @{
     ViewData["Title"] = "Chi Tiết Sách";
+
+    // Lấy RoleID từ Session
+    var role = Context.Session.GetInt32("RoleID");
 }
 
 <div class="container mt-4">
 
-    <div class="card shadow-lg border-0">
-        <div class="card-header text-white"
-             style="background: linear-gradient(90deg,#17a2b8,#0dcaf0);">
-            <h4 class="mb-0">📘 Chi Tiết Sách</h4>
+    <div class="card shadow">
+
+        <div class="card-header bg-info text-white">
+            <h4>📘 Chi Tiết Sách</h4>
         </div>
 
         <div class="card-body">
+
             <div class="row">
 
-                <!-- CỘT ẢNH -->
-                <div class="col-md-4 text-center border-end">
+                <!-- Ảnh sách -->
+                <div class="col-md-4 text-center">
                     @if (!string.IsNullOrEmpty(Model.ImageUrl))
                     {
                         <img src="@Model.ImageUrl"
-                             class="img-fluid rounded shadow-sm mb-3"
-                             style="max-height: 350px;" />
-                    }
-                    else
-                    {
-                        <img src="https://via.placeholder.com/250x350?text=No+Image"
-                             class="img-fluid rounded shadow-sm mb-3" />
+                             class="img-fluid rounded shadow"
+                             style="max-height:300px;" />
                     }
                 </div>
 
-                <!-- CỘT THÔNG TIN -->
+                <!-- Thông tin sách -->
                 <div class="col-md-8">
 
-                    <h3 class="fw-bold mb-3">@Model.Title</h3>
+                    <h2 class="mb-3">@Model.Title</h2>
 
-                    <div class="bg-light p-3 rounded shadow-sm">
+                    <div class="card mb-2 p-2">
+                        <strong>ISBN:</strong> @Model.Isbn
+                    </div>
 
-                        <div class="border rounded p-2 mb-2 bg-white">
-                            <strong>ISBN:</strong> @Model.Isbn
-                        </div>
+                    <div class="card mb-2 p-2">
+                        <strong>Nhà xuất bản:</strong> @Model.Publisher
+                    </div>
 
-                        <div class="border rounded p-2 mb-2 bg-white">
-                            <strong>Nhà xuất bản:</strong> @Model.Publisher
-                        </div>
+                    <div class="card mb-2 p-2">
+                        <strong>Năm phát hành:</strong> @Model.PublishedYear
+                    </div>
 
-                        <div class="border rounded p-2 mb-2 bg-white">
-                            <strong>Năm phát hành:</strong> @Model.PublishedYear
-                        </div>
+                    <div class="card mb-2 p-2">
+                        <strong>Ngày thêm:</strong>
+                        @(Model.DateAdded != null
+                            ? Model.DateAdded.Value.ToString("dd/MM/yyyy HH:mm")
+                            : "")
+                    </div>
 
-                        <div class="border rounded p-2 mb-2 bg-white">
-                            <strong>Ngày thêm:</strong>
-                            @(Model.DateAdded?.ToString("dd/MM/yyyy HH:mm") ?? "Chưa có ngày")
-                        </div>
+                    <div class="card mb-2 p-2">
+                        <strong>Thể loại:</strong>
 
-                        <div class="border rounded p-2 mb-2 bg-white">
-                            <strong>Thể loại:</strong>
+                        @if (Model.Category != null)
+                        {
                             <span class="badge bg-primary">
-                                @(Model.Category?.CategoryName ?? "Chưa có thể loại")
+                                @Model.Category.CategoryName
                             </span>
-                        </div>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">
+                                Chưa có thể loại
+                            </span>
+                        }
+                    </div>
 
-                        <div class="border rounded p-3 bg-white">
-                            <strong>Mô tả:</strong>
-                            <div class="mt-2 text-muted">
-                                @(string.IsNullOrEmpty(Model.Description)
-                                    ? "Chưa có mô tả."
-                                    : Model.Description)
-                            </div>
-                        </div>
-
+                    <div class="card p-2">
+                        <strong>Mô tả:</strong>
+                        <p class="mt-2">
+                            @(string.IsNullOrEmpty(Model.Description)
+                                ? "Chưa có mô tả."
+                                : Model.Description)
+                        </p>
                     </div>
 
                 </div>
+
             </div>
 
-            <div class="text-end mt-4">
-                <a asp-action="Index" class="btn btn-secondary px-4">
-                    ← Quay lại
-                </a>
+        </div>
 
+        <!-- Footer -->
+        <div class="card-footer text-end">
+
+            <a asp-action="Index" class="btn btn-secondary">
+                ← Quay lại
+            </a>
+
+            @if (role != 3)
+            {
                 <a asp-action="Edit"
                    asp-route-id="@Model.BookId"
-                   class="btn btn-warning px-4">
+                   class="btn btn-warning">
                     ✏️ Chỉnh sửa
                 </a>
-            </div>
+            }
+
         </div>
+
     </div>
 
 </div>
