@@ -3,8 +3,8 @@
 @{
     ViewData["Title"] = "Danh Sách Sách";
 
-    // Lấy RoleID từ Session
-    var role = Context.Session.GetInt32("RoleID");
+var role = Context.Session.GetInt32("RoleID");
+
 }
 
 <div class="container mt-4">
@@ -21,11 +21,59 @@
         }
     </div>
 
-    <!-- Card bao ngoài -->
+    <!-- FILTER -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body">
+
+            <form method="get" class="row g-2">
+
+                <!-- SEARCH -->
+                <div class="col-md-4">
+                    <input type="text"
+                           name="keyword"
+                           class="form-control"
+                           placeholder="Search title, ISBN..."
+                           value="@ViewBag.Keyword" />
+                </div>
+
+                <!-- YEAR -->
+                <div class="col-md-2">
+                    <input type="number"
+                           name="year"
+                           class="form-control"
+                           placeholder="Year"
+                           value="@ViewBag.Year" />
+                </div>
+
+                <!-- CATEGORY -->
+                <div class="col-md-3">
+                    <select name="categoryId"
+                            class="form-select"
+                            asp-items="ViewBag.Categories">
+
+                        <option value="">All Categories</option>
+
+                    </select>
+                </div>
+
+                <!-- BUTTON -->
+                <div class="col-md-3">
+                    <button class="btn btn-primary w-100">
+                        🔎 Search
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- TABLE -->
     <div class="card shadow-sm">
         <div class="card-body">
 
             <table class="table table-bordered table-striped align-middle text-center">
+
                 <thead class="table-dark">
                     <tr>
                         <th>Title</th>
@@ -41,12 +89,17 @@
                 </thead>
 
                 <tbody>
+
                     @foreach (var item in Model)
                     {
                         <tr>
+
                             <td>@item.Title</td>
+
                             <td>@item.Isbn</td>
+
                             <td>@item.Publisher</td>
+
                             <td>@item.PublishedYear</td>
 
                             <td class="text-start">
@@ -98,13 +151,16 @@
                                 }
 
                             </td>
+
                         </tr>
                     }
+
                 </tbody>
 
             </table>
 
         </div>
     </div>
+    ```
 
 </div>
