@@ -2,6 +2,9 @@
 
 @{
     ViewData["Title"] = "Danh Sách Sách";
+
+    // Lấy RoleID từ Session
+    var role = Context.Session.GetInt32("RoleID");
 }
 
 <div class="container mt-4">
@@ -10,7 +13,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="text-primary">📚 Danh Sách Sách</h2>
 
-        @if (Context.Session.GetInt32("RoleID") != 3)
+        @if (role != 3)
         {
             <a asp-action="Create" class="btn btn-success">
                 ➕ Thêm Sách Mới
@@ -26,9 +29,9 @@
                 <thead class="table-dark">
                     <tr>
                         <th>Title</th>
-                        <th>Isbn</th>
+                        <th>ISBN</th>
                         <th>Publisher</th>
-                        <th>PublishedYear</th>
+                        <th>Published Year</th>
                         <th>Mô tả</th>
                         <th>Ảnh</th>
                         <th>Ngày thêm</th>
@@ -60,13 +63,17 @@
                                 }
                             </td>
 
-                            <td>@item.DateAdded?.ToString("dd/MM/yyyy")</td>
+                            <td>
+                                @(item.DateAdded != null
+                                    ? item.DateAdded.Value.ToString("dd/MM/yyyy")
+                                    : "")
+                            </td>
 
                             <td>@item.Category?.CategoryName</td>
 
                             <td>
 
-                                @if (Context.Session.GetInt32("RoleID") != 3)
+                                @if (role != 3)
                                 {
                                     <a asp-action="Edit"
                                        asp-route-id="@item.BookId"
@@ -81,7 +88,7 @@
                                     Details
                                 </a>
 
-                                @if (Context.Session.GetInt32("RoleID") != 3)
+                                @if (role != 3)
                                 {
                                     <a asp-action="Delete"
                                        asp-route-id="@item.BookId"
@@ -94,6 +101,7 @@
                         </tr>
                     }
                 </tbody>
+
             </table>
 
         </div>

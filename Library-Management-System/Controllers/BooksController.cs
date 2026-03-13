@@ -16,16 +16,17 @@ namespace Library_Management_System.Controllers
             _categories = categories;
         }
 
-        private bool EnsureLogin()
+        // Kiểm tra login
+        private IActionResult EnsureLogin()
         {
             if (HttpContext.Session.GetString("UserId") == null)
             {
-                RedirectToAction("Login", "Account");
-                return false;
+                return RedirectToAction("Login", "Account");
             }
-            return true;
+            return null;
         }
 
+        // Kiểm tra role member
         private bool IsMember()
         {
             var role = HttpContext.Session.GetInt32("RoleID");
@@ -34,14 +35,17 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Index()
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
+
             var list = _books.GetBooks();
             return View(list.ToList());
         }
 
         public IActionResult Details(int? id)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
 
             if (id is null) return NotFound();
 
@@ -54,9 +58,10 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Create()
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
 
-            // ❌ Member không được thêm
+            // Member không được thêm
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
@@ -68,7 +73,8 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book p)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
 
             if (IsMember())
                 return RedirectToAction(nameof(Index));
@@ -85,9 +91,10 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
 
-            // ❌ Member không được sửa
+            // Member không được sửa
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
@@ -106,7 +113,8 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("BookId,Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book p)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
 
             if (IsMember())
                 return RedirectToAction(nameof(Index));
@@ -126,9 +134,10 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Delete(int? id)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
 
-            // ❌ Member không được xóa
+            // Member không được xóa
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
@@ -145,7 +154,8 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
 
             if (IsMember())
                 return RedirectToAction(nameof(Index));
