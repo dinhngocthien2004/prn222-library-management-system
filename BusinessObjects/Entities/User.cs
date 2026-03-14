@@ -23,5 +23,7 @@ public partial class User
 
     public virtual ICollection<Loan> Loans { get; set; } = new List<Loan>();
 
+    public virtual ICollection<Reader> Readers { get; set; } = new List<Reader>();
+
     public virtual Role Role { get; set; } = null!;
 }

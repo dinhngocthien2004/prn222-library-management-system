@@ -27,8 +27,9 @@ public partial class Book
 
     public virtual Category? Category { get; set; }
 
+    public virtual ICollection<ReaderComment> ReaderComments { get; set; } = new List<ReaderComment>();
+
     public virtual ICollection<Author> Authors { get; set; } = new List<Author>();
 
     public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
-    
 }
