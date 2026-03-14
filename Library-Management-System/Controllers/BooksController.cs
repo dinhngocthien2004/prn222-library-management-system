@@ -38,9 +38,9 @@ namespace Library_Management_System.Controllers
         }
 
         // ================================
-        // LIST BOOK + SEARCH + FILTER
+        // LIST BOOK + SEARCH + FILTER + PAGINATION
         // ================================
-        public IActionResult Index(string keyword, int? year, int? categoryId)
+        public IActionResult Index(string keyword, int? year, int? categoryId, int page = 1)
         {
             var check = EnsureLogin();
             if (check != null) return check;
@@ -84,7 +84,26 @@ namespace Library_Management_System.Controllers
             ViewBag.Year = year;
             ViewBag.CategoryId = categoryId;
 
-            return View(books.ToList());
+            // ================================
+            // PAGINATION
+            // ================================
+            int pageSize = 7;
+
+            int totalBooks = books.Count();
+
+            int totalPages = (int)Math.Ceiling((double)totalBooks / pageSize);
+
+            var pagedBooks = books
+                            .Skip((page - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+
+            // ================================
+
+            return View(pagedBooks);
         }
 
         // ================================
