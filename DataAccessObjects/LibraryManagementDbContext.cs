@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 
 namespace DataAccessObjects;
-
+// đã chỉnh database từ SQL sang SQL Server, nên đã chỉnh lại connection string và provider
 public partial class LibraryManagementDbContext : DbContext
 {
     public LibraryManagementDbContext()
