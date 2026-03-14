@@ -16,37 +16,130 @@ namespace Library_Management_System.Controllers
             _categories = categories;
         }
 
-        private bool EnsureLogin()
+        // ================================
+        // CHECK LOGIN
+        // ================================
+        private IActionResult EnsureLogin()
         {
             if (HttpContext.Session.GetString("UserId") == null)
             {
-                RedirectToAction("Login", "Account");
-                return false;
+                return RedirectToAction("Login", "Account");
             }
-            return true;
+            return null;
         }
 
-        public IActionResult Index()
+        // ================================
+        // CHECK ROLE
+        // ================================
+        private bool IsMember()
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
-            var list = _books.GetBooks();
-            return View(list.ToList());
+            var role = HttpContext.Session.GetInt32("RoleID");
+            return role == 3;
         }
 
+        // ================================
+        // LIST BOOK + SEARCH + FILTER + PAGINATION
+        // ================================
+        public IActionResult Index(string keyword, int? year, int? categoryId, int page = 1)
+        {
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            var books = _books.GetBooks();
+
+            // SEARCH
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                keyword = keyword.ToLower();
+
+                books = books.Where(b =>
+                       (b.Title != null && b.Title.ToLower().Contains(keyword))
+                    || (b.Publisher != null && b.Publisher.ToLower().Contains(keyword))
+                    || (b.Description != null && b.Description.ToLower().Contains(keyword))
+                    || (b.Isbn != null && b.Isbn.ToLower().Contains(keyword))
+                    || b.PublishedYear.ToString().Contains(keyword)
+                );
+            }
+
+            // FILTER YEAR
+            if (year.HasValue)
+            {
+                books = books.Where(b => b.PublishedYear == year.Value);
+            }
+
+            // FILTER CATEGORY
+            if (categoryId.HasValue)
+            {
+                books = books.Where(b => b.CategoryId == categoryId.Value);
+            }
+
+            // CATEGORY DROPDOWN
+            ViewBag.Categories = new SelectList(
+                _categories.GetCategories(),
+                "CategoryId",
+                "CategoryName"
+            );
+
+            ViewBag.Keyword = keyword;
+            ViewBag.Year = year;
+            ViewBag.CategoryId = categoryId;
+
+            // ================================
+            // PAGINATION
+            // ================================
+            int pageSize = 7;
+
+            int totalBooks = books.Count();
+
+            int totalPages = (int)Math.Ceiling((double)totalBooks / pageSize);
+
+            var pagedBooks = books
+                            .Skip((page - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToList();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+
+            // ================================
+
+            return View(pagedBooks);
+        }
+
+        // ================================
+        // DETAILS
+        // ================================
         public IActionResult Details(int? id)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
+
             if (id is null) return NotFound();
+
             var p = _books.GetBookById(id.Value);
+
             if (p == null) return NotFound();
 
             return View(p);
         }
 
+        // ================================
+        // CREATE
+        // ================================
         public IActionResult Create()
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
-            ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName");
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
+            ViewData["CategoryId"] = new SelectList(
+                _categories.GetCategories(),
+                "CategoryId",
+                "CategoryName"
+            );
+
             return View();
         }
 
@@ -54,25 +147,51 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book p)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             if (!ModelState.IsValid)
             {
-                ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
+                ViewData["CategoryId"] = new SelectList(
+                    _categories.GetCategories(),
+                    "CategoryId",
+                    "CategoryName",
+                    p.CategoryId
+                );
                 return View(p);
             }
 
             _books.SaveBook(p);
+
             return RedirectToAction(nameof(Index));
         }
 
+        // ================================
+        // EDIT
+        // ================================
         public IActionResult Edit(int? id)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             if (id is null) return NotFound();
+
             var p = _books.GetBookById(id.Value);
+
             if (p == null) return NotFound();
 
-            ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
+            ViewData["CategoryId"] = new SelectList(
+                _categories.GetCategories(),
+                "CategoryId",
+                "CategoryName",
+                p.CategoryId
+            );
 
             return View(p);
         }
@@ -81,12 +200,22 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("BookId,Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book p)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             if (id != p.BookId) return NotFound();
 
             if (!ModelState.IsValid)
             {
-                ViewData["CategoryId"] = new SelectList(_categories.GetCategories(), "CategoryId", "CategoryName", p.CategoryId);
+                ViewData["CategoryId"] = new SelectList(
+                    _categories.GetCategories(),
+                    "CategoryId",
+                    "CategoryName",
+                    p.CategoryId
+                );
                 return View(p);
             }
 
@@ -95,11 +224,21 @@ namespace Library_Management_System.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // ================================
+        // DELETE
+        // ================================
         public IActionResult Delete(int? id)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             if (id is null) return NotFound();
+
             var p = _books.GetBookById(id.Value);
+
             if (p == null) return NotFound();
 
             return View(p);
@@ -109,7 +248,12 @@ namespace Library_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            if (!EnsureLogin()) return RedirectToAction("Login", "Account");
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
             var p = _books.GetBookById(id);
 
             if (p != null)
