@@ -14,5 +14,6 @@ namespace Repositories
         void SaveLoan(Loan p);
         void UpdateLoan(Loan p);
         void DeleteLoan(Loan p);
+        List<Loan> GetHistory();
     }
 }

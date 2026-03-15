@@ -31,7 +31,7 @@ namespace Library_Management_System
             builder.Services.AddDbContext<LibraryManagementDbContext>(options =>
             options.UseSqlServer(
             builder.Configuration.GetConnectionString("DefaultConnection"),
-            b => b.MigrationsAssembly("LibraryManagementSystem")));
+            b => b.MigrationsAssembly("DataAccessObjects")));
 
             // 4. Đăng ký các lớp DAL và BLL (Dependency Injection)
             // Mỗi khi tạo thêm Repository hay Service mới, bạn phải khai báo thêm ở đây
