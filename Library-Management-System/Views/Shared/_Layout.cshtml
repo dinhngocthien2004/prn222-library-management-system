@@ -1,84 +1,204 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Library_Management_System</title>
+    <title>@ViewData["Title"] - Library</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Library_Management_System.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Library_Management_System</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1 align-items-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
-                                Home
-                            </a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">
-                                Privacy
-                            </a>
-                        </li>
+    <div class="d-flex">
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Books" asp-action="Index">
-                                Books
-                            </a>
-                        </li>
+        <!-- SIDEBAR -->
+        <div class="sidebar">
 
-                        <!-- SEARCH BOX -->
-                        <li class="nav-item ms-3">
-                            <form asp-controller="Books"
-                                  asp-action="Index"
-                                  method="get"
-                                  class="d-flex">
-                                <input type="text"
-                                       name="keyword"
-                                       class="form-control form-control-sm me-2"
-                                       placeholder="Search books..." />
-                                <button type="submit"
-                                        class="btn btn-outline-primary btn-sm">
-                                    Search
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
+            <h4 class="text-center text-white mb-4">📚 Library</h4>
 
-                </div>
+            <ul class="nav flex-column">
+
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">
+                        🏠 Dashboard
+                    </a>
+                </li>
+
+
+                <!-- BOOKS -->
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#bookMenu">
+                        📚 Quản lý sách
+                    </a>
+
+                    <div class="collapse" id="bookMenu">
+                        <ul class="submenu">
+
+                            <li>
+                                <a asp-controller="Books" asp-action="Index">
+                                    Danh sách sách
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Books" asp-action="Create">
+                                    Thêm sách
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Categories" asp-action="Index">
+                                    Thể loại
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Publishers" asp-action="Index">
+                                    Nhà xuất bản
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+
+                <!-- READERS -->
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#readerMenu">
+                        👤 Độc giả
+                    </a>
+
+                    <div class="collapse" id="readerMenu">
+                        <ul class="submenu">
+
+                            <li>
+                                <a asp-controller="Readers" asp-action="Index">
+                                    Danh sách độc giả
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Cards" asp-action="Index">
+                                    Thẻ thư viện
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+
+                <!-- LOANS -->
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#loanMenu">
+                        🔄 Mượn / Trả
+                    </a>
+
+                    <div class="collapse" id="loanMenu">
+                        <ul class="submenu">
+
+                            <li>
+                                <a asp-controller="Loans" asp-action="Create">
+                                    Tạo phiếu mượn
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Returns" asp-action="Index">
+                                    Trả sách
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Loans" asp-action="History">
+                                    Lịch sử mượn
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+
+                <!-- REPORT -->
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#reportMenu">
+                        📊 Thống kê
+                    </a>
+
+                    <div class="collapse" id="reportMenu">
+                        <ul class="submenu">
+
+                            <li>
+                                <a asp-controller="Reports" asp-action="PopularBooks">
+                                    Sách mượn nhiều
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Reports" asp-action="Overdue">
+                                    Quá hạn
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Reports" asp-action="Index">
+                                    Báo cáo
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+
+                <!-- ADMIN -->
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#adminMenu">
+                        ⚙️ Quản trị
+                    </a>
+
+                    <div class="collapse" id="adminMenu">
+                        <ul class="submenu">
+
+                            <li>
+                                <a asp-controller="Users" asp-action="Index">
+                                    Người dùng
+                                </a>
+                            </li>
+
+                            <li>
+                                <a asp-controller="Roles" asp-action="Index">
+                                    Phân quyền
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content flex-grow-1">
+
+            <div class="container-fluid p-4">
+                @RenderBody()
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+        </div>
+
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Library_Management_System - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+    @RenderSection("Scripts", required: false)
+
 </body>
 </html>
-
-﻿       ﻿
-
-
-
-
