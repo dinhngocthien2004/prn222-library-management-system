@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <title>@ViewData["Title"] - Library</title>
 
-    ```
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
@@ -17,6 +16,8 @@
             min-height: 100vh;
             background: #1f2937;
             padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
 
             .sidebar h4 {
@@ -91,7 +92,6 @@
         }
 
     </style>
-    ```
 
 </head>
 
@@ -99,7 +99,6 @@
 
     <div class="d-flex">
 
-        ```
         <!-- SIDEBAR -->
         <div class="sidebar">
 
@@ -280,6 +279,47 @@
 
             </ul>
 
+            <!-- USER PANEL -->
+            <div class="mt-auto">
+
+                <div class="card bg-dark text-white border-0 shadow-sm p-3">
+
+                    <div class="fw-bold text-center">
+                        👤 @Context.Session.GetString("Username")
+                    </div>
+
+                    <div class="small text-center text-light mb-2">
+                        @{
+                            var role = Context.Session.GetInt32("RoleID");
+
+                            if (role == 1)
+                            {
+                                <text>Admin</text>
+                                ;
+                            }
+                            else if (role == 2)
+                            {
+                                <text>Librarian</text>
+                                ;
+                            }
+                            else
+                            {
+                                <text>Member</text>
+                                ;
+                            }
+                        }
+                    </div>
+
+                    <a asp-controller="Account"
+                       asp-action="Logout"
+                       class="btn btn-danger btn-sm w-100">
+                        Logout
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
 
 
@@ -291,13 +331,10 @@
             </div>
 
         </div>
-        ```
 
     </div>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     @RenderSection("Scripts", required: false)
 
