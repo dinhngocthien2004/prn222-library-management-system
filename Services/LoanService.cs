@@ -18,6 +18,19 @@ namespace Services
         public void SaveLoan(Loan p) => _repo.SaveLoan(p);
         public void UpdateLoan(Loan p) => _repo.UpdateLoan(p);
         public void DeleteLoan(Loan p) => _repo.DeleteLoan(p);
+        public List<Loan> GetHistory()
+        {
+            return _repo.GetHistory();
+        }
+        public void ReturnBook(int id)
+        {
+            var loan = _repo.GetLoanById(id);
+
+            loan.IsReturned = true;
+            loan.ReturnDate = DateTime.Now;
+
+            _repo.UpdateLoan(loan);
+        }
 
 
     }

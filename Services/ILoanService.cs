@@ -14,5 +14,7 @@ namespace Services
         void SaveLoan(Loan p);
         void UpdateLoan(Loan p);
         void DeleteLoan(Loan p);
+        List<Loan> GetHistory();
+        void ReturnBook(int id);
     }
 }

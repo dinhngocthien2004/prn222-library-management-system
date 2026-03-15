@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Return Book";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+            <h4 class="mb-0">📚 Return Book</h4>
+        </div>
+
+        <div class="card-body">
+
+            <p class="text-muted">
+                Enter the book barcode or loan ID to process the return.
+            </p>
+
+            <form method="post" asp-action="ReturnBook">
+
+                <div class="row">
+
+                    <div class="col-md-6 mb-3">
+
+                        <label class="form-label fw-bold">
+                            Book Barcode / Loan ID
+                        </label>
+
+                        <input type="text"
+                               name="barcode"
+                               class="form-control"
+                               placeholder="Enter barcode or loan ID" />
+
+                    </div>
+
+                </div>
+
+                <div class="mt-3">
+
+                    <button type="submit" class="btn btn-success">
+                        ✔ Confirm Return
+                    </button>
+
+                    <a asp-action="Index" class="btn btn-secondary">
+                        Back to Loan List
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
