@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BusinessObjects.Entities.Book>
+
+<h2 class="mb-4">📚 Danh sách tác phẩm</h2>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Published Year</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Isbn</td>
+                <td>@book.PublishedYear</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
