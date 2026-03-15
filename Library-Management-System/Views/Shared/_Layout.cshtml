@@ -10,7 +10,6 @@
 
     <style>
 
-        /* SIDEBAR */
         .sidebar {
             width: 260px;
             min-height: 100vh;
@@ -25,12 +24,10 @@
                 padding-bottom: 10px;
             }
 
-            /* khoảng cách menu */
             .sidebar .nav-item {
                 margin-bottom: 10px;
             }
 
-            /* khung menu */
             .sidebar .nav-link {
                 color: #cbd5e1;
                 padding: 12px 14px;
@@ -47,7 +44,6 @@
                     color: white;
                 }
 
-        /* submenu */
         .submenu {
             list-style: none;
             padding-left: 12px;
@@ -74,14 +70,12 @@
                         color: white;
                     }
 
-        /* mũi tên */
         .arrow {
             font-size: 12px;
             opacity: 0.7;
             transition: transform 0.3s ease;
         }
 
-        /* xoay mũi tên khi mở */
         .nav-link[aria-expanded="true"] .arrow {
             transform: rotate(180deg);
         }
@@ -97,242 +91,254 @@
 
 <body>
 
-    <div class="d-flex">
+    @{
+        var username = Context.Session.GetString("Username");
+        var role = Context.Session.GetInt32("RoleID");
+    }
 
-        <!-- SIDEBAR -->
-        <div class="sidebar">
+    @if (username == null)
+    {
+        <!-- CHƯA LOGIN -->
+        <div>
+            @RenderBody()
+        </div>
+    }
+    else
+    {
+        <!-- ĐÃ LOGIN -->
 
-            <h4 class="text-center text-white mb-4">📚 Library</h4>
+        <div class="d-flex">
 
-            <ul class="nav flex-column">
+            <!-- SIDEBAR -->
+            <div class="sidebar">
 
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Home" asp-action="Index">
-                        <span>🏠 Dashboard</span>
-                    </a>
-                </li>
+                <h4 class="text-center text-white mb-4">📚 Library</h4>
 
+                <ul class="nav flex-column">
 
-                <!-- BOOKS -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#bookMenu">
-                        <span>📚 Quản lý sách</span>
-                        <span class="arrow">▼</span>
-                    </a>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">
+                            <span>🏠 Trang Chủ</span>
+                        </a>
+                    </li>
 
-                    <div class="collapse" id="bookMenu">
-                        <ul class="submenu">
+                    <!-- BOOKS -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#bookMenu">
+                            <span>📚 Quản Lý Sách</span>
+                            <span class="arrow">▼</span>
+                        </a>
 
-                            <li>
-                                <a asp-controller="Books" asp-action="Index">
-                                    Danh sách sách
-                                </a>
-                            </li>
+                        <div class="collapse" id="bookMenu">
+                            <ul class="submenu">
 
-                            <li>
-                                <a asp-controller="Books" asp-action="Create">
-                                    Thêm sách
-                                </a>
-                            </li>
+                                <li>
+                                    <a asp-controller="Books" asp-action="Index">
+                                        Danh sách Sách
+                                    </a>
+                                </li>
 
-                            <li>
-                                <a asp-controller="Categories" asp-action="Index">
-                                    Thể loại
-                                </a>
-                            </li>
+                                @if (role != 3)
+                                {
+                                    <li>
+                                        <a asp-controller="Books" asp-action="Create">
+                                            Thêm Sách
+                                        </a>
+                                    </li>
+                                }
 
-                            <li>
-                                <a asp-controller="Publishers" asp-action="Index">
-                                    Nhà xuất bản
-                                </a>
-                            </li>
+                                <li>
+                                    <a asp-controller="Categories" asp-action="Index">
+                                        Thể Loại
+                                    </a>
+                                </li>
 
-                        </ul>
-                    </div>
-                </li>
+                                <li>
+                                    <a asp-controller="Publishers" asp-action="Index">
+                                        Nhà Xuất Bản
+                                    </a>
+                                </li>
 
+                            </ul>
+                        </div>
+                    </li>
 
-                <!-- READERS -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#readerMenu">
-                        <span>👤 Độc giả</span>
-                        <span class="arrow">▼</span>
-                    </a>
+                    <!-- READERS -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#readerMenu">
+                            <span>👤 Độc Giả</span>
+                            <span class="arrow">▼</span>
+                        </a>
 
-                    <div class="collapse" id="readerMenu">
-                        <ul class="submenu">
+                        <div class="collapse" id="readerMenu">
+                            <ul class="submenu">
 
-                            <li>
-                                <a asp-controller="Readers" asp-action="Index">
-                                    Danh sách độc giả
-                                </a>
-                            </li>
+                                <li>
+                                    <a asp-controller="Readers" asp-action="Index">
+                                        Danh Sách Độc Giả
+                                    </a>
+                                </li>
 
-                            <li>
-                                <a asp-controller="Cards" asp-action="Index">
-                                    Thẻ thư viện
-                                </a>
-                            </li>
+                                <li>
+                                    <a asp-controller="Cards" asp-action="Index">
+                                        Thẻ Thư Viện
+                                    </a>
+                                </li>
 
-                        </ul>
-                    </div>
-                </li>
+                            </ul>
+                        </div>
+                    </li>
 
+                    <!-- LOANS -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#loanMenu">
+                            <span>🔄 Mượn / Trả</span>
+                            <span class="arrow">▼</span>
+                        </a>
 
-                <!-- LOANS -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#loanMenu">
-                        <span>🔄 Mượn / Trả</span>
-                        <span class="arrow">▼</span>
-                    </a>
+                        <div class="collapse" id="loanMenu">
+                            <ul class="submenu">
 
-                    <div class="collapse" id="loanMenu">
-                        <ul class="submenu">
+                                <li>
+                                    <a asp-controller="Loans" asp-action="Index">
+                                        Danh Sách Mượn Và Trả
+                                    </a>
+                                </li>
 
-                            <li>
-                                <a asp-controller="Loans" asp-action="Index">
-                                    Danh sách mượn và trả
-                                </a>
-                            </li>
+                                <li>
+                                    <a asp-controller="Loans" asp-action="Create">
+                                        Tạo Phiếu Mượn
+                                    </a>
+                                </li>
 
-                            <li>
-                                <a asp-controller="Loans" asp-action="Create">
-                                    Tạo phiếu mượn
-                                </a>
-                            </li>
+                                <li>
+                                    <a asp-controller="Returns" asp-action="Index">
+                                        Trả Sách
+                                    </a>
+                                </li>
 
-                            <li>
-                                <a asp-controller="Returns" asp-action="Index">
-                                    Trả sách
-                                </a>
-                            </li>
+                                <li>
+                                    <a asp-controller="Loans" asp-action="History">
+                                        Lịch Sử Mượn
+                                    </a>
+                                </li>
 
-                            <li>
-                                <a asp-controller="Loans" asp-action="History">
-                                    Lịch sử mượn
-                                </a>
-                            </li>
+                            </ul>
+                        </div>
+                    </li>
 
-                        </ul>
-                    </div>
-                </li>
+                    @if (role != 3)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" data-bs-toggle="collapse" href="#reportMenu">
+                                <span>📊 Thống Kê</span>
+                                <span class="arrow">▼</span>
+                            </a>
 
+                            <div class="collapse" id="reportMenu">
+                                <ul class="submenu">
 
-                <!-- REPORT -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#reportMenu">
-                        <span>📊 Thống kê</span>
-                        <span class="arrow">▼</span>
-                    </a>
+                                    <li>
+                                        <a asp-controller="Reports" asp-action="PopularBooks">
+                                            Sách Mượn Nhiều
+                                        </a>
+                                    </li>
 
-                    <div class="collapse" id="reportMenu">
-                        <ul class="submenu">
+                                    <li>
+                                        <a asp-controller="Reports" asp-action="Overdue">
+                                            Quá Hạn
+                                        </a>
+                                    </li>
 
-                            <li>
-                                <a asp-controller="Reports" asp-action="PopularBooks">
-                                    Sách mượn nhiều
-                                </a>
-                            </li>
+                                    <li>
+                                        <a asp-controller="Reports" asp-action="Index">
+                                            Báo Cáo
+                                        </a>
+                                    </li>
 
-                            <li>
-                                <a asp-controller="Reports" asp-action="Overdue">
-                                    Quá hạn
-                                </a>
-                            </li>
+                                </ul>
+                            </div>
+                        </li>
+                    }
 
-                            <li>
-                                <a asp-controller="Reports" asp-action="Index">
-                                    Báo cáo
-                                </a>
-                            </li>
+                    <!-- ADMIN -->
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" data-bs-toggle="collapse" href="#adminMenu">
+                            <span>⚙️ Quản Trị</span>
+                            <span class="arrow">▼</span>
+                        </a>
 
-                        </ul>
-                    </div>
-                </li>
+                        <div class="collapse" id="adminMenu">
+                            <ul class="submenu">
 
+                                <li>
+                                    <a asp-controller="Users" asp-action="Index">
+                                        Người Dùng
+                                    </a>
+                                </li>
 
-                <!-- ADMIN -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" data-bs-toggle="collapse" href="#adminMenu">
-                        <span>⚙️ Quản trị</span>
-                        <span class="arrow">▼</span>
-                    </a>
+                                <li>
+                                    <a asp-controller="Roles" asp-action="Index">
+                                        Phân Quyền
+                                    </a>
+                                </li>
 
-                    <div class="collapse" id="adminMenu">
-                        <ul class="submenu">
+                            </ul>
+                        </div>
+                    </li>
 
-                            <li>
-                                <a asp-controller="Users" asp-action="Index">
-                                    Người dùng
-                                </a>
-                            </li>
+                </ul>
 
-                            <li>
-                                <a asp-controller="Roles" asp-action="Index">
-                                    Phân quyền
-                                </a>
-                            </li>
+                <!-- USER PANEL -->
+                <div class="mt-auto">
 
-                        </ul>
-                    </div>
-                </li>
+                    <div class="card bg-dark text-white border-0 shadow-sm p-3">
 
-            </ul>
+                        <div class="fw-bold text-center">
+                            👤 @username
+                        </div>
 
-            <!-- USER PANEL -->
-            <div class="mt-auto">
+                        <div class="small text-center text-light mb-2">
 
-                <div class="card bg-dark text-white border-0 shadow-sm p-3">
-
-                    <div class="fw-bold text-center">
-                        👤 @Context.Session.GetString("Username")
-                    </div>
-
-                    <div class="small text-center text-light mb-2">
-                        @{
-                            var role = Context.Session.GetInt32("RoleID");
-
-                            if (role == 1)
+                            @if (role == 1)
                             {
                                 <text>Admin</text>
-                                ;
                             }
                             else if (role == 2)
                             {
                                 <text>Librarian</text>
-                                ;
                             }
                             else
                             {
                                 <text>Member</text>
-                                ;
                             }
-                        }
+
+                        </div>
+
+                        <a asp-controller="Account"
+                           asp-action="Logout"
+                           class="btn btn-danger btn-sm w-100">
+                            Logout
+                        </a>
+
                     </div>
 
-                    <a asp-controller="Account"
-                       asp-action="Logout"
-                       class="btn btn-danger btn-sm w-100">
-                        Logout
-                    </a>
+                </div>
 
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="main-content flex-grow-1">
+
+                <div class="container-fluid p-4">
+                    @RenderBody()
                 </div>
 
             </div>
 
         </div>
 
-
-        <!-- MAIN CONTENT -->
-        <div class="main-content flex-grow-1">
-
-            <div class="container-fluid p-4">
-                @RenderBody()
-            </div>
-
-        </div>
-
-    </div>
+    }
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 

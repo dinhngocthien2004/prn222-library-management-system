@@ -1,63 +1,78 @@
 ﻿@{
+    Layout = null;
     ViewData["Title"] = "Login";
 }
 
-<div class="container vh-100 d-flex justify-content-center align-items-center">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login - Library</title>
 
-    <div class="card shadow-lg" style="width:1000px; border-radius:15px;">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 
-        <div class="row g-0">
+</head>
 
-            <!-- LEFT SIDE -->
-            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-white"
-                 style="background: linear-gradient(135deg,#4e73df,#1cc88a); border-radius:15px 0 0 15px;">
+<body style="background:#f4f6fb;">
 
-                <h2 class="mb-3">📚 Library System</h2>
-                <p>Manage your books easily</p>
+    <div class="container vh-100 d-flex justify-content-center align-items-center">
 
-            </div>
+        <div class="card shadow-lg" style="width:1000px; border-radius:15px;">
 
-            <!-- RIGHT SIDE -->
-            <div class="col-md-6 p-5">
+            <div class="row g-0">
 
-                <h3 class="mb-4 text-center">Sign In</h3>
+                <!-- LEFT SIDE -->
+                <div class="col-md-6 d-flex flex-column justify-content-center align-items-center text-white"
+                     style="background: linear-gradient(135deg,#4e73df,#1cc88a); border-radius:15px 0 0 15px;">
 
-                @if (ViewBag.Error != null)
-                {
-                    <div class="alert alert-danger">
-                        @ViewBag.Error
-                    </div>
-                }
+                    <h2 class="mb-3">📚 Library System</h2>
+                    <p>Manage your books easily</p>
 
-                <form method="post" asp-controller="Account" asp-action="Login">
+                </div>
 
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Email</label>
+                <!-- RIGHT SIDE -->
+                <div class="col-md-6 p-5">
 
-                        <input class="form-control form-control-lg"
-                               type="email"
-                               name="email"
-                               placeholder="Enter your email"
-                               required />
-                    </div>
+                    <h3 class="mb-4 text-center">Sign In</h3>
 
-                    <div class="mb-4">
-                        <label class="form-label fw-bold">Password</label>
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.Error
+                        </div>
+                    }
 
-                        <input class="form-control form-control-lg"
-                               type="password"
-                               name="password"
-                               placeholder="Enter your password"
-                               required />
-                    </div>
+                    <form method="post" asp-controller="Account" asp-action="Login">
 
-                    <div class="d-grid">
-                        <button class="btn btn-primary btn-lg">
-                            Sign In
-                        </button>
-                    </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Email</label>
 
-                </form>
+                            <input class="form-control form-control-lg"
+                                   type="email"
+                                   name="email"
+                                   placeholder="Enter your email"
+                                   required />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Password</label>
+
+                            <input class="form-control form-control-lg"
+                                   type="password"
+                                   name="password"
+                                   placeholder="Enter your password"
+                                   required />
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-lg">
+                                Sign In
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
 
             </div>
 
@@ -65,4 +80,7 @@
 
     </div>
 
-</div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
