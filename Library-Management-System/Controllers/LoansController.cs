@@ -58,6 +58,7 @@ namespace Library_Management_System.Controllers
         [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create([Bind("LoanId,UserId,CopyId,LoanDate,DueDate,ReturnDate,Status")] Loan p)
         {
+            p.LoanDate = DateTime.Now;   
             if (ModelState.IsValid)
             {
                 ViewData["CopyId"] = new SelectList(_bookcopies.GetBookCopies(), "CopyId", "Barcode", p.CopyId);

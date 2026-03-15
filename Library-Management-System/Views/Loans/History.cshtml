@@ -1,27 +1,86 @@
 ﻿@model List<BusinessObjects.Entities.Loan>
 
-<h2>Lịch sử mượn</h2>
+@{
+    ViewData["Title"] = "Loan History";
+}
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Sách</th>           
-            <th>Ngày mượn</th>
-            <th>Ngày trả</th>
-        </tr>
-    </thead>
+<div class="container mt-4">
 
-    <tbody>
+    <div class="card shadow">
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.BookTitle</td>
-                <td>@item.ReaderName</td>
-                <td>@item.DueDate</td>
-                <td>@item.ReturnDate</td>
-            </tr>
-        }
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">📚 Loan History</h4>
+        </div>
 
-    </tbody>
-</table>
+        <div class="card-body">
+
+            <table class="table table-hover table-bordered align-middle">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>Book</th>
+                        <th>Reader</th>
+                        <th>Loan Date</th>
+                        <th>Due Date</th>
+                        <th>Return Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @item.BookTitle
+                            </td>
+
+                            <td>
+                                @item.ReaderName
+                            </td>
+
+                            <td>
+                                @item.LoanDate?.ToString("dd/MM/yyyy")
+                            </td>
+
+                            <td>
+                                @item.DueDate.ToString("dd/MM/yyyy")
+                            </td>
+
+                            <td>
+                                @(item.ReturnDate == null
+                                                            ? "Not Returned"
+                                                            : item.ReturnDate.Value.ToString("dd/MM/yyyy"))
+                        </td>
+
+                            <td>
+
+                            @if (item.ReturnDate == null)
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Borrowing
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">
+                                        Returned
+                                    </span>
+                                }
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

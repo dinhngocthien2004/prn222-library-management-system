@@ -1,62 +1,112 @@
 ﻿@model IEnumerable<BusinessObjects.Entities.Loan>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Loan Management";
 }
 
-<h1>Index</h1>
+<div class="container-fluid mt-3">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CopyId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LoanDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DueDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReturnDate)
-            </th>           
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                    @Html.DisplayFor(modelItem => item.User.Email)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.CopyId)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.LoanDate)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.DueDate)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.ReturnDate)
-            </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.User.Email)
-            </td> *@
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.LoanId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LoanId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LoanId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold">📚 Loan Management</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            + Create Loan
+        </a>
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-header bg-dark text-white">
+            Loan List
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-striped table-hover align-middle">
+
+                <thead class="table-light">
+                    <tr>
+                        <th>User</th>
+                        <th>Copy ID</th>
+                        <th>Loan Date</th>
+                        <th>Due Date</th>
+                        <th>Return Date</th>
+                        <th>Status</th>
+                        <th width="200">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @item.User?.Email
+                            </td>
+
+                            <td>
+                                @item.CopyId
+                            </td>
+
+                            <td>
+                                @item.LoanDate?.ToString("dd/MM/yyyy")
+                            </td>
+
+                            <td>
+                                @item.DueDate.ToString("dd/MM/yyyy")
+                            </td>
+
+                            <td>
+                                @(item.ReturnDate == null
+                                                            ? "Not Returned"
+                                                            : item.ReturnDate.Value.ToString("dd/MM/yyyy"))
+                        </td>
+
+                            <td>
+                            @if (item.ReturnDate == null)
+                                {
+                                    <span class="badge bg-warning text-dark">
+                                        Borrowing
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">
+                                        Returned
+                                    </span>
+                                }
+                            </td>
+
+                            <td>
+
+                                <a asp-action="Edit" asp-route-id="@item.LoanId"
+                                   class="btn btn-sm btn-warning">
+                                    Edit
+                                </a>
+
+                                <a asp-action="Details" asp-route-id="@item.LoanId"
+                                   class="btn btn-sm btn-info text-white">
+                                    Details
+                                </a>
+
+                                <a asp-action="Delete" asp-route-id="@item.LoanId"
+                                   class="btn btn-sm btn-danger">
+                                    Delete
+                                </a>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
