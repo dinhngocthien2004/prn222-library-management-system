@@ -1,22 +1,41 @@
 ﻿using BusinessObjects.Entities;
 using Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services
 {
     public class BookService : IBookService
     {
         private readonly IBookRepository _repo;
-        public BookService(IBookRepository repo) => _repo = repo;
 
-        public IEnumerable<Book> GetBooks() => _repo.GetBooks();
-        public Book? GetBookById(int id) => _repo.GetBookById(id);
-        public void SaveBook(Book p) => _repo.SaveBook(p);
-        public void UpdateBook(Book p) => _repo.UpdateBook(p);
-        public void DeleteBook(Book p) => _repo.DeleteBook(p);
+    public BookService(IBookRepository repo)
+        {
+            _repo = repo;
+        }
+
+        public IEnumerable<Book> GetBooks()
+        {
+            return _repo.GetBooks();
+        }
+
+        public Book? GetBookById(int id)
+        {
+            return _repo.GetBookById(id);
+        }
+
+        public void SaveBook(Book book)
+        {
+            _repo.SaveBook(book);
+        }
+
+        public void UpdateBook(Book book)
+        {
+            _repo.UpdateBook(book);
+        }
+
+        public void DeleteBook(Book book)
+        {
+            _repo.DeleteBook(book);
+        }
     }
+
 }

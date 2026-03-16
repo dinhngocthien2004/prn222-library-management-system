@@ -50,11 +50,10 @@
                         <input asp-for="ImageUrl" class="form-control" />
                     </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label asp-for="CategoryId" class="form-label">Thể loại</label>
-                        <select asp-for="CategoryId"
-                                asp-items="ViewBag.CategoryId"
-                                class="form-select">
+                    <div class="form-group">
+                        <label asp-for="CategoryId" class="control-label">Thể loại</label>
+                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryID">
+                            <option value="">-- Chọn thể loại --</option>
                         </select>
                     </div>
 
