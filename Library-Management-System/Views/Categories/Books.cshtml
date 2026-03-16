@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BusinessObjects.Entities.Book>
+
+@{
+    ViewData["Title"] = "Books By Category";
+}
+
+<div class="card shadow-sm">
+
+    <div class="card-header bg-primary text-white text-center">
+        <h3>📚 Books By Category</h3>
+    </div>
+
+    <div class="card-body">
+
+        <div class="text-center mb-3">
+            <a asp-controller="Categories"
+               asp-action="Index"
+               class="btn btn-secondary">
+                ← Back to Categories
+            </a>
+        </div>
+
+        <table class="table table-bordered text-center">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Title</th>
+                    <th>Publisher</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.BookId</td>
+                        <td>@item.Title</td>
+                        <td>@item.Publisher</td>
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
