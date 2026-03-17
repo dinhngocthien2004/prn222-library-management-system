@@ -4,46 +4,46 @@
     ViewData["Title"] = "Books By Publisher";
 }
 
-<div class="container mt-4">
+<div class="card shadow-sm">
 
-    <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white text-center">
+        <h3>📚 Books By Publisher</h3>
+    </div>
 
-        <div class="card-header bg-primary text-white text-center">
-            <h3 class="mb-0">📚 Books By Publisher</h3>
-        </div>
+    <div class="card-body">
 
-        <div class="text-center mt-3">
-            <a asp-action="Index" class="btn btn-secondary">
+        <div class="text-center mb-3">
+            <a asp-controller="Publishers"
+               asp-action="Index"
+               class="btn btn-secondary">
                 ← Back to Publishers
             </a>
         </div>
 
-        <div class="card-body">
+        <table class="table table-bordered text-center">
 
-            <table class="table table-striped table-hover table-bordered text-center align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>ISBN</th>
+                    <th>Book Title</th>
+                    <th>Publisher</th>
+                </tr>
+            </thead>
 
-                <thead class="table-dark">
+            <tbody>
+
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th style="width:20%">Book ID</th>
-                        <th style="width:50%">Book Title</th>
-                        <th style="width:30%">Publisher</th>
+                        <td>@item.Isbn</td>
+                        <td>@item.Title</td>
+                        <td>@item.Publisher</td>
                     </tr>
-                </thead>
+                }
 
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@item.BookId</td>
-                            <td class="text-center">@item.Title</td>
-                            <td>@item.Publisher</td>
-                        </tr>
-                    }
-                </tbody>
+            </tbody>
 
-            </table>
-
-        </div>
+        </table>
 
     </div>
 

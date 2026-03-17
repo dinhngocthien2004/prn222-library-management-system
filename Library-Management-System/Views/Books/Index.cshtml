@@ -7,7 +7,6 @@
 
 <div class="container mt-4">
 
-    ```
     <!-- Tiêu đề + nút thêm -->
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="text-primary">📚 Danh Sách Sách</h2>
@@ -31,7 +30,7 @@
                     <input type="text"
                            name="keyword"
                            class="form-control"
-                           placeholder="Search title, ISBN..."
+                           placeholder="Tìm theo tên sách hoặc ISBN..."
                            value="@ViewBag.Keyword" />
                 </div>
 
@@ -40,7 +39,7 @@
                     <input type="number"
                            name="year"
                            class="form-control"
-                           placeholder="Year"
+                           placeholder="Năm"
                            value="@ViewBag.Year" />
                 </div>
 
@@ -50,7 +49,7 @@
                             class="form-select"
                             asp-items="ViewBag.Categories">
 
-                        <option value="">All Categories</option>
+                        <option value="">Tất cả thể loại</option>
 
                     </select>
                 </div>
@@ -58,7 +57,7 @@
                 <!-- BUTTON -->
                 <div class="col-md-3">
                     <button class="btn btn-primary w-100">
-                        🔎 Search
+                        🔎 Lọc
                     </button>
                 </div>
 
@@ -73,17 +72,17 @@
 
             <table class="table table-bordered table-striped align-middle text-center">
 
-                <thead class="table-dark">
+                <thead class="table-dark text-center">
                     <tr>
-                        <th>Title</th>
+                        <th>Tên Sách</th>
                         <th>ISBN</th>
-                        <th>Publisher</th>
-                        <th>Published Year</th>
-                        <th>Thể loại</th>
-                        <th>Mô tả</th>
+                        <th>Tác Giả</th>
+                        <th>Năm Xuất Bản</th>
+                        <th>Thể Loại</th>
+                        <th>Mô Tả</th>
                         <th>Ảnh</th>
-                        <th>Ngày thêm</th>
-                        <th style="width:200px;">Thao tác</th>
+                        <th>Ngày Thêm</th>
+                        <th style="width:200px;">Thao Tác</th>
                     </tr>
                 </thead>
 
@@ -93,7 +92,7 @@
                     {
                         <tr>
 
-                            <td>@item.Title</td>
+                            <td class="text-start">@item.Title</td>
 
                             <td>@item.Isbn</td>
 
@@ -132,14 +131,14 @@
                                     <a asp-action="Edit"
                                        asp-route-id="@item.BookId"
                                        class="btn btn-sm btn-warning me-1">
-                                        Edit
+                                        Sửa
                                     </a>
                                 }
 
                                 <a asp-action="Details"
                                    asp-route-id="@item.BookId"
                                    class="btn btn-sm btn-info me-1">
-                                    Details
+                                    Xem
                                 </a>
 
                                 @if (role != 3)
@@ -147,7 +146,7 @@
                                     <a asp-action="Delete"
                                        asp-route-id="@item.BookId"
                                        class="btn btn-sm btn-danger">
-                                        Delete
+                                        Xóa
                                     </a>
                                 }
 
@@ -175,7 +174,7 @@
                            asp-route-keyword="@ViewBag.Keyword"
                            asp-route-year="@ViewBag.Year"
                            asp-route-categoryId="@ViewBag.CategoryId">
-                            Previous
+                            Trước
                         </a>
                     }
 
@@ -208,7 +207,7 @@
                            asp-route-keyword="@ViewBag.Keyword"
                            asp-route-year="@ViewBag.Year"
                            asp-route-categoryId="@ViewBag.CategoryId">
-                            Next
+                            Sau
                         </a>
                     }
 
@@ -218,6 +217,5 @@
 
         </div>
     </div>
-    ```
 
 </div>
