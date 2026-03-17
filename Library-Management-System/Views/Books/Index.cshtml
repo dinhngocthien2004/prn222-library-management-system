@@ -25,7 +25,6 @@
 
             <form method="get" class="row g-2">
 
-                <!-- SEARCH -->
                 <div class="col-md-4">
                     <input type="text"
                            name="keyword"
@@ -34,7 +33,6 @@
                            value="@ViewBag.Keyword" />
                 </div>
 
-                <!-- YEAR -->
                 <div class="col-md-2">
                     <input type="number"
                            name="year"
@@ -43,18 +41,14 @@
                            value="@ViewBag.Year" />
                 </div>
 
-                <!-- CATEGORY -->
                 <div class="col-md-3">
                     <select name="categoryId"
                             class="form-select"
                             asp-items="ViewBag.Categories">
-
                         <option value="">Tất cả thể loại</option>
-
                     </select>
                 </div>
 
-                <!-- BUTTON -->
                 <div class="col-md-3">
                     <button class="btn btn-primary w-100">
                         🔎 Lọc
@@ -159,59 +153,68 @@
 
             </table>
 
-            <!-- PAGINATION -->
-            <div class="mt-3 text-center">
+            <!-- PAGINATION + BACK BUTTON -->
+            <div class="position-relative mt-3">
 
-                @if (ViewBag.TotalPages > 1)
-                {
+                <!-- Nút quay lại (bên trái) -->
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="btn btn-secondary position-absolute start-0">
+                    ← Quay Lại Trang Chủ
+                </a>
 
-                    <!-- PREVIOUS -->
-                    @if (ViewBag.CurrentPage > 1)
+                <!-- Phân trang (ở giữa) -->
+                <div class="text-center">
+
+                    @if (ViewBag.TotalPages > 1)
                     {
-                        <a class="btn btn-outline-primary me-1"
-                           asp-action="Index"
-                           asp-route-page="@(ViewBag.CurrentPage - 1)"
-                           asp-route-keyword="@ViewBag.Keyword"
-                           asp-route-year="@ViewBag.Year"
-                           asp-route-categoryId="@ViewBag.CategoryId">
-                            Trước
-                        </a>
-                    }
 
-                    <!-- PAGE NUMBERS -->
-                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                    {
-                        if (i == ViewBag.CurrentPage)
-                        {
-                            <span class="btn btn-primary me-1">@i</span>
-                        }
-                        else
+                        @if (ViewBag.CurrentPage > 1)
                         {
                             <a class="btn btn-outline-primary me-1"
                                asp-action="Index"
-                               asp-route-page="@i"
+                               asp-route-page="@(ViewBag.CurrentPage - 1)"
                                asp-route-keyword="@ViewBag.Keyword"
                                asp-route-year="@ViewBag.Year"
                                asp-route-categoryId="@ViewBag.CategoryId">
-                                @i
+                                Trước
                             </a>
                         }
+
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            if (i == ViewBag.CurrentPage)
+                            {
+                                <span class="btn btn-primary me-1">@i</span>
+                            }
+                            else
+                            {
+                                <a class="btn btn-outline-primary me-1"
+                                   asp-action="Index"
+                                   asp-route-page="@i"
+                                   asp-route-keyword="@ViewBag.Keyword"
+                                   asp-route-year="@ViewBag.Year"
+                                   asp-route-categoryId="@ViewBag.CategoryId">
+                                    @i
+                                </a>
+                            }
+                        }
+
+                        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                        {
+                            <a class="btn btn-outline-primary ms-1"
+                               asp-action="Index"
+                               asp-route-page="@(ViewBag.CurrentPage + 1)"
+                               asp-route-keyword="@ViewBag.Keyword"
+                               asp-route-year="@ViewBag.Year"
+                               asp-route-categoryId="@ViewBag.CategoryId">
+                                Sau
+                            </a>
+                        }
+
                     }
 
-                    <!-- NEXT -->
-                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-                    {
-                        <a class="btn btn-outline-primary ms-1"
-                           asp-action="Index"
-                           asp-route-page="@(ViewBag.CurrentPage + 1)"
-                           asp-route-keyword="@ViewBag.Keyword"
-                           asp-route-year="@ViewBag.Year"
-                           asp-route-categoryId="@ViewBag.CategoryId">
-                            Sau
-                        </a>
-                    }
-
-                }
+                </div>
 
             </div>
 
