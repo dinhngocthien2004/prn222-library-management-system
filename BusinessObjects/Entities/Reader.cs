@@ -11,7 +11,7 @@ public partial class Reader
 
     public string CardNumber { get; set; } = null!;
 
-    public DateOnly? DateOfBirth { get; set; }
+    public DateTime? DateOfBirth { get; set; }
 
     public string? Address { get; set; }
 
