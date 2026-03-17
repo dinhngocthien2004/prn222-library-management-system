@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using BusinessObjects.Entities;
 using DataAccessObjects;
-using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Library_Management_System.Controllers
@@ -15,7 +13,7 @@ namespace Library_Management_System.Controllers
             _context = context;
         }
 
-        // Danh sách tác giả
+        // Danh sách Nhà xuất bản
         public IActionResult Index()
         {
             var publishers = _context.Books
@@ -26,19 +24,14 @@ namespace Library_Management_System.Controllers
             return View(publishers);
         }
 
-        // Xem sách của tác giả
-        public IActionResult Books(int id)
-        {
-            var books = _context.Books
-                .Include(b => b.Authors)
-                .Where(b => b.Authors.Any(a => a.AuthorId == id))
-                .ToList();
-
-            return View(books);
-        }
-
+        // Xem sách theo Nhà xuất bản
         public IActionResult BooksByPublisher(string name)
         {
+            if (string.IsNullOrEmpty(name))
+            {
+                return RedirectToAction("Index");
+            }
+
             var books = _context.Books
                 .Where(b => b.Publisher == name)
                 .ToList();
