@@ -10,6 +10,7 @@ public partial class Loan
     public int UserId { get; set; }
 
     public int CopyId { get; set; }
+    public string? Book { get; set; }
     public string? BookTitle { get; set; }
     public string? ReaderName { get; set; }
 

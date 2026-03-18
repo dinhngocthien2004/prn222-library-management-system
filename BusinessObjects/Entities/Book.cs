@@ -10,7 +10,7 @@ public partial class Book
     public string Title { get; set; } = null!;
 
     public string? Isbn { get; set; }
-
+    
     public string? Publisher { get; set; }
 
     public int? CategoryId { get; set; }
@@ -22,6 +22,7 @@ public partial class Book
     public string? ImageUrl { get; set; }
 
     public DateTime? DateAdded { get; set; }
+    public int BorrowCount { get; set; }
 
     public virtual ICollection<BookCopy> BookCopies { get; set; } = new List<BookCopy>();
 
