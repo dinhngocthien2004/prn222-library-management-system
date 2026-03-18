@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BusinessObjects.Entities.Reader>
+
+@{
+    ViewData["Title"] = "Reader Management";
+}
+
+<div class="container-fluid mt-3">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold">📚 Reader Management</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            + Create Reader
+        </a>
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-header bg-dark text-white">
+            Reader List
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-striped table-hover align-middle">
+
+                <thead>
+                    <tr>
+                        <th>ReaderID</th>
+                        <th>User</th>
+                        <th>Card Number</th>
+                        <th>Date Of Birth</th>
+                        <th>Address</th>
+                        <th>Membership</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>@item.ReaderId</td>
+
+                            <td>@item.User?.Email</td>
+
+                            <td>@item.CardNumber</td>
+
+                            <td>@item.DateOfBirth.</td>
+
+                            <td>@item.Address</td>
+
+                            <td>@item.MembershipDate</td>
+
+                            <td>@item.Status</td>
+
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.ReaderId">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.ReaderId">Delete</a>
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
