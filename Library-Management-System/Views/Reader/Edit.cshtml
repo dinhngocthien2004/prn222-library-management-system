@@ -1,0 +1,25 @@
+﻿@model BusinessObjects.Entities.Reader
+
+<h2>Edit Reader</h2>
+
+<form asp-action="Edit">
+
+    <input type="hidden" asp-for="ReaderId" />
+
+    <select asp-for="UserId" asp-items="ViewBag.UserId"></select>
+
+    <input asp-for="CardNumber" />
+
+    <input asp-for="DateOfBirth" />
+
+    <input asp-for="Address" />
+
+    <input asp-for="MembershipDate" />
+
+    <input asp-for="Status" />
+
+    <br>
+
+    <input type="submit" value="Save" />
+
+</form>
