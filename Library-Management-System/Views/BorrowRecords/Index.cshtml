@@ -1,49 +1,94 @@
 ﻿@using BusinessObjects.Entities
 @model List<BorrowRecord>
 
-<h2 class="text-center">⏰ Sách quá hạn</h2>
+@{
+    ViewData["Title"] = "Sách quá hạn";
+}
 
-<a href="/BorrowRecords/Create" class="btn btn-success mb-3">+ Thêm</a>
+<div class="container mt-5">
 
-<table class="table table-bordered">
-    <thead style="background:red;color:white">
-        <tr>
-            <th>#</th>
-            <th>Tên sách</th>
-            <th>Ngày hết hạn</th>
-            <th>Trạng thái</th>
-            <th>Hành động</th>
-        </tr>
-    </thead>
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold text-danger">⏰ Danh sách sách quá hạn</h3>
 
-    <tbody>
-        @{
-            int i = 1;
-        }
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@i</td>
-                <td>@item.Book?.Title</td>
-                <td>@item.DueDate.ToString("dd/MM/yyyy")</td>
+        <a href="/BorrowRecords/Create" class="btn btn-success shadow-sm">
+            ➕ Thêm mới
+        </a>
+    </div>
 
-                <td>
-                    @if (item.DueDate < DateTime.Now)
-                    {
-                        <span class="badge bg-danger">⚠ Quá hạn</span>
-                    }
-                    else
-                    {
-                        <span class="badge bg-success">Còn hạn</span>
-                    }
-                </td>
+    <!-- Card -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
 
-                <td>
-                    <a href="/BorrowRecords/Edit/@item.BorrowRecordId" class="btn btn-warning">Sửa</a>
-                    <a href="/BorrowRecords/Delete/@item.BorrowRecordId" class="btn btn-danger">Xóa</a>
-                </td>
-            </tr>
-            i++;
-        }
-    </tbody>
-</table>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center">
+
+                    <!-- Table Head -->
+                    <thead class="table-danger">
+                        <tr>
+                            <th>#</th>
+                            <th class="text-start">📖 Tên sách</th>
+                            <th>📅 Ngày hết hạn</th>
+                            <th>📌 Trạng thái</th>
+                            <th>⚙ Hành động</th>
+                        </tr>
+                    </thead>
+
+                    <!-- Table Body -->
+                    <tbody>
+                        @{
+                            int i = 1;
+                        }
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@i</td>
+
+                                <td class="text-start fw-semibold">
+                                    @item.Book?.Title
+                                </td>
+
+                                <td>
+                                    @item.DueDate.ToString("dd/MM/yyyy")
+                                </td>
+
+                                <td>
+                                    @if (item.DueDate < DateTime.Now)
+                                    {
+                                        <span class="badge bg-danger px-3 py-2">
+                                            ⚠ Quá hạn
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success px-3 py-2">
+                                            ✔ Còn hạn
+                                        </span>
+                                    }
+                                </td>
+
+                                <td>
+                                    <a href="/BorrowRecords/Edit/@item.BorrowRecordId"
+                                       class="btn btn-warning btn-sm me-2">
+                                        ✏ Sửa
+                                    </a>
+
+                                    <a href="/BorrowRecords/Delete/@item.BorrowRecordId"
+                                       class="btn btn-danger btn-sm">
+                                        🗑 Xóa
+                                    </a>
+                                </td>
+                            </tr>
+
+                            i++;
+                        }
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>

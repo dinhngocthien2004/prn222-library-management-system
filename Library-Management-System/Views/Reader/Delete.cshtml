@@ -1,15 +1,44 @@
 ﻿@model BusinessObjects.Entities.Reader
 
-<h2>Xóa độc giả</h2>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
 
-<h4>Bạn có chắc muốn xóa?</h4>
+        <!-- HEADER -->
+        <div class="card-header bg-danger text-white text-center">
+            <h3>⚠ Xóa độc giả</h3>
+        </div>
 
-<p>@Model.CardNumber</p>
+        <!-- BODY -->
+        <div class="card-body text-center p-4">
 
-<form asp-action="Delete">
+            <h5 class="mb-3 text-danger">Bạn có chắc muốn xóa độc giả này?</h5>
 
-    <input type="hidden" asp-for="ReaderId" />
+            <div class="alert alert-warning">
+                ⚠ Hành động này không thể hoàn tác!
+            </div>
 
-    <input type="submit" value="Delete" class="btn btn-danger" />
+            <!-- THÔNG TIN -->
+            <div class="mb-4">
+                <p><strong>Mã thẻ:</strong> @Model.CardNumber</p>
+                <p><strong>Địa chỉ:</strong> @Model.Address</p>
+                <p><strong>Trạng thái:</strong> @Model.Status</p>
+            </div>
 
-</form>
+            <!-- FORM -->
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="ReaderId" />
+
+                <div class="d-flex justify-content-center gap-3">
+                    <a asp-action="Index" class="btn btn-secondary px-4">
+                        ⬅ Hủy
+                    </a>
+
+                    <button type="submit" class="btn btn-danger px-4">
+                        🗑 Xóa
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

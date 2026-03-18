@@ -1,37 +1,92 @@
 ﻿@using BusinessObjects.Entities
 @model List<Book>
 
-<h2>📚 Quản lý sách</h2>
+@{
+    ViewData["Title"] = "Book Management";
+}
 
-<a asp-action="Create" class="btn btn-success mb-3">+ Thêm sách</a>
+<div class="container-fluid mt-4">
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Tên sách</th>
-            <th>Số lượt mượn</th>
-            <th></th>
-        </tr>
-    </thead>
+    <!-- HEADER -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold">📚 Quản lý sách</h2>
+            <p class="text-muted mb-0">Danh sách tất cả sách trong hệ thống</p>
+        </div>
 
-    <tbody>
-        @{
-            int i = 1;
-        }
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@i</td>
-                <td>@item.Title</td>
-                <td>@item.BorrowCount</td>
+        <a asp-action="Create" class="btn btn-success shadow-sm">
+            ➕ Thêm sách
+        </a>
+    </div>
 
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-warning">Sửa</a>
-                    <a asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-danger">Xóa</a>
-                </td>
-            </tr>
-            i++;
-        }
-    </tbody>
-</table>
+    <!-- CARD -->
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <!-- HEADER -->
+        <div class="card-header bg-dark text-white rounded-top-4">
+            <h5 class="mb-0">📋 Book List</h5>
+        </div>
+
+        <!-- BODY -->
+        <div class="card-body">
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Tên sách</th>
+                            <th>Số lượt mượn</th>
+                            <th class="text-center">Hành động</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @{
+                            int i = 1;
+                        }
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td><strong>@i</strong></td>
+
+                                <td>
+                                    <span class="fw-semibold">
+                                        @item.Title
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="badge bg-info text-dark">
+                                        📊 @item.BorrowCount lượt
+                                    </span>
+                                </td>
+
+                                <td class="text-center">
+                                    <a asp-action="Edit" asp-route-id="@item.BookId"
+                                       class="btn btn-sm btn-warning me-1">
+                                        ✏️
+                                    </a>
+
+                                    <a asp-action="Delete" asp-route-id="@item.BookId"
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Bạn chắc chắn muốn xóa sách này?')">
+                                        🗑
+                                    </a>
+                                </td>
+                            </tr>
+
+                            i++;
+                        }
+
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>

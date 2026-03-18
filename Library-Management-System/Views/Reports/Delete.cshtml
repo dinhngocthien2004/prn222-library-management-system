@@ -1,11 +1,46 @@
 ﻿@using BusinessObjects.Entities
 @model Book
 
-<h3>Bạn có chắc muốn xóa?</h3>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
 
-<p><strong>@Model.Title</strong></p>
+        <!-- HEADER -->
+        <div class="card-header bg-danger text-white text-center">
+            <h3>⚠ Xóa sách</h3>
+        </div>
 
-<form method="post">
-    <button class="btn btn-danger">Xóa</button>
-    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
-</form>
+        <!-- BODY -->
+        <div class="card-body text-center p-4">
+
+            <h5 class="text-danger mb-3">
+                Bạn có chắc muốn xóa sách này?
+            </h5>
+
+            <div class="alert alert-warning">
+                ⚠ Hành động này không thể hoàn tác!
+            </div>
+
+            <!-- THÔNG TIN SÁCH -->
+            <div class="mb-4">
+                <p><strong>📚 Tên sách:</strong> @Model.Title</p>
+                <p><strong>📊 Số lượt mượn:</strong> @Model.BorrowCount</p>
+            </div>
+
+            <!-- FORM -->
+            <form method="post">
+
+                <div class="d-flex justify-content-center gap-3">
+                    <a asp-action="Index" class="btn btn-secondary px-4">
+                        ⬅ Hủy
+                    </a>
+
+                    <button type="submit" class="btn btn-danger px-4">
+                        🗑 Xóa
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

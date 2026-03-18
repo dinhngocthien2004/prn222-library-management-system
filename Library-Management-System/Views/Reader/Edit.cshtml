@@ -1,25 +1,78 @@
 ﻿@model BusinessObjects.Entities.Reader
 
-<h2>Edit Reader</h2>
+<div class="container mt-5">
+    <div class="card shadow-lg rounded-4 border-0">
 
-<form asp-action="Edit">
+        <!-- HEADER -->
+        <div class="card-header bg-warning text-dark text-center">
+            <h3>✏️ Chỉnh sửa độc giả</h3>
+            <small>Cập nhật thông tin độc giả</small>
+        </div>
 
-    <input type="hidden" asp-for="ReaderId" />
+        <!-- BODY -->
+        <div class="card-body p-4">
 
-    <select asp-for="UserId" asp-items="ViewBag.UserId"></select>
+            <form asp-action="Edit">
 
-    <input asp-for="CardNumber" />
+                <input type="hidden" asp-for="ReaderId" />
 
-    <input asp-for="DateOfBirth" />
+                <div class="row">
 
-    <input asp-for="Address" />
+                    <!-- USER -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">User</label>
+                        <select asp-for="UserId" asp-items="ViewBag.UserId"
+                                class="form-select"></select>
+                    </div>
 
-    <input asp-for="MembershipDate" />
+                    <!-- CARD NUMBER -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Card Number</label>
+                        <input asp-for="CardNumber" class="form-control" />
+                    </div>
 
-    <input asp-for="Status" />
+                    <!-- DATE OF BIRTH -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Date Of Birth</label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control" />
+                    </div>
 
-    <br>
+                    <!-- MEMBERSHIP DATE -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Membership Date</label>
+                        <input asp-for="MembershipDate" type="date" class="form-control" />
+                    </div>
 
-    <input type="submit" value="Save" />
+                    <!-- ADDRESS -->
+                    <div class="col-12 mb-3">
+                        <label class="form-label fw-bold">Address</label>
+                        <input asp-for="Address" class="form-control" />
+                    </div>
 
-</form>
+                    <!-- STATUS -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Status</label>
+                        <select asp-for="Status" class="form-select">
+                            <option value="Active">✅ Active</option>
+                            <option value="Inactive">❌ Inactive</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary px-4">
+                        ⬅ Quay lại
+                    </a>
+
+                    <button type="submit" class="btn btn-warning px-4">
+                        💾 Lưu thay đổi
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
