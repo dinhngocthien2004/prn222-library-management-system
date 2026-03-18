@@ -1,0 +1,18 @@
+﻿@using BusinessObjects.Entities
+@model BorrowRecord
+
+<h2>Thêm mượn sách</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Sách</label>
+        <select asp-for="BookId" asp-items="ViewBag.BookId" class="form-control"></select>
+    </div>
+
+    <div class="mb-3">
+        <label>Ngày hết hạn</label>
+        <input asp-for="DueDate" type="date" class="form-control" />
+    </div>
+
+    <button class="btn btn-success">Thêm</button>
+</form>

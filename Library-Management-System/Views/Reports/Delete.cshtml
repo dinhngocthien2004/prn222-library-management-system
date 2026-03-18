@@ -1,0 +1,11 @@
+﻿@using BusinessObjects.Entities
+@model Book
+
+<h3>Bạn có chắc muốn xóa?</h3>
+
+<p><strong>@Model.Title</strong></p>
+
+<form method="post">
+    <button class="btn btn-danger">Xóa</button>
+    <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+</form>

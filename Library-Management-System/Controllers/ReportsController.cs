@@ -14,13 +14,14 @@ namespace Library_Management_System.Controllers
             _context = context;
         }
 
-        // Trang tổng
+        // ===== READ =====
         public IActionResult Index()
         {
-            return View();
+            var books = _context.Books.ToList();
+            return View(books);
         }
 
-        // 📊 Sách mượn nhiều
+        // ===== POPULAR BOOKS =====
         public IActionResult PopularBooks()
         {
             var data = _context.Books
@@ -30,15 +31,67 @@ namespace Library_Management_System.Controllers
             return View(data);
         }
 
-        // ⏰ Sách quá hạn
-        public IActionResult Overdue()
+        // ===== CREATE =====
+        public IActionResult Create()
         {
-            var data = _context.BorrowRecords
-                .Include(b => b.Book)
-                .Where(b => b.DueDate < DateTime.Now)
-                .ToList();
+            return View();
+        }
 
-            return View(data);
+        [HttpPost]
+        public IActionResult Create(Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                book.BorrowCount = 0; // mặc định
+                _context.Books.Add(book);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(book);
+        }
+
+        // ===== UPDATE =====
+        public IActionResult Edit(int id)
+        {
+            var book = _context.Books.Find(id);
+            if (book == null) return NotFound();
+
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Book book)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Books.Update(book);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(book);
+        }
+
+        // ===== DELETE =====
+        public IActionResult Delete(int id)
+        {
+            var book = _context.Books.Find(id);
+            if (book == null) return NotFound();
+
+            return View(book);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var book = _context.Books.Find(id);
+
+            if (book != null)
+            {
+                _context.Books.Remove(book);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

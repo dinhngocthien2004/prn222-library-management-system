@@ -1,0 +1,49 @@
+﻿@using BusinessObjects.Entities
+@model List<BorrowRecord>
+
+<h2 class="text-center">⏰ Sách quá hạn</h2>
+
+<a href="/BorrowRecords/Create" class="btn btn-success mb-3">+ Thêm</a>
+
+<table class="table table-bordered">
+    <thead style="background:red;color:white">
+        <tr>
+            <th>#</th>
+            <th>Tên sách</th>
+            <th>Ngày hết hạn</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            int i = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.Book?.Title</td>
+                <td>@item.DueDate.ToString("dd/MM/yyyy")</td>
+
+                <td>
+                    @if (item.DueDate < DateTime.Now)
+                    {
+                        <span class="badge bg-danger">⚠ Quá hạn</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">Còn hạn</span>
+                    }
+                </td>
+
+                <td>
+                    <a href="/BorrowRecords/Edit/@item.BorrowRecordId" class="btn btn-warning">Sửa</a>
+                    <a href="/BorrowRecords/Delete/@item.BorrowRecordId" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
