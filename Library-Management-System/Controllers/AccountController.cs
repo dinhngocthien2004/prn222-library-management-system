@@ -18,6 +18,12 @@ namespace Library_Management_System.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+            // Nếu đã đăng nhập rồi thì quay về trang chủ
+            if (HttpContext.Session.GetString("Username") != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
@@ -41,7 +47,7 @@ namespace Library_Management_System.Controllers
                 return View();
             }
 
-            // Xóa session cũ (nếu có)
+            // Xóa session cũ
             HttpContext.Session.Clear();
 
             // Lưu thông tin vào session
@@ -49,8 +55,8 @@ namespace Library_Management_System.Controllers
             HttpContext.Session.SetString("Username", user.FullName);
             HttpContext.Session.SetInt32("RoleID", user.RoleId);
 
-            // Chuyển sang trang Books
-            return RedirectToAction("Index", "Books");
+            // Login xong → về Trang Chủ
+            return RedirectToAction("Index", "Home");
         }
 
         // Logout

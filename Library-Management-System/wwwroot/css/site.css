@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin: 0;
 }
 
 .search-form {
@@ -102,42 +102,88 @@ body {
     margin: 0;
 }
 
+/* SIDEBAR */
 .sidebar {
     width: 260px;
-    height: 100vh;
+    min-height: 100vh;
     background: #1f2937;
     padding: 20px;
 }
 
-    .sidebar .nav-link {
-        color: #cbd5e1;
-        padding: 10px;
-        display: block;
-        border-radius: 6px;
+    /* khoảng cách giữa các menu */
+    .sidebar .nav-item {
+        margin-bottom: 10px;
     }
 
+    /* khung menu */
+    .sidebar .nav-link {
+        color: #cbd5e1;
+        padding: 12px 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.03);
+        transition: 0.2s;
+    }
+
+        /* hover */
         .sidebar .nav-link:hover {
             background: #374151;
             color: white;
         }
 
+/* submenu */
 .submenu {
     list-style: none;
     padding-left: 15px;
+    margin-top: 5px;
 }
 
-    .submenu li a {
-        color: #9ca3af;
-        display: block;
-        padding: 6px 10px;
-        text-decoration: none;
+    .submenu li {
+        margin: 6px 0;
     }
 
-        .submenu li a:hover {
-            color: white;
+        .submenu li a {
+            color: #9ca3af;
+            display: block;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-decoration: none;
         }
+
+            .submenu li a:hover {
+                background: #374151;
+                color: white;
+            }
+
+/* icon mũi tên */
+.arrow {
+    font-size: 12px;
+    opacity: 0.7;
+}
 
 .main-content {
     background: #f5f7fb;
     min-height: 100vh;
+}
+
+.sidebar h4 {
+    border-bottom: 1px solid #374151;
+    padding-bottom: 10px;
+}
+
+/* mũi tên xoay */
+.arrow {
+    transition: transform 0.3s ease;
+}
+
+/* khi menu đóng */
+.nav-link.collapsed .arrow {
+    transform: rotate(-90deg);
+}
+
+/* khi menu mở */
+.nav-link:not(.collapsed) .arrow {
+    transform: rotate(0deg);
 }

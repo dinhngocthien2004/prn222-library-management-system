@@ -19,55 +19,56 @@
                 <div class="row">
 
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Title" class="form-label"></label>
+                        <label asp-for="Title" class="form-label">Tên Sách</label>
                         <input asp-for="Title" class="form-control" />
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Isbn" class="form-label"></label>
+                        <label asp-for="Isbn" class="form-label">ISBN</label>
                         <input asp-for="Isbn" class="form-control" />
                         <span asp-validation-for="Isbn" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label asp-for="Publisher" class="form-label"></label>
+                        <label asp-for="Publisher" class="form-label">Tác Giả</label>
                         <input asp-for="Publisher" class="form-control" />
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label asp-for="PublishedYear" class="form-label"></label>
+                        <label asp-for="PublishedYear" class="form-label">Năm Xuất Bản</label>
                         <input asp-for="PublishedYear" class="form-control" />
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <label asp-for="Description" class="form-label"></label>
+                        <label asp-for="Description" class="form-label">Mô Tả</label>
                         <textarea asp-for="Description" class="form-control" rows="3"></textarea>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label asp-for="ImageUrl" class="form-label"></label>
+                        <label asp-for="ImageUrl" class="form-label">Ảnh (URL)</label>
                         <input asp-for="ImageUrl" class="form-control" />
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label asp-for="CategoryId" class="form-label">Thể loại</label>
-                        <select asp-for="CategoryId"
-                                asp-items="ViewBag.CategoryId"
-                                class="form-select">
+                        <label asp-for="CategoryId" class="form-label">Thể Loại</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.CategoryID">
+                            <option value="">-- Chọn thể loại --</option>
                         </select>
                     </div>
 
                 </div>
 
                 <div class="text-end mt-3">
+
                     <a asp-action="Index" class="btn btn-secondary">
-                        ← Quay lại
+                        ← Quay Lại
                     </a>
 
                     <button type="submit" class="btn btn-success">
                         💾 Lưu
                     </button>
+
                 </div>
 
             </form>

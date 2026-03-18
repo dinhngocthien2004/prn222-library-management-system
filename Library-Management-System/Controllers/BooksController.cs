@@ -84,9 +84,7 @@ namespace Library_Management_System.Controllers
             ViewBag.Year = year;
             ViewBag.CategoryId = categoryId;
 
-            // ================================
             // PAGINATION
-            // ================================
             int pageSize = 7;
 
             int totalBooks = books.Count();
@@ -101,8 +99,6 @@ namespace Library_Management_System.Controllers
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = totalPages;
 
-            // ================================
-
             return View(pagedBooks);
         }
 
@@ -114,13 +110,13 @@ namespace Library_Management_System.Controllers
             var check = EnsureLogin();
             if (check != null) return check;
 
-            if (id is null) return NotFound();
+            if (id == null) return NotFound();
 
-            var p = _books.GetBookById(id.Value);
+            var book = _books.GetBookById(id.Value);
 
-            if (p == null) return NotFound();
+            if (book == null) return NotFound();
 
-            return View(p);
+            return View(book);
         }
 
         // ================================
@@ -134,7 +130,7 @@ namespace Library_Management_System.Controllers
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
-            ViewData["CategoryId"] = new SelectList(
+            ViewBag.CategoryId = new SelectList(
                 _categories.GetCategories(),
                 "CategoryId",
                 "CategoryName"
@@ -145,7 +141,7 @@ namespace Library_Management_System.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book p)
+        public IActionResult Create([Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl")] Book book)
         {
             var check = EnsureLogin();
             if (check != null) return check;
@@ -155,16 +151,19 @@ namespace Library_Management_System.Controllers
 
             if (!ModelState.IsValid)
             {
-                ViewData["CategoryId"] = new SelectList(
+                ViewBag.CategoryId = new SelectList(
                     _categories.GetCategories(),
                     "CategoryId",
                     "CategoryName",
-                    p.CategoryId
+                    book.CategoryId
                 );
-                return View(p);
+
+                return View(book);
             }
 
-            _books.SaveBook(p);
+            book.DateAdded = DateTime.Now;
+
+            _books.SaveBook(book);
 
             return RedirectToAction(nameof(Index));
         }
@@ -180,25 +179,25 @@ namespace Library_Management_System.Controllers
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
-            if (id is null) return NotFound();
+            if (id == null) return NotFound();
 
-            var p = _books.GetBookById(id.Value);
+            var book = _books.GetBookById(id.Value);
 
-            if (p == null) return NotFound();
+            if (book == null) return NotFound();
 
-            ViewData["CategoryId"] = new SelectList(
+            ViewBag.CategoryId = new SelectList(
                 _categories.GetCategories(),
                 "CategoryId",
                 "CategoryName",
-                p.CategoryId
+                book.CategoryId
             );
 
-            return View(p);
+            return View(book);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("BookId,Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book p)
+        public IActionResult Edit(int id, [Bind("BookId,Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book book)
         {
             var check = EnsureLogin();
             if (check != null) return check;
@@ -206,20 +205,21 @@ namespace Library_Management_System.Controllers
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
-            if (id != p.BookId) return NotFound();
+            if (id != book.BookId) return NotFound();
 
             if (!ModelState.IsValid)
             {
-                ViewData["CategoryId"] = new SelectList(
+                ViewBag.CategoryId = new SelectList(
                     _categories.GetCategories(),
                     "CategoryId",
                     "CategoryName",
-                    p.CategoryId
+                    book.CategoryId
                 );
-                return View(p);
+
+                return View(book);
             }
 
-            _books.UpdateBook(p);
+            _books.UpdateBook(book);
 
             return RedirectToAction(nameof(Index));
         }
@@ -235,13 +235,13 @@ namespace Library_Management_System.Controllers
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
-            if (id is null) return NotFound();
+            if (id == null) return NotFound();
 
-            var p = _books.GetBookById(id.Value);
+            var book = _books.GetBookById(id.Value);
 
-            if (p == null) return NotFound();
+            if (book == null) return NotFound();
 
-            return View(p);
+            return View(book);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -254,11 +254,11 @@ namespace Library_Management_System.Controllers
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
-            var p = _books.GetBookById(id);
+            var book = _books.GetBookById(id);
 
-            if (p != null)
+            if (book != null)
             {
-                _books.DeleteBook(p);
+                _books.DeleteBook(book);
             }
 
             return RedirectToAction(nameof(Index));

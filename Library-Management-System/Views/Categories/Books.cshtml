@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Sách Theo Thể Loại";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+            <h3>📚 Sách Theo Thể Loại</h3>
+        </div>
+
+        <div class="card-body text-center">
+
+            <a asp-controller="Categories" asp-action="Index" class="btn btn-secondary mb-3">
+                ← Quay lại Thể loại
+            </a>
+
+            <table class="table table-bordered table-striped text-center">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>ISBN</th>
+                        <th>Tên sách</th>
+                        <th>Nhà xuất bản</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Isbn</td>
+                            <td>@item.Title</td>
+                            <td>@item.Publisher</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>

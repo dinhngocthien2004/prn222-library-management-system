@@ -25,39 +25,33 @@
 
             <form method="get" class="row g-2">
 
-                <!-- SEARCH -->
                 <div class="col-md-4">
                     <input type="text"
                            name="keyword"
                            class="form-control"
-                           placeholder="Search title, ISBN..."
+                           placeholder="Tìm theo tên sách hoặc ISBN..."
                            value="@ViewBag.Keyword" />
                 </div>
 
-                <!-- YEAR -->
                 <div class="col-md-2">
                     <input type="number"
                            name="year"
                            class="form-control"
-                           placeholder="Year"
+                           placeholder="Năm"
                            value="@ViewBag.Year" />
                 </div>
 
-                <!-- CATEGORY -->
                 <div class="col-md-3">
                     <select name="categoryId"
                             class="form-select"
                             asp-items="ViewBag.Categories">
-
-                        <option value="">All Categories</option>
-
+                        <option value="">Tất cả thể loại</option>
                     </select>
                 </div>
 
-                <!-- BUTTON -->
                 <div class="col-md-3">
                     <button class="btn btn-primary w-100">
-                        🔎 Search
+                        🔎 Lọc
                     </button>
                 </div>
 
@@ -72,17 +66,17 @@
 
             <table class="table table-bordered table-striped align-middle text-center">
 
-                <thead class="table-dark">
+                <thead class="table-dark text-center">
                     <tr>
-                        <th>Title</th>
+                        <th>Tên Sách</th>
                         <th>ISBN</th>
-                        <th>Publisher</th>
-                        <th>Published Year</th>
-                        <th>Mô tả</th>
+                        <th>Tác Giả</th>
+                        <th>Năm Xuất Bản</th>
+                        <th>Thể Loại</th>
+                        <th>Mô Tả</th>
                         <th>Ảnh</th>
-                        <th>Ngày thêm</th>
-                        <th>Thể loại</th>
-                        <th style="width:200px;">Thao tác</th>
+                        <th>Ngày Thêm</th>
+                        <th style="width:200px;">Thao Tác</th>
                     </tr>
                 </thead>
 
@@ -92,7 +86,7 @@
                     {
                         <tr>
 
-                            <td>@item.Title</td>
+                            <td class="text-start">@item.Title</td>
 
                             <td>@item.Isbn</td>
 
@@ -100,8 +94,12 @@
 
                             <td>@item.PublishedYear</td>
 
+                            <td>
+                                @(item.Category != null ? item.Category.CategoryName : "")
+                            </td>
+
                             <td class="text-start">
-                                @(item.Description?.Length > 40
+                                @(item.Description != null && item.Description.Length > 40
                                     ? item.Description.Substring(0, 40) + "..."
                                     : item.Description)
                             </td>
@@ -120,8 +118,6 @@
                                     : "")
                             </td>
 
-                            <td>@item.Category?.CategoryName</td>
-
                             <td>
 
                                 @if (role != 3)
@@ -129,14 +125,14 @@
                                     <a asp-action="Edit"
                                        asp-route-id="@item.BookId"
                                        class="btn btn-sm btn-warning me-1">
-                                        Edit
+                                        Sửa
                                     </a>
                                 }
 
                                 <a asp-action="Details"
                                    asp-route-id="@item.BookId"
                                    class="btn btn-sm btn-info me-1">
-                                    Details
+                                    Xem
                                 </a>
 
                                 @if (role != 3)
@@ -144,7 +140,7 @@
                                     <a asp-action="Delete"
                                        asp-route-id="@item.BookId"
                                        class="btn btn-sm btn-danger">
-                                        Delete
+                                        Xóa
                                     </a>
                                 }
 
@@ -157,59 +153,68 @@
 
             </table>
 
-            <!-- PAGINATION -->
-            <div class="mt-3 text-center">
+            <!-- PAGINATION + BACK BUTTON -->
+            <div class="position-relative mt-3">
 
-                @if (ViewBag.TotalPages > 1)
-                {
+                <!-- Nút quay lại (bên trái) -->
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="btn btn-secondary position-absolute start-0">
+                    ← Quay Lại Trang Chủ
+                </a>
 
-                    <!-- PREVIOUS -->
-                    @if (ViewBag.CurrentPage > 1)
+                <!-- Phân trang (ở giữa) -->
+                <div class="text-center">
+
+                    @if (ViewBag.TotalPages > 1)
                     {
-                        <a class="btn btn-outline-primary me-1"
-                           asp-action="Index"
-                           asp-route-page="@(ViewBag.CurrentPage - 1)"
-                           asp-route-keyword="@ViewBag.Keyword"
-                           asp-route-year="@ViewBag.Year"
-                           asp-route-categoryId="@ViewBag.CategoryId">
-                            Previous
-                        </a>
-                    }
 
-                    <!-- PAGE NUMBERS -->
-                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                    {
-                        if (i == ViewBag.CurrentPage)
-                        {
-                            <span class="btn btn-primary me-1">@i</span>
-                        }
-                        else
+                        @if (ViewBag.CurrentPage > 1)
                         {
                             <a class="btn btn-outline-primary me-1"
                                asp-action="Index"
-                               asp-route-page="@i"
+                               asp-route-page="@(ViewBag.CurrentPage - 1)"
                                asp-route-keyword="@ViewBag.Keyword"
                                asp-route-year="@ViewBag.Year"
                                asp-route-categoryId="@ViewBag.CategoryId">
-                                @i
+                                Trước
                             </a>
                         }
+
+                        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                        {
+                            if (i == ViewBag.CurrentPage)
+                            {
+                                <span class="btn btn-primary me-1">@i</span>
+                            }
+                            else
+                            {
+                                <a class="btn btn-outline-primary me-1"
+                                   asp-action="Index"
+                                   asp-route-page="@i"
+                                   asp-route-keyword="@ViewBag.Keyword"
+                                   asp-route-year="@ViewBag.Year"
+                                   asp-route-categoryId="@ViewBag.CategoryId">
+                                    @i
+                                </a>
+                            }
+                        }
+
+                        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                        {
+                            <a class="btn btn-outline-primary ms-1"
+                               asp-action="Index"
+                               asp-route-page="@(ViewBag.CurrentPage + 1)"
+                               asp-route-keyword="@ViewBag.Keyword"
+                               asp-route-year="@ViewBag.Year"
+                               asp-route-categoryId="@ViewBag.CategoryId">
+                                Sau
+                            </a>
+                        }
+
                     }
 
-                    <!-- NEXT -->
-                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
-                    {
-                        <a class="btn btn-outline-primary ms-1"
-                           asp-action="Index"
-                           asp-route-page="@(ViewBag.CurrentPage + 1)"
-                           asp-route-keyword="@ViewBag.Keyword"
-                           asp-route-year="@ViewBag.Year"
-                           asp-route-categoryId="@ViewBag.CategoryId">
-                            Next
-                        </a>
-                    }
-
-                }
+                </div>
 
             </div>
 
