@@ -1,0 +1,15 @@
+﻿@model BusinessObjects.Entities.Reader
+
+<h2>Xóa độc giả</h2>
+
+<h4>Bạn có chắc muốn xóa?</h4>
+
+<p>@Model.CardNumber</p>
+
+<form asp-action="Delete">
+
+    <input type="hidden" asp-for="ReaderId" />
+
+    <input type="submit" value="Delete" class="btn btn-danger" />
+
+</form>
