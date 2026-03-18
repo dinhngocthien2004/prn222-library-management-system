@@ -1,56 +1,37 @@
-﻿@{
-    ViewData["Title"] = "Báo cáo";
-}
+﻿@using BusinessObjects.Entities
+@model List<Book>
 
-<div class="container mt-4">
-    <h2 class="mb-4 text-center display-6 fw-bold">📊 Báo cáo thư viện</h2>
-    <p class="text-center text-muted mb-5">Chọn báo cáo bạn muốn xem</p>
+<h2>📚 Quản lý sách</h2>
 
-    <div class="row g-4">
+<a asp-action="Create" class="btn btn-success mb-3">+ Thêm sách</a>
 
-        <!-- Sách mượn nhiều -->
-        <div class="col-md-4">
-            <div class="card shadow-lg border-0 h-100 report-card" style="background: linear-gradient(135deg, #4e73df, #224abe); transition: transform 0.3s;">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center text-white text-center">
-                    <i class="bi bi-book-half display-4 mb-3"></i>
-                    <h5 class="card-title fw-bold">Sách mượn nhiều</h5>
-                    <p class="card-text">Xem danh sách các cuốn sách được mượn nhiều nhất.</p>
-                    <a asp-controller="Reports" asp-action="PopularBooks" class="btn btn-light btn-sm mt-2">Xem chi tiết</a>
-                </div>
-            </div>
-        </div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tên sách</th>
+            <th>Số lượt mượn</th>
+            <th></th>
+        </tr>
+    </thead>
 
-        <!-- Sách quá hạn -->
-        <div class="col-md-4">
-            <div class="card shadow-lg border-0 h-100 report-card" style="background: linear-gradient(135deg, #e74a3b, #be2617); transition: transform 0.3s;">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center text-white text-center">
-                    <i class="bi bi-exclamation-triangle-fill display-4 mb-3"></i>
-                    <h5 class="card-title fw-bold">Sách quá hạn</h5>
-                    <p class="card-text">Xem danh sách các sách đã quá hạn mượn.</p>
-                    <a asp-controller="Reports" asp-action="Overdue" class="btn btn-light btn-sm mt-2">Xem chi tiết</a>
-                </div>
-            </div>
-        </div>
+    <tbody>
+        @{
+            int i = 1;
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@item.Title</td>
+                <td>@item.BorrowCount</td>
 
-        <!-- Trang tổng báo cáo -->
-        <div class="col-md-4">
-            <div class="card shadow-lg border-0 h-100 report-card" style="background: linear-gradient(135deg, #36b9cc, #1e7e8c); transition: transform 0.3s;">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center text-white text-center">
-                    <i class="bi bi-bar-chart-line-fill display-4 mb-3"></i>
-                    <h5 class="card-title fw-bold">Trang tổng báo cáo</h5>
-                    <p class="card-text">Xem tổng quan tất cả các báo cáo.</p>
-                    <a asp-controller="Reports" asp-action="Index" class="btn btn-light btn-sm mt-2">Vào trang</a>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<!-- CSS nhỏ để hover -->
-<style>
-    .report-card:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
-</style>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-warning">Sửa</a>
+                    <a asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-danger">Xóa</a>
+                </td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>
