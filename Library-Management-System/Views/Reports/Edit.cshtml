@@ -1,20 +1,58 @@
 ﻿@using BusinessObjects.Entities
 @model Book
 
-<h2>Sửa sách</h2>
+<div class="container mt-5">
+    <div class="card shadow-lg border-0 rounded-4">
 
-<form method="post">
-    <input type="hidden" asp-for="BookId" />
+        <!-- HEADER -->
+        <div class="card-header bg-warning text-dark text-center">
+            <h3>✏️ Chỉnh sửa sách</h3>
+            <small>Cập nhật thông tin sách</small>
+        </div>
 
-    <div class="mb-3">
-        <label>Tên sách</label>
-        <input asp-for="Title" class="form-control" />
+        <!-- BODY -->
+        <div class="card-body p-4">
+
+            <form method="post">
+
+                <input type="hidden" asp-for="BookId" />
+
+                <div class="row">
+
+                    <!-- TITLE -->
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label fw-bold">Tên sách</label>
+                        <input asp-for="Title"
+                               class="form-control"
+                               placeholder="Nhập tên sách..." />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <!-- BORROW COUNT -->
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Số lượt mượn</label>
+                        <input asp-for="BorrowCount"
+                               class="form-control" />
+                        <small class="text-muted">
+                            Số lượt mượn sẽ tự tăng khi có người mượn sách
+                        </small>
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="Index" class="btn btn-secondary px-4">
+                        ⬅ Quay lại
+                    </a>
+
+                    <button type="submit" class="btn btn-warning px-4">
+                        💾 Cập nhật
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
     </div>
-
-    <div class="mb-3">
-        <label>Số lượt mượn</label>
-        <input asp-for="BorrowCount" class="form-control" />
-    </div>
-
-    <button class="btn btn-primary">Cập nhật</button>
-</form>
+</div>

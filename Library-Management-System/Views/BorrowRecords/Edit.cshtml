@@ -1,18 +1,55 @@
 ﻿@using BusinessObjects.Entities
 @model BorrowRecord
 
-<h2>Thêm mượn sách</h2>
+@{
+    ViewData["Title"] = "Edit Borrow";
+}
 
-<form method="post">
-    <div class="mb-3">
-        <label>Sách</label>
-        <select asp-for="BookId" asp-items="ViewBag.BookId" class="form-control"></select>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                    <h4 class="mb-0">📚 Chỉnh sửa mượn sách</h4>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form method="post">
+
+                        <!-- Book -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Sách</label>
+                            <select asp-for="BookId" asp-items="ViewBag.BookId"
+                                    class="form-select">
+                            </select>
+                        </div>
+
+                        <!-- Due Date -->
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Ngày hết hạn</label>
+                            <input asp-for="DueDate" type="date"
+                                   class="form-control" />
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="/BorrowRecords/Index"
+                               class="btn btn-outline-secondary">
+                                ⬅ Quay lại
+                            </a>
+
+                            <button type="submit" class="btn btn-success px-4">
+                                💾 Lưu thay đổi
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
     </div>
-
-    <div class="mb-3">
-        <label>Ngày hết hạn</label>
-        <input asp-for="DueDate" type="date" class="form-control" />
-    </div>
-
-    <button class="btn btn-success">Thêm</button>
-</form>
+</div>
