@@ -43,19 +43,21 @@ namespace Library_Management_System
             builder.Services.AddScoped<LoanDAO>();
             builder.Services.AddScoped<BookCopyDAO>();
             builder.Services.AddScoped<AccountDAO>();
+            builder.Services.AddScoped<ReaderDAO>();
 
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<ILoanRepository, LoanRepository>();
             builder.Services.AddScoped<IBookCopyRepository, BookCopyRepository>();
-
+            builder.Services.AddScoped<IReaderRepository, ReaderRepository>();
 
             builder.Services.AddScoped<IBookService, BookService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ILoanService, LoanService>();
             builder.Services.AddScoped<IBookCopyService, BookCopyService>();
+            builder.Services.AddScoped<IReaderService, ReaderService>();
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IUserService, UserService>();
