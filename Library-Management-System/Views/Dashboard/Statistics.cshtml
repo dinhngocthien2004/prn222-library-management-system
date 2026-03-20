@@ -1,0 +1,59 @@
+﻿@using BusinessObjects.Entities
+@model BookStatisticsViewModel
+
+<div class="container mt-4">
+    <h2 class="mb-4">📊 Library Statistics</h2>
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="card bg-primary text-white text-center p-3 shadow">
+                <h5>Total Books</h5>
+                <h2>@Model.TotalBooks</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-info text-white text-center p-3 shadow">
+                <h5>Total Copies</h5>
+                <h2>@Model.TotalCopies</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-warning text-white text-center p-3 shadow">
+                <h5>Borrowed</h5>
+                <h2>@Model.TotalBorrowedCopies</h2>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-white text-center p-3 shadow">
+                <h5>Available</h5>
+                <h2>@Model.TotalAvailableCopies</h2>
+            </div>
+        </div>
+
+    </div>
+
+    <hr />
+
+    <h4>🔥 Top Borrowed Books</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Borrow Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TopBooks)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.BorrowCount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

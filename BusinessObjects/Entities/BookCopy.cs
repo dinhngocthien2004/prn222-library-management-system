@@ -16,4 +16,5 @@ public partial class BookCopy
     public virtual Book Book { get; set; } = null!;
 
     public virtual ICollection<Loan> Loans { get; set; } = new List<Loan>();
+    public bool IsAvailable { get; set; }
 }
