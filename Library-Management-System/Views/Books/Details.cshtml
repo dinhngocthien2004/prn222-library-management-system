@@ -86,12 +86,23 @@
         </div>
 
         <!-- Footer -->
-        <div class="card-footer text-end">
+        <div class="card-footer d-flex justify-content-end gap-2">
 
             <a asp-action="Index" class="btn btn-secondary">
                 ← Quay lại
             </a>
 
+            @* 👉 MEMBER: HIỆN NÚT MƯỢN SÁCH *@
+            @if (role == 3)
+            {
+                <a asp-action="BorrowConfirm"
+                   asp-route-id="@Model.BookId"
+                   class="btn btn-success">
+                    📚 Mượn Sách
+                </a>
+            }
+
+            @* 👉 ADMIN/STAFF: HIỆN CHỈNH SỬA *@
             @if (role != 3)
             {
                 <a asp-action="Edit"
