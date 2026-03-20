@@ -119,6 +119,21 @@ namespace Library_Management_System.Controllers
             return View(book);
         }
 
+        public IActionResult BorrowConfirm(int id)
+        {
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            var book = _books.GetBookById(id);
+
+            if (book == null)
+            {
+                return NotFound();
+            }
+
+            return View(book);
+        }
+
         // ================================
         // CREATE
         // ================================

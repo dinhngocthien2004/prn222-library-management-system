@@ -135,6 +135,16 @@
                                     Xem
                                 </a>
 
+                                @* 👉 NÚT MƯỢN SÁCH CHỈ DÀNH CHO MEMBER *@
+                                @if (role == 3)
+                                {
+                                    <a asp-action="Details"
+                                       asp-route-id="@item.BookId"
+                                       class="btn btn-sm btn-success me-1">
+                                        Mượn Sách
+                                    </a>
+                                }
+
                                 @if (role != 3)
                                 {
                                     <a asp-action="Delete"
