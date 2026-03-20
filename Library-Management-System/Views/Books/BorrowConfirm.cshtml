@@ -1,0 +1,96 @@
+﻿@model BusinessObjects.Entities.Book
+
+@{
+    ViewData["Title"] = "Xác Nhận Mượn Sách";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow-lg border-0">
+
+        <!-- HEADER -->
+        <div class="card-header bg-warning text-dark">
+            <h4 class="mb-0">⚠️ Xác Nhận Mượn Sách</h4>
+        </div>
+
+        <!-- BODY -->
+        <div class="card-body">
+
+            <div class="row align-items-start">
+
+                <!-- ẢNH -->
+                <div class="col-md-4 text-center">
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <img src="@Model.ImageUrl"
+                             class="img-fluid rounded shadow"
+                             style="max-height:280px; object-fit:cover;" />
+                    }
+                    else
+                    {
+                        <div class="border rounded p-5 text-muted">
+                            Không có ảnh
+                        </div>
+                    }
+                </div>
+
+                <!-- THÔNG TIN (MỖI CÁI 1 KHUNG) -->
+                <div class="col-md-8">
+
+                    <h3 class="text-primary mb-3">
+                        📘 @Model.Title
+                    </h3>
+
+                    <div class="card mb-2 p-2 shadow-sm">
+                        <strong>ISBN:</strong> @Model.Isbn
+                    </div>
+
+                    <div class="card mb-2 p-2 shadow-sm">
+                        <strong>Nhà xuất bản:</strong> @Model.Publisher
+                    </div>
+
+                    <div class="card mb-2 p-2 shadow-sm">
+                        <strong>Năm:</strong> @Model.PublishedYear
+                    </div>
+
+                    <div class="card mb-2 p-2 shadow-sm">
+                        <strong>Thể loại:</strong>
+                        <span class="badge bg-primary">
+                            @(Model.Category != null ? Model.Category.CategoryName : "Không có")
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <hr />
+
+            <!-- CONFIRM TEXT -->
+            <div class="text-center mt-4">
+                <h4 class="text-danger fw-bold">
+                    Bạn Có Chắc Chắn Muốn Mượn Sách?
+                </h4>
+            </div>
+
+        </div>
+
+        <!-- FOOTER -->
+        <div class="card-footer text-center">
+
+            <a href="#"
+               class="btn btn-success px-4 me-2 shadow-sm">
+                ✔ Xác Nhận
+            </a>
+
+            <a asp-action="Details"
+               asp-route-id="@Model.BookId"
+               class="btn btn-outline-secondary px-4">
+                ❌ Từ Chối
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
