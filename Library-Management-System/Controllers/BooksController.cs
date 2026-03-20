@@ -251,7 +251,7 @@ namespace Library_Management_System.Controllers
             var check = EnsureLogin();
             if (check != null) return check;
 
-            if (IsMember())
+            if (!IsMember())
                 return RedirectToAction(nameof(Index));
 
             var book = _books.GetBookById(id);
