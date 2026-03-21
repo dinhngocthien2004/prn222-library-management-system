@@ -14,5 +14,7 @@ namespace Services
         void SaveBook(Book p);
         void UpdateBook(Book p);
         void DeleteBook(Book p);
+        void AddBookCopy(BookCopy copy);
+        void DeleteBookCopy(BookCopy copy);
     }
 }

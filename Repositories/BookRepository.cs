@@ -18,5 +18,13 @@ namespace Repositories
         public void SaveBook(Book p) => _dao.Create(p);
         public void UpdateBook(Book p) => _dao.Update(p);
         public void DeleteBook(Book p) => _dao.Delete(p);
+        public void AddBookCopy(BookCopy copy)
+        {
+            _dao.AddBookCopy(copy);
+        }
+        public void DeleteBookCopy(BookCopy copy)
+        {
+            _dao.DeleteBookCopy(copy);
+        }
     }
 }

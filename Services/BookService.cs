@@ -36,6 +36,16 @@ namespace Services
         {
             _repo.DeleteBook(book);
         }
+
+        public void AddBookCopy(BookCopy copy)
+        {
+            _repo.AddBookCopy(copy);
+        }
+
+        public void DeleteBookCopy(BookCopy copy)
+        {
+            _repo.DeleteBookCopy(copy);
+        }
     }
 
 }
