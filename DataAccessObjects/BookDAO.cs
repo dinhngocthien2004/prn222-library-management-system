@@ -8,7 +8,8 @@ namespace DataAccessObjects
     public class BookDAO
     {
         private readonly LibraryManagementDbContext _ctx;
-    public BookDAO(LibraryManagementDbContext ctx)
+
+        public BookDAO(LibraryManagementDbContext ctx)
         {
             _ctx = ctx;
         }
@@ -18,6 +19,7 @@ namespace DataAccessObjects
             return _ctx.Books
                 .AsNoTracking()
                 .Include(b => b.Category)
+                .Include(b => b.BookCopies) // 🔥 THÊM DÒNG NÀY
                 .ToList();
         }
 
@@ -26,6 +28,7 @@ namespace DataAccessObjects
             return _ctx.Books
                 .AsNoTracking()
                 .Include(b => b.Category)
+                .Include(b => b.BookCopies) // 🔥 thêm luôn cho chắc
                 .FirstOrDefault(b => b.BookId == id);
         }
 
@@ -46,6 +49,17 @@ namespace DataAccessObjects
             _ctx.Books.Remove(book);
             _ctx.SaveChanges();
         }
-    }
 
+        public void AddBookCopy(BookCopy copy)
+        {
+            _ctx.BookCopies.Add(copy);
+            _ctx.SaveChanges();
+        }
+
+        public void DeleteBookCopy(BookCopy copy)
+        {
+            _ctx.BookCopies.Remove(copy);
+            _ctx.SaveChanges();
+        }
+    }
 }

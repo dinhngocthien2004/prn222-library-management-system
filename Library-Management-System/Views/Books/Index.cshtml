@@ -76,6 +76,7 @@
                         <th>Mô Tả</th>
                         <th>Ảnh</th>
                         <th>Ngày Thêm</th>
+                        <th>Số Lượng</th>
                         <th style="width:200px;">Thao Tác</th>
                     </tr>
                 </thead>
@@ -117,6 +118,8 @@
                                     ? item.DateAdded.Value.ToString("dd/MM/yyyy")
                                     : "")
                             </td>
+
+                            <td>@item.BookCopies.Count()</td>
 
                             <td>
 

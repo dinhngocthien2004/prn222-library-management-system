@@ -71,6 +71,12 @@
                         <span asp-validation-for="DateAdded" class="text-danger"></span>
                     </div>
 
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Số lượng</label>
+                        <input type="number" name="Quantity" class="form-control"
+                               value="@Model.BookCopies.Count()" min="1" />
+                    </div>
+
                 </div>
 
                 <div class="text-end mt-3">

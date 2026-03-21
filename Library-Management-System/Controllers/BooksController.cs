@@ -38,7 +38,7 @@ namespace Library_Management_System.Controllers
         }
 
         // ================================
-        // LIST BOOK + SEARCH + FILTER + PAGINATION
+        // LIST BOOK
         // ================================
         public IActionResult Index(string keyword, int? year, int? categoryId, int page = 1)
         {
@@ -47,7 +47,6 @@ namespace Library_Management_System.Controllers
 
             var books = _books.GetBooks();
 
-            // SEARCH
             if (!string.IsNullOrEmpty(keyword))
             {
                 keyword = keyword.ToLower();
@@ -57,23 +56,20 @@ namespace Library_Management_System.Controllers
                     || (b.Publisher != null && b.Publisher.ToLower().Contains(keyword))
                     || (b.Description != null && b.Description.ToLower().Contains(keyword))
                     || (b.Isbn != null && b.Isbn.ToLower().Contains(keyword))
-                    || b.PublishedYear.ToString().Contains(keyword)
+                    || (b.PublishedYear.ToString().Contains(keyword))
                 );
             }
 
-            // FILTER YEAR
             if (year.HasValue)
             {
                 books = books.Where(b => b.PublishedYear == year.Value);
             }
 
-            // FILTER CATEGORY
             if (categoryId.HasValue)
             {
                 books = books.Where(b => b.CategoryId == categoryId.Value);
             }
 
-            // CATEGORY DROPDOWN
             ViewBag.Categories = new SelectList(
                 _categories.GetCategories(),
                 "CategoryId",
@@ -84,11 +80,8 @@ namespace Library_Management_System.Controllers
             ViewBag.Year = year;
             ViewBag.CategoryId = categoryId;
 
-            // PAGINATION
             int pageSize = 7;
-
             int totalBooks = books.Count();
-
             int totalPages = (int)Math.Ceiling((double)totalBooks / pageSize);
 
             var pagedBooks = books
@@ -119,21 +112,6 @@ namespace Library_Management_System.Controllers
             return View(book);
         }
 
-        public IActionResult BorrowConfirm(int id)
-        {
-            var check = EnsureLogin();
-            if (check != null) return check;
-
-            var book = _books.GetBookById(id);
-
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return View(book);
-        }
-
         // ================================
         // CREATE
         // ================================
@@ -156,13 +134,21 @@ namespace Library_Management_System.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl")] Book book)
+        public IActionResult Create(
+            [Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl")] Book book,
+            int Quantity
+        )
         {
             var check = EnsureLogin();
             if (check != null) return check;
 
             if (IsMember())
                 return RedirectToAction(nameof(Index));
+
+            if (Quantity <= 0)
+            {
+                ModelState.AddModelError("", "Số lượng phải lớn hơn 0");
+            }
 
             if (!ModelState.IsValid)
             {
@@ -177,8 +163,18 @@ namespace Library_Management_System.Controllers
             }
 
             book.DateAdded = DateTime.Now;
-
             _books.SaveBook(book);
+
+            // Tạo BookCopy
+            for (int i = 0; i < Quantity; i++)
+            {
+                _books.AddBookCopy(new BookCopy
+                {
+                    BookId = book.BookId,
+                    Barcode = Guid.NewGuid().ToString(),
+                    Status = 1
+                });
+            }
 
             return RedirectToAction(nameof(Index));
         }
@@ -212,7 +208,11 @@ namespace Library_Management_System.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("BookId,Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book book)
+        public IActionResult Edit(
+            int id,
+            [Bind("BookId,Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book book,
+            int Quantity // 🔥 thêm
+        )
         {
             var check = EnsureLogin();
             if (check != null) return check;
@@ -221,6 +221,42 @@ namespace Library_Management_System.Controllers
                 return RedirectToAction(nameof(Index));
 
             if (id != book.BookId) return NotFound();
+
+            var existingBook = _books.GetBookById(id);
+
+            int currentQuantity = existingBook.BookCopies.Count;
+
+            // 🔼 TĂNG
+            if (Quantity > currentQuantity)
+            {
+                int add = Quantity - currentQuantity;
+
+                for (int i = 0; i < add; i++)
+                {
+                    _books.AddBookCopy(new BookCopy
+                    {
+                        BookId = id,
+                        Barcode = Guid.NewGuid().ToString(),
+                        Status = 1
+                    });
+                }
+            }
+
+            // 🔽 GIẢM
+            else if (Quantity < currentQuantity)
+            {
+                int remove = currentQuantity - Quantity;
+
+                var removable = existingBook.BookCopies
+                    .Where(c => c.Status == 1)
+                    .Take(remove)
+                    .ToList();
+
+                foreach (var copy in removable)
+                {
+                    _books.DeleteBookCopy(copy);
+                }
+            }
 
             if (!ModelState.IsValid)
             {
@@ -266,7 +302,7 @@ namespace Library_Management_System.Controllers
             var check = EnsureLogin();
             if (check != null) return check;
 
-            if (!IsMember())
+            if (IsMember())
                 return RedirectToAction(nameof(Index));
 
             var book = _books.GetBookById(id);

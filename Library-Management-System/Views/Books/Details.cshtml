@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Chi Tiết Sách";
 
-    // Lấy RoleID từ Session
     var role = Context.Session.GetInt32("RoleID");
 }
 
@@ -34,45 +33,51 @@
 
                     <h2 class="mb-3">@Model.Title</h2>
 
-                    <div class="card mb-2 p-2">
-                        <strong>ISBN:</strong> @Model.Isbn
+                    <div class="card mb-2 p-2 d-flex">
+                        <strong style="min-width:150px;">ISBN:</strong>
+                        <span>@Model.Isbn</span>
                     </div>
 
-                    <div class="card mb-2 p-2">
-                        <strong>Nhà xuất bản:</strong> @Model.Publisher
+                    <div class="card mb-2 p-2 d-flex">
+                        <strong style="min-width:150px;">Nhà xuất bản:</strong>
+                        <span>@Model.Publisher</span>
                     </div>
 
-                    <div class="card mb-2 p-2">
-                        <strong>Năm phát hành:</strong> @Model.PublishedYear
+                    <div class="card mb-2 p-2 d-flex">
+                        <strong style="min-width:150px;">Năm phát hành:</strong>
+                        <span>@Model.PublishedYear</span>
                     </div>
 
-                    <div class="card mb-2 p-2">
-                        <strong>Ngày thêm:</strong>
-                        @(Model.DateAdded != null
-                            ? Model.DateAdded.Value.ToString("dd/MM/yyyy HH:mm")
-                            : "")
+                    <div class="card mb-2 p-2 d-flex">
+                        <strong style="min-width:150px;">Ngày thêm:</strong>
+                        <span>
+                            @(Model.DateAdded != null
+                                ? Model.DateAdded.Value.ToString("dd/MM/yyyy HH:mm")
+                                : "")
+                        </span>
                     </div>
 
-                    <div class="card mb-2 p-2">
-                        <strong>Thể loại:</strong>
+                    <div class="card mb-2 p-2 d-flex">
+                        <strong style="min-width:150px;">Thể loại:</strong>
 
                         @if (Model.Category != null)
                         {
-                            <span class="badge bg-primary">
-                                @Model.Category.CategoryName
-                            </span>
+                            <span>@Model.Category.CategoryName</span>
                         }
                         else
                         {
-                            <span class="badge bg-secondary">
-                                Chưa có thể loại
-                            </span>
+                            <span class="text-muted">Chưa có thể loại</span>
                         }
+                    </div>
+
+                    <div class="card mb-2 p-2 d-flex">
+                        <strong style="min-width:150px;">Số lượng:</strong>
+                        <span class="fw-bold">@Model.BookCopies.Count()</span>
                     </div>
 
                     <div class="card p-2">
                         <strong>Mô tả:</strong>
-                        <p class="mt-2">
+                        <p class="mt-2 mb-0">
                             @(string.IsNullOrEmpty(Model.Description)
                                 ? "Chưa có mô tả."
                                 : Model.Description)
@@ -92,7 +97,6 @@
                 ← Quay lại
             </a>
 
-            @* 👉 MEMBER: HIỆN NÚT MƯỢN SÁCH *@
             @if (role == 3)
             {
                 <a asp-action="BorrowConfirm"
@@ -102,7 +106,6 @@
                 </a>
             }
 
-            @* 👉 ADMIN/STAFF: HIỆN CHỈNH SỬA *@
             @if (role != 3)
             {
                 <a asp-action="Edit"
