@@ -9,16 +9,22 @@ namespace Library_Management_System.Controllers
     {
         private readonly IBookService _books;
         private readonly ICategoryService _categories;
+        private readonly ILoanService _loans;
+        private readonly IBookCopyService _bookCopies;
 
-        public BooksController(IBookService books, ICategoryService categories)
+        public BooksController(
+            IBookService books,
+            ICategoryService categories,
+            ILoanService loans,
+            IBookCopyService bookCopies
+        )
         {
             _books = books;
             _categories = categories;
+            _loans = loans;
+            _bookCopies = bookCopies;
         }
 
-        // ================================
-        // CHECK LOGIN
-        // ================================
         private IActionResult EnsureLogin()
         {
             if (HttpContext.Session.GetString("UserId") == null)
@@ -28,17 +34,20 @@ namespace Library_Management_System.Controllers
             return null;
         }
 
-        // ================================
-        // CHECK ROLE
-        // ================================
         private bool IsMember()
         {
             var role = HttpContext.Session.GetInt32("RoleID");
             return role == 3;
         }
 
+        private bool IsAdminOrLibrarian()
+        {
+            var role = HttpContext.Session.GetInt32("RoleID");
+            return role == 1 || role == 2;
+        }
+
         // ================================
-        // LIST BOOK
+        // 📚 INDEX
         // ================================
         public IActionResult Index(string keyword, int? year, int? categoryId, int page = 1)
         {
@@ -61,24 +70,16 @@ namespace Library_Management_System.Controllers
             }
 
             if (year.HasValue)
-            {
                 books = books.Where(b => b.PublishedYear == year.Value);
-            }
 
             if (categoryId.HasValue)
-            {
                 books = books.Where(b => b.CategoryId == categoryId.Value);
-            }
 
             ViewBag.Categories = new SelectList(
                 _categories.GetCategories(),
                 "CategoryId",
                 "CategoryName"
             );
-
-            ViewBag.Keyword = keyword;
-            ViewBag.Year = year;
-            ViewBag.CategoryId = categoryId;
 
             int pageSize = 7;
             int totalBooks = books.Count();
@@ -96,7 +97,7 @@ namespace Library_Management_System.Controllers
         }
 
         // ================================
-        // DETAILS
+        // 🔍 DETAILS
         // ================================
         public IActionResult Details(int? id)
         {
@@ -113,7 +114,7 @@ namespace Library_Management_System.Controllers
         }
 
         // ================================
-        // CREATE
+        // ➕ CREATE (GET)
         // ================================
         public IActionResult Create()
         {
@@ -123,7 +124,7 @@ namespace Library_Management_System.Controllers
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
-            ViewBag.CategoryId = new SelectList(
+            ViewBag.Categories = new SelectList(
                 _categories.GetCategories(),
                 "CategoryId",
                 "CategoryName"
@@ -132,12 +133,12 @@ namespace Library_Management_System.Controllers
             return View();
         }
 
+        // ================================
+        // ➕ CREATE (POST)
+        // ================================
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(
-            [Bind("Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl")] Book book,
-            int Quantity
-        )
+        public IActionResult Create(Book book, int Quantity)
         {
             var check = EnsureLogin();
             if (check != null) return check;
@@ -145,58 +146,27 @@ namespace Library_Management_System.Controllers
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
-            if (Quantity <= 0)
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Số lượng phải lớn hơn 0");
-            }
+                book.DateAdded = DateTime.Now;
 
-            if (!ModelState.IsValid)
-            {
-                ViewBag.CategoryId = new SelectList(
-                    _categories.GetCategories(),
-                    "CategoryId",
-                    "CategoryName",
-                    book.CategoryId
-                );
+                _books.SaveBook(book);
 
-                return View(book);
-            }
-
-            book.DateAdded = DateTime.Now;
-            _books.SaveBook(book);
-
-            // Tạo BookCopy
-            for (int i = 0; i < Quantity; i++)
-            {
-                _books.AddBookCopy(new BookCopy
+                // tạo bản copy
+                for (int i = 0; i < Quantity; i++)
                 {
-                    BookId = book.BookId,
-                    Barcode = Guid.NewGuid().ToString(),
-                    Status = 1
-                });
+                    _bookCopies.AddBookCopy(new BookCopy
+                    {
+                        BookId = book.BookId,
+                        IsAvailable = true
+                    });
+                }
+
+                return RedirectToAction(nameof(Index));
             }
 
-            return RedirectToAction(nameof(Index));
-        }
-
-        // ================================
-        // EDIT
-        // ================================
-        public IActionResult Edit(int? id)
-        {
-            var check = EnsureLogin();
-            if (check != null) return check;
-
-            if (IsMember())
-                return RedirectToAction(nameof(Index));
-
-            if (id == null) return NotFound();
-
-            var book = _books.GetBookById(id.Value);
-
-            if (book == null) return NotFound();
-
-            ViewBag.CategoryId = new SelectList(
+            // 🔥 FIX: load lại dropdown khi lỗi
+            ViewBag.Categories = new SelectList(
                 _categories.GetCategories(),
                 "CategoryId",
                 "CategoryName",
@@ -206,95 +176,89 @@ namespace Library_Management_System.Controllers
             return View(book);
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(
-            int id,
-            [Bind("BookId,Title,Isbn,Publisher,CategoryId,PublishedYear,Description,ImageUrl,DateAdded")] Book book,
-            int Quantity // 🔥 thêm
-        )
+        // ================================
+        // ✏️ EDIT (GET)
+        // ================================
+        public IActionResult Edit(int? id)
         {
             var check = EnsureLogin();
             if (check != null) return check;
 
-            if (IsMember())
-                return RedirectToAction(nameof(Index));
-
-            if (id != book.BookId) return NotFound();
-
-            var existingBook = _books.GetBookById(id);
-
-            int currentQuantity = existingBook.BookCopies.Count;
-
-            // 🔼 TĂNG
-            if (Quantity > currentQuantity)
-            {
-                int add = Quantity - currentQuantity;
-
-                for (int i = 0; i < add; i++)
-                {
-                    _books.AddBookCopy(new BookCopy
-                    {
-                        BookId = id,
-                        Barcode = Guid.NewGuid().ToString(),
-                        Status = 1
-                    });
-                }
-            }
-
-            // 🔽 GIẢM
-            else if (Quantity < currentQuantity)
-            {
-                int remove = currentQuantity - Quantity;
-
-                var removable = existingBook.BookCopies
-                    .Where(c => c.Status == 1)
-                    .Take(remove)
-                    .ToList();
-
-                foreach (var copy in removable)
-                {
-                    _books.DeleteBookCopy(copy);
-                }
-            }
-
-            if (!ModelState.IsValid)
-            {
-                ViewBag.CategoryId = new SelectList(
-                    _categories.GetCategories(),
-                    "CategoryId",
-                    "CategoryName",
-                    book.CategoryId
-                );
-
-                return View(book);
-            }
-
-            _books.UpdateBook(book);
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        // ================================
-        // DELETE
-        // ================================
-        public IActionResult Delete(int? id)
-        {
-            var check = EnsureLogin();
-            if (check != null) return check;
-
+            // ❌ CHẶN MEMBER
             if (IsMember())
                 return RedirectToAction(nameof(Index));
 
             if (id == null) return NotFound();
 
             var book = _books.GetBookById(id.Value);
+            if (book == null) return NotFound();
 
+            ViewBag.Categories = new SelectList(
+                _categories.GetCategories(),
+                "CategoryId",
+                "CategoryName",
+                book.CategoryId
+            );
+
+            return View(book);
+        }
+
+        // ================================
+        // ✏️ EDIT (POST)
+        // ================================
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Book book)
+        {
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            // ❌ CHẶN MEMBER
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
+            if (id != book.BookId) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                _books.UpdateBook(book);
+                return RedirectToAction(nameof(Index));
+            }
+
+            // 🔥 FIX: LOAD LẠI DROPDOWN
+            ViewBag.Categories = new SelectList(
+                _categories.GetCategories(),
+                "CategoryId",
+                "CategoryName",
+                book.CategoryId
+            );
+
+            return View(book);
+        }
+
+        // ================================
+        // 🗑 DELETE (GET)
+        // ================================
+        public IActionResult Delete(int? id)
+        {
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            // ❌ CHẶN MEMBER
+            if (IsMember())
+                return RedirectToAction(nameof(Index));
+
+            if (id == null) return NotFound();
+
+            var book = _books.GetBookById(id.Value);
             if (book == null) return NotFound();
 
             return View(book);
         }
 
+        // ================================
+        // 🗑 DELETE (POST)
+        // ================================
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
@@ -306,13 +270,93 @@ namespace Library_Management_System.Controllers
                 return RedirectToAction(nameof(Index));
 
             var book = _books.GetBookById(id);
+            if (book == null) return NotFound();
 
-            if (book != null)
-            {
-                _books.DeleteBook(book);
-            }
+            _books.DeleteBook(book);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        // ================================
+        // 📥 BORROW CONFIRM
+        // ================================
+        public IActionResult BorrowConfirm(int id)
+        {
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            // 🔥 CHỈ MEMBER MỚI ĐƯỢC MƯỢN
+            if (!IsMember())
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            var book = _books.GetBookById(id);
+
+            if (book == null) return NotFound();
+
+            return View(book);
+        }
+
+        // ================================
+        // 📥 BORROW
+        // ================================
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Borrow(int bookId, int quantity)
+        {
+            var check = EnsureLogin();
+            if (check != null) return check;
+
+            if (!IsMember())
+                return RedirectToAction(nameof(Index));
+
+            int userId = int.Parse(HttpContext.Session.GetString("UserId"));
+
+            if (quantity < 1 || quantity > 10)
+            {
+                ViewBag.Error = "Chỉ được mượn từ 1 đến 10 cuốn!";
+                var book = _books.GetBookById(bookId);
+                return View("BorrowConfirm", book);
+            }
+
+            int current = _loans.GetBorrowedQuantity(userId, bookId);
+
+            if (current + quantity > 10)
+            {
+                ViewBag.Error = $"Bạn đã mượn {current} cuốn. Tối đa là 10!";
+                var book = _books.GetBookById(bookId);
+                return View("BorrowConfirm", book);
+            }
+
+            var availableCopies = _bookCopies
+                .GetAvailableCopies(bookId)
+                .Take(quantity)
+                .ToList();
+
+            if (availableCopies.Count < quantity)
+            {
+                ViewBag.Error = "Không đủ sách trong kho!";
+                var book = _books.GetBookById(bookId);
+                return View("BorrowConfirm", book);
+            }
+
+            foreach (var copy in availableCopies)
+            {
+                _loans.SaveLoan(new Loan
+                {
+                    UserId = userId,
+                    CopyId = copy.CopyId,
+                    LoanDate = DateTime.Now,
+                    DueDate = DateTime.Now.AddDays(7),
+                    IsReturned = false
+                });
+
+                copy.IsAvailable = false;
+                _bookCopies.Update(copy);
+            }
+
+            return View("BorrowSuccess");
         }
     }
 }

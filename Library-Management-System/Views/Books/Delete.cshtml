@@ -74,7 +74,8 @@
 
             <div class="text-end mt-4">
 
-                <form asp-action="Delete">
+                <form asp-action="Delete" asp-route-id="@Model.BookId">
+              
                     <input type="hidden" asp-for="BookId" />
 
                     <a asp-action="Index" class="btn btn-secondary px-4 me-2">

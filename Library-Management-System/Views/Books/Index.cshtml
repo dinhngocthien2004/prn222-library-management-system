@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Danh Sách Sách";
-    var role = Context.Session.GetInt32("RoleID");
+    var role = Context.Session.GetInt32("RoleID") ?? 0; // 🔥 FIX NULL
 }
 
 <div class="container mt-4">
@@ -11,7 +11,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h2 class="text-primary">📚 Danh Sách Sách</h2>
 
-        @if (role != 3)
+        @if (role == 1 || role == 2) // 🔥 CHỈ ADMIN + LIBRARIAN
         {
             <a asp-action="Create" class="btn btn-success">
                 ➕ Thêm Sách Mới
@@ -123,9 +123,11 @@
 
                             <td>
 
-                                @if (role != 3)
+                                @* 🔥 EDIT: chỉ Admin + Librarian *@
+                                @if (role == 1 || role == 2)
                                 {
-                                    <a asp-action="Edit"
+                                    <a asp-controller="Books"
+                                       asp-action="Edit"
                                        asp-route-id="@item.BookId"
                                        class="btn btn-sm btn-warning me-1">
                                         Sửa
@@ -138,19 +140,21 @@
                                     Xem
                                 </a>
 
-                                @* 👉 NÚT MƯỢN SÁCH CHỈ DÀNH CHO MEMBER *@
+                                @* 🔥 MEMBER: chỉ được mượn *@
                                 @if (role == 3)
                                 {
-                                    <a asp-action="Details"
+                                    <a asp-action="BorrowConfirm"
                                        asp-route-id="@item.BookId"
                                        class="btn btn-sm btn-success me-1">
                                         Mượn Sách
                                     </a>
                                 }
 
-                                @if (role != 3)
+                                @* 🔥 DELETE: chỉ Admin + Librarian *@
+                                @if (role == 1 || role == 2)
                                 {
-                                    <a asp-action="Delete"
+                                    <a asp-controller="Books"
+                                       asp-action="Delete"
                                        asp-route-id="@item.BookId"
                                        class="btn btn-sm btn-danger">
                                         Xóa
@@ -169,14 +173,10 @@
             <!-- PAGINATION + BACK BUTTON -->
             <div class="position-relative mt-3">
 
-                <!-- Nút quay lại (bên trái) -->
-                <a asp-controller="Home"
-                   asp-action="Index"
-                   class="btn btn-secondary position-absolute start-0">
+                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary mb-3">
                     ← Quay Lại Trang Chủ
                 </a>
 
-                <!-- Phân trang (ở giữa) -->
                 <div class="text-center">
 
                     @if (ViewBag.TotalPages > 1)

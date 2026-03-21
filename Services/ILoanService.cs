@@ -16,5 +16,6 @@ namespace Services
         void DeleteLoan(Loan p);
         List<Loan> GetHistory();
         void ReturnBook(int id);
+        int GetBorrowedQuantity(int userId, int bookId);
     }
 }
