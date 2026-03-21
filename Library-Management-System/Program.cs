@@ -1,5 +1,4 @@
-﻿
-using DataAccessObjects;
+﻿using DataAccessObjects;
 using Microsoft.EntityFrameworkCore;
 using Repositories;
 using Services;
@@ -12,10 +11,12 @@ namespace Library_Management_System
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // ================== BẮT ĐẦU CẤU HÌNH DỊCH VỤ ==================
+            // ================== SERVICES ==================
 
-            // 1. Thêm dịch vụ MVC (Controllers và Views)
             builder.Services.AddControllersWithViews();
+
+            // 🔥 THÊM CACHE (BẮT BUỘC CHO SESSION)
+            builder.Services.AddDistributedMemoryCache();
 
             builder.Services.AddSession(options =>
             {
@@ -24,20 +25,14 @@ namespace Library_Management_System
                 options.Cookie.IsEssential = true;
             });
 
-            // 2. Đọc chuỗi kết nối
-            var connectionString = builder.Configuration.GetConnectionString("LibraryConn");
-
-            // 3. Đăng ký Entity Framework Core (Kết nối SQL)       
+            // 🔥 DB
             builder.Services.AddDbContext<LibraryManagementDbContext>(options =>
-            options.UseSqlServer(
-            builder.Configuration.GetConnectionString("DefaultConnection"),
-            b => b.MigrationsAssembly("DataAccessObjects")));
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("DataAccessObjects"))
+            );
 
-            // 4. Đăng ký các lớp DAL và BLL (Dependency Injection)
-            // Mỗi khi tạo thêm Repository hay Service mới, bạn phải khai báo thêm ở đây
-            //builder.Services.AddScoped<BookRepository>();
-            //builder.Services.AddScoped<BookService>();
-
+            // ================== DAO ==================
             builder.Services.AddScoped<BookDAO>();
             builder.Services.AddScoped<CategoryDAO>();
             builder.Services.AddScoped<LoanDAO>();
@@ -45,6 +40,7 @@ namespace Library_Management_System
             builder.Services.AddScoped<AccountDAO>();
             builder.Services.AddScoped<ReaderDAO>();
 
+            // ================== REPOSITORY ==================
             builder.Services.AddScoped<IBookRepository, BookRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -52,6 +48,7 @@ namespace Library_Management_System
             builder.Services.AddScoped<IBookCopyRepository, BookCopyRepository>();
             builder.Services.AddScoped<IReaderRepository, ReaderRepository>();
 
+            // ================== SERVICE ==================
             builder.Services.AddScoped<IBookService, BookService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IUserService, UserService>();
@@ -59,15 +56,10 @@ namespace Library_Management_System
             builder.Services.AddScoped<IBookCopyService, BookCopyService>();
             builder.Services.AddScoped<IReaderService, ReaderService>();
 
-            builder.Services.AddScoped<IUserRepository, UserRepository>();
-            builder.Services.AddScoped<IUserService, UserService>();
+            // ================== BUILD ==================
+            var app = builder.Build();
 
-
-            // ================== KẾT THÚC CẤU HÌNH DỊCH VỤ ==================
-
-            var app = builder.Build(); // <-- Dòng này chốt sổ, không viết code đăng ký dịch vụ sau dòng này
-
-            // Cấu hình HTTP request pipeline.
+            // ================== PIPELINE ==================
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
@@ -78,15 +70,17 @@ namespace Library_Management_System
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // 🔥 QUAN TRỌNG: SESSION PHẢI TRƯỚC AUTH
             app.UseSession();
+
             app.UseAuthorization();
 
             app.MapControllerRoute(
-            name: "default",
-            pattern: "{controller=Account}/{action=Login}/{id?}");
+                name: "default",
+                pattern: "{controller=Account}/{action=Login}/{id?}");
 
             app.Run();
-           
         }
     }
 }

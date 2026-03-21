@@ -17,9 +17,14 @@ namespace Repositories
         {
             _dao = dao;
             _context = context;
-        } 
+        }
 
-        public IEnumerable<Loan> GetLoans() => _dao.GetAll();
+        public IEnumerable<Loan> GetLoans()
+        {
+            return _context.Loans
+                .Include(l => l.Copy)
+                .ToList();
+        }
         public Loan? GetLoanById(int id) => _dao.GetById(id);
         public void SaveLoan(Loan p) => _dao.Create(p);
         public void UpdateLoan(Loan p) => _dao.Update(p);

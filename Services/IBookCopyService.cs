@@ -9,7 +9,9 @@ namespace Services
 {
     public interface IBookCopyService
     {
-        IEnumerable<BookCopy> GetBookCopies();
-        BookCopy? GetBookCopyById(int id);
+        List<BookCopy> GetBookCopies(); // 🔥 thêm
+        List<BookCopy> GetAvailableCopies(int bookId);
+        void Update(BookCopy copy);
+        void AddBookCopy(BookCopy copy);
     }
 }

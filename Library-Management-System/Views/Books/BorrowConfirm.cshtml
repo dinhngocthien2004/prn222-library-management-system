@@ -34,7 +34,7 @@
                     }
                 </div>
 
-                <!-- THÔNG TIN (MỖI CÁI 1 KHUNG) -->
+                <!-- THÔNG TIN -->
                 <div class="col-md-8">
 
                     <h3 class="text-primary mb-3">
@@ -54,10 +54,8 @@
                     </div>
 
                     <div class="card mb-2 p-2 shadow-sm">
-                        <strong>Thể loại:</strong>
-                        <span class="badge bg-primary">
-                            @(Model.Category != null ? Model.Category.CategoryName : "Không có")
-                        </span>
+                        <strong>Thể loại:</strong>                
+                            @(Model.Category != null ? Model.Category.CategoryName : "Không có")                        
                     </div>
 
                 </div>
@@ -78,16 +76,47 @@
         <!-- FOOTER -->
         <div class="card-footer text-center">
 
-            <a href="#"
-               class="btn btn-success px-4 me-2 shadow-sm">
-                ✔ Xác Nhận
-            </a>
+            <!-- HIỂN THỊ LỖI -->
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">
+                    @ViewBag.Error
+                </div>
+            }
 
-            <a asp-action="Details"
-               asp-route-id="@Model.BookId"
-               class="btn btn-outline-secondary px-4">
-                ❌ Từ Chối
-            </a>
+            <form asp-action="Borrow" method="post">
+
+                @Html.AntiForgeryToken()
+
+                <!-- gửi id sách -->
+                <input type="hidden" name="bookId" value="@Model.BookId" />
+
+                <!-- nhập số lượng -->
+                <div class="mb-3 mt-3">
+                    <label class="fw-bold fs-5">Số Lượng Muốn Mượn:</label>
+
+                    <input type="number"
+                           name="quantity"
+                           class="form-control w-25 mx-auto text-center"
+                           value="1"
+                           min="1"
+                           max="10"
+                           required />
+                </div>
+
+                <!-- buttons -->
+                <button type="submit"
+                        class="btn btn-success px-4 me-2 shadow-sm">
+                    ✔ Xác Nhận
+                </button>
+
+                <a asp-action="Details"
+                   asp-route-id="@Model.BookId"
+                   class="btn btn-outline-secondary px-4">
+                    ❌ Từ Chối
+                </a>
+
+            </form>
 
         </div>
 

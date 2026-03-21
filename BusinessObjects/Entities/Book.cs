@@ -32,5 +32,5 @@ public partial class Book
 
     public virtual ICollection<Author> Authors { get; set; } = new List<Author>();
 
-    public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
+   public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
 }

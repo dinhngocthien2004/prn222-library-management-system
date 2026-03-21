@@ -32,6 +32,15 @@ namespace Services
             _repo.UpdateLoan(loan);
         }
 
+        public int GetBorrowedQuantity(int userId, int bookId)
+        {
+            return _repo.GetLoans()
+                .Where(l => l.UserId == userId
+                         && l.Copy.BookId == bookId
+                         && l.IsReturned == false)
+                .Count();
+        }
+
 
     }
 }

@@ -11,5 +11,8 @@ namespace Repositories
     {
         IEnumerable<BookCopy> GetBookCopies();
         BookCopy? GetBookCopyById(int id);
+        List<BookCopy> GetAll();   // 🔥 thêm
+        void Update(BookCopy copy); // 🔥 thêm
+        void AddBookCopy(BookCopy copy);
     }
 }
