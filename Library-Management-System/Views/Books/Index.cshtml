@@ -119,7 +119,7 @@
                                     : "")
                             </td>
 
-                            <td>@item.BookCopies.Count()</td>
+                            <td>@item.BookCopies.Count(c => c.IsAvailable)</td>
 
                             <td>
 

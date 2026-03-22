@@ -1,6 +1,8 @@
 ﻿using BusinessObjects.Entities;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using DataAccessObjects;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Services;
 
 namespace Library_Management_System.Controllers
@@ -11,18 +13,20 @@ namespace Library_Management_System.Controllers
         private readonly ICategoryService _categories;
         private readonly ILoanService _loans;
         private readonly IBookCopyService _bookCopies;
+        private readonly LibraryManagementDbContext _context;
 
         public BooksController(
             IBookService books,
             ICategoryService categories,
             ILoanService loans,
-            IBookCopyService bookCopies
+            IBookCopyService bookCopies, LibraryManagementDbContext context
         )
         {
             _books = books;
             _categories = categories;
             _loans = loans;
             _bookCopies = bookCopies;
+            _context = context;
         }
 
         private IActionResult EnsureLogin()
@@ -49,6 +53,16 @@ namespace Library_Management_System.Controllers
         // ================================
         // 📚 INDEX
         // ================================
+        //public IActionResult Index()
+        //{
+        //    // Lấy tất cả sách mới nhất từ database
+        //    var books = _context.Books
+        //        .Include(b => b.Category)
+        //        .Include(b => b.BookCopies)
+        //        .ToList();
+
+        //    return View(books);
+        //}
         public IActionResult Index(string keyword, int? year, int? categoryId, int page = 1)
         {
             var check = EnsureLogin();
@@ -158,7 +172,8 @@ namespace Library_Management_System.Controllers
                     _bookCopies.AddBookCopy(new BookCopy
                     {
                         BookId = book.BookId,
-                        IsAvailable = true
+                        IsAvailable = true,
+                        Barcode = Guid.NewGuid().ToString() // 🔥 tạo barcode tự động, không null
                     });
                 }
 
@@ -280,6 +295,10 @@ namespace Library_Management_System.Controllers
         // ================================
         // 📥 BORROW CONFIRM
         // ================================
+        public IActionResult BorrowSuccess()
+        {
+            return View(); 
+        }
         public IActionResult BorrowConfirm(int id)
         {
             var check = EnsureLogin();
@@ -296,15 +315,14 @@ namespace Library_Management_System.Controllers
             if (book == null) return NotFound();
 
             return View(book);
-        }
+        }       
 
-        // ================================
-        // 📥 BORROW
-        // ================================
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Borrow(int bookId, int quantity)
         {
+            // Kiểm tra login
             var check = EnsureLogin();
             if (check != null) return check;
 
@@ -313,37 +331,48 @@ namespace Library_Management_System.Controllers
 
             int userId = int.Parse(HttpContext.Session.GetString("UserId"));
 
+            // Lấy Book từ cùng DbContext để EF track
+            var book = _context.Books
+                .Include(b => b.BookCopies) // lấy luôn BookCopies
+                .FirstOrDefault(b => b.BookId == bookId);
+
+            if (book == null) return NotFound();
+
+            // Kiểm tra số lượng muốn mượn
             if (quantity < 1 || quantity > 10)
             {
                 ViewBag.Error = "Chỉ được mượn từ 1 đến 10 cuốn!";
-                var book = _books.GetBookById(bookId);
                 return View("BorrowConfirm", book);
             }
 
-            int current = _loans.GetBorrowedQuantity(userId, bookId);
+            //// Lấy số lượng sách đã mượn của user
+            //int currentBorrowed = _context.Loans
+            //    .Count(l => l.UserId == userId && l.Copy.BookId == bookId && !l.IsReturned);
 
-            if (current + quantity > 10)
-            {
-                ViewBag.Error = $"Bạn đã mượn {current} cuốn. Tối đa là 10!";
-                var book = _books.GetBookById(bookId);
-                return View("BorrowConfirm", book);
-            }
+            //if (currentBorrowed + quantity > 10)
+            //{
+            //    ViewBag.Error = $"Bạn đã mượn {currentBorrowed} cuốn. Tối đa là 10!";
+            //    return View("BorrowConfirm", book);
+            //}
 
-            var availableCopies = _bookCopies
-                .GetAvailableCopies(bookId)
+            // Lấy các bản copy còn sẵn
+            var availableCopies = book.BookCopies
+                .Where(c => c.IsAvailable)
                 .Take(quantity)
                 .ToList();
 
             if (availableCopies.Count < quantity)
             {
                 ViewBag.Error = "Không đủ sách trong kho!";
-                var book = _books.GetBookById(bookId);
                 return View("BorrowConfirm", book);
             }
 
+            // ===========================
+            // Thêm Loan và đánh dấu copy đã mượn
+            // ===========================
             foreach (var copy in availableCopies)
             {
-                _loans.SaveLoan(new Loan
+                _context.Loans.Add(new Loan
                 {
                     UserId = userId,
                     CopyId = copy.CopyId,
@@ -352,11 +381,20 @@ namespace Library_Management_System.Controllers
                     IsReturned = false
                 });
 
-                copy.IsAvailable = false;
-                _bookCopies.Update(copy);
+                copy.IsAvailable = false; // EF track tự động
             }
 
-            return View("BorrowSuccess");
+            // ===========================
+            // Trừ số lượng sách
+            // ===========================
+            book.Quantity -= quantity;
+            if (book.Quantity < 0) book.Quantity = 0;
+
+            // Lưu tất cả 1 lần
+            _context.SaveChanges();
+
+            // Quay về Index để UI hiển thị số lượng mới
+            return RedirectToAction("BorrowSuccess");
         }
     }
 }

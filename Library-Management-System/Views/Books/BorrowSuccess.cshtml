@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Mượn sách thành công";
+}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 mx-auto" style="max-width:500px;">
+
+        <!-- HEADER -->
+        <div class="card-header bg-success text-white text-center">
+            <h3 class="mb-0">✔ Mượn Sách Thành Công!</h3>
+        </div>
+
+        <!-- BODY -->
+        <div class="card-body text-center">
+            <p class="fs-5">
+                Bạn đã mượn sách thành công. <br />
+                Vui lòng kiểm tra <strong>Danh sách sách đã mượn</strong> của bạn.
+            </p>
+
+            <img src="~/images/success.png" alt="Success" class="img-fluid mb-3" style="max-height:150px;" />
+
+            <div>
+                <a asp-action="Index" class="btn btn-primary px-4 me-2">
+                    ← Quay lại danh sách sách
+                </a>
+
+                <a asp-controller="Loans" asp-action="MyLoans" class="btn btn-outline-success px-4">
+                    Xem danh sách mượn
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

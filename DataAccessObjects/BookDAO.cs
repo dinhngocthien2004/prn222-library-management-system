@@ -61,5 +61,17 @@ namespace DataAccessObjects
             _ctx.BookCopies.Remove(copy);
             _ctx.SaveChanges();
         }
+        public void BorrowBook(int bookId)
+        {
+            var copy = _ctx.BookCopies
+                .FirstOrDefault(c => c.BookId == bookId && c.IsAvailable);
+
+            if (copy == null)
+                throw new Exception("Hết sách");
+
+            copy.IsAvailable = false;
+
+            _ctx.SaveChanges(); // 🔥 bắt buộc
+        }
     }
 }

@@ -23,7 +23,7 @@ public partial class Book
 
     public DateTime? DateAdded { get; set; }
     public int BorrowCount { get; set; }
-
+    public int Quantity { get; set; }
     public virtual ICollection<BookCopy> BookCopies { get; set; } = new List<BookCopy>();
 
     public virtual Category? Category { get; set; }
