@@ -1,0 +1,70 @@
+﻿@model IEnumerable<dynamic>
+
+@{
+    ViewData["Title"] = "Chi Tiết Mượn Sách";
+}
+
+<div class="container mt-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0">📚 Chi Tiết Sách Đã Mượn</h4>
+        </div>
+
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <a asp-controller="Loans"
+                   asp-action="History"
+                   class="custom-back-btn">
+                    ← Quay Lại Danh Sách Người Dùng
+                </a>
+            </div>
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Sách</th>
+                        <th>Thể loại</th>
+                        <th>Ngày mượn</th>
+                        <th>Ngày trả</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Book</td>
+                                <td>@item.Category</td>
+                                <td>@item.BorrowDate?.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    @(item.ReturnDate == null
+                                        ? "Chưa trả"
+                                        : item.ReturnDate.Value.ToString("dd/MM/yyyy"))
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                Không có dữ liệu
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

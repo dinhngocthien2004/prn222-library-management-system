@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4I+0+7wxcmnSRjijTNL5T2FKN/Z9Ktvirvet+GIiYvw=",
+  "Hash": "GMH3u+iesUqaUwWFwvjaRzjcvYlLChNuVxLIYFzeqXE=",
   "Source": "LibraryManagementSystem",
   "BasePath": "_content/LibraryManagementSystem",
   "Mode": "Default",
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "ajprx5uy2b",
-      "Integrity": "Bg9tCvhRMZ9cL7Jo0rGPoG9XfV4pPR3CAWb3/dCcbXQ=",
+      "Fingerprint": "uppxjdqy9n",
+      "Integrity": "jpi1VIJZSj7jzKdJFPTr5REyT5zSarSHoOBEYObSOOc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1321,51 +1321,6 @@
   ],
   "Endpoints": [
     {
-      "Route": "css/site.ajprx5uy2b.css",
-      "AssetFile": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "3643"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"Bg9tCvhRMZ9cL7Jo0rGPoG9XfV4pPR3CAWb3/dCcbXQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 22 Mar 2026 13:50:14 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "ajprx5uy2b"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Bg9tCvhRMZ9cL7Jo0rGPoG9XfV4pPR3CAWb3/dCcbXQ="
-        }
-      ]
-    },
-    {
       "Route": "css/site.css",
       "AssetFile": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\wwwroot\\css\\site.css",
       "Selectors": [],
@@ -1376,7 +1331,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3643"
+          "Value": "4257"
         },
         {
           "Name": "Content-Type",
@@ -1384,11 +1339,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Bg9tCvhRMZ9cL7Jo0rGPoG9XfV4pPR3CAWb3/dCcbXQ=\""
+          "Value": "\"jpi1VIJZSj7jzKdJFPTr5REyT5zSarSHoOBEYObSOOc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 22 Mar 2026 13:50:14 GMT"
+          "Value": "Sun, 22 Mar 2026 15:23:25 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1398,7 +1353,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-Bg9tCvhRMZ9cL7Jo0rGPoG9XfV4pPR3CAWb3/dCcbXQ="
+          "Value": "sha256-jpi1VIJZSj7jzKdJFPTr5REyT5zSarSHoOBEYObSOOc="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.uppxjdqy9n.css",
+      "AssetFile": "C:\\Users\\Admin\\source\\repos\\prn222-library-management-system\\Library-Management-System\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4257"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jpi1VIJZSj7jzKdJFPTr5REyT5zSarSHoOBEYObSOOc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 22 Mar 2026 15:23:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uppxjdqy9n"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-jpi1VIJZSj7jzKdJFPTr5REyT5zSarSHoOBEYObSOOc="
         }
       ]
     },
