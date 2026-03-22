@@ -23,8 +23,11 @@ namespace Repositories
         {
             return _context.Loans
                 .Include(l => l.Copy)
+                    .ThenInclude(c => c.Book)
+                        .ThenInclude(b => b.Category)
                 .ToList();
         }
+
         public Loan? GetLoanById(int id) => _dao.GetById(id);
         public void SaveLoan(Loan p) => _dao.Create(p);
         public void UpdateLoan(Loan p) => _dao.Update(p);

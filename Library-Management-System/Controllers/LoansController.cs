@@ -1,5 +1,6 @@
 ﻿using BusinessObjects.Entities;
 using DataAccessObjects;
+using DataAccessObjects.Migrations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Library_Management_System.Controllers
@@ -162,6 +164,32 @@ namespace Library_Management_System.Controllers
             var p = _loans.GetLoanById(id);
             if (p is not null) _loans.DeleteLoan(p);
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult MyLoans()
+        {
+            var userIdStr = HttpContext.Session.GetString("UserId");
+
+            if (string.IsNullOrEmpty(userIdStr))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            int userId = int.Parse(userIdStr);
+
+            var loans = _loans.GetLoans()
+                .Where(l => l.UserId == userId)
+                .Select(l => new
+                {
+                    ISBN = l.Copy.Book.Isbn,
+                    Title = l.Copy.Book.Title,
+                    Category = l.Copy.Book.Category.CategoryName,
+                    Quantity = 1,
+                    BorrowDate = l.LoanDate
+                })
+                .ToList();
+
+            return View(loans);
         }
     }
 }

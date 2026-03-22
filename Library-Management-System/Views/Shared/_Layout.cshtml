@@ -213,9 +213,20 @@
                                 </li>
 
                                 <li>
-                                    <a asp-controller="Loans" asp-action="History">
-                                        Lịch Sử Mượn
-                                    </a>
+                                    @if (role == 3)
+                                    {
+                                        <!-- MEMBER -->
+                                        <a asp-controller="Loans" asp-action="MyLoans">
+                                            Lịch Sử Mượn
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <!-- ADMIN + LIBRARIAN -->
+                                        <a asp-controller="Loans" asp-action="History">
+                                            Quản Lý Lịch Sử Mượn
+                                        </a>
+                                    }
                                 </li>
 
                             </ul>
