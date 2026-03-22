@@ -1,0 +1,36 @@
+﻿@model IEnumerable<dynamic>
+
+<h2 class="mb-4">Danh Sách Sách Đã Mượn</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ISBN</th>
+            <th>Tên sách</th>
+            <th>Thể loại</th>
+            <th>Số lượng</th>
+            <th>Ngày mượn</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.ISBN</td>
+                    <td>@item.Title</td>
+                    <td>@item.Category</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.BorrowDate.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center">Bạn chưa mượn sách nào</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,77 +1,90 @@
 ﻿@model List<BusinessObjects.Entities.Loan>
 
 @{
-    ViewData["Title"] = "Loan History";
+    ViewData["Title"] = "Danh Sách Người Dùng";
 }
 
 <div class="container mt-4">
 
     <div class="card shadow">
 
-        <div class="card-header bg-info text-white">
-            <h4 class="mb-0">📚 Loan History</h4>
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">👥 Danh Sách Người Dùng</h4>
         </div>
 
         <div class="card-body">
 
+            <p class="text-muted">
+                Danh sách người dùng và lịch sử mượn sách trong hệ thống
+            </p>
+
             <table class="table table-hover table-bordered align-middle">
 
-                <thead class="table-light">
+                <thead class="table-dark">
                     <tr>
-                        <th>Book</th>
-                        <th>Reader</th>
-                        <th>Loan Date</th>
-                        <th>Due Date</th>
-                        <th>Return Date</th>
-                        <th>Status</th>
+                        <th>Người dùng</th>
+                        <th>Sách đã mượn</th>
+                        <th>Ngày mượn</th>
+                        <th>Hạn trả</th>
+                        <th>Ngày trả</th>
+                        <th>Trạng thái</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
-                    @foreach (var item in Model)
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @item.ReaderName
+                                </td>
+
+                                <td>
+                                    @item.BookTitle
+                                </td>
+
+                                <td>
+                                    @item.LoanDate?.ToString("dd/MM/yyyy")
+                                </td>
+
+                                <td>
+                                    @item.DueDate.ToString("dd/MM/yyyy")
+                                </td>
+
+                                <td>
+                                    @(item.ReturnDate == null
+                                        ? "Chưa trả"
+                                        : item.ReturnDate.Value.ToString("dd/MM/yyyy"))
+                                </td>
+
+                                <td>
+                                    @if (item.ReturnDate == null)
+                                    {
+                                        <span class="badge bg-warning text-dark">
+                                            Đang mượn
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-success">
+                                            Đã trả
+                                        </span>
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-
-                            <td>
-                                @item.BookTitle
+                            <td colspan="6" class="text-center text-muted">
+                                Không có dữ liệu
                             </td>
-
-                            <td>
-                                @item.ReaderName
-                            </td>
-
-                            <td>
-                                @item.LoanDate?.ToString("dd/MM/yyyy")
-                            </td>
-
-                            <td>
-                                @item.DueDate.ToString("dd/MM/yyyy")
-                            </td>
-
-                            <td>
-                                @(item.ReturnDate == null
-                                                            ? "Not Returned"
-                                                            : item.ReturnDate.Value.ToString("dd/MM/yyyy"))
-                        </td>
-
-                            <td>
-
-                            @if (item.ReturnDate == null)
-                                {
-                                    <span class="badge bg-warning text-dark">
-                                        Borrowing
-                                    </span>
-                                }
-                                else
-                                {
-                                    <span class="badge bg-success">
-                                        Returned
-                                    </span>
-                                }
-
-                            </td>
-
                         </tr>
                     }
 
