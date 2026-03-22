@@ -33,6 +33,12 @@ namespace Library_Management_System.Controllers
 
         public IActionResult Index()
         {
+            var role = HttpContext.Session.GetInt32("RoleID");
+
+            if (role == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var list = _loans.GetLoans();
             return View(list.ToList());
         }
@@ -48,6 +54,10 @@ namespace Library_Management_System.Controllers
         // xem cỉ lại
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetInt32("RoleID") != 1)
+            {
+                return RedirectToAction("Index");
+            }
             ViewData["CopyId"] = new SelectList(_bookcopies.GetBookCopies(), "CopyId", "Barcode");
             ViewData["UserId"] = new SelectList(_user.GetUsers(), "UserId", "Email");
             return View();
@@ -66,6 +76,11 @@ namespace Library_Management_System.Controllers
                 return View(p);
                 
             }
+            if (HttpContext.Session.GetInt32("RoleID") != 1)
+            {
+                return RedirectToAction("Index");
+            }
+
             _loans.SaveLoan(p);
             return RedirectToAction(nameof(Index));
         }
@@ -90,6 +105,10 @@ namespace Library_Management_System.Controllers
                 "Email",
                 p.UserId
             );
+            if (HttpContext.Session.GetInt32("RoleID") != 1)
+            {
+                return RedirectToAction("Index");
+            }
             return View(p);
            
         }
@@ -130,6 +149,10 @@ namespace Library_Management_System.Controllers
             if (id is null) return NotFound();
             var p = _loans.GetLoanById(id.Value);
             if (p is null) return NotFound();
+            if (HttpContext.Session.GetInt32("RoleID") != 1)
+            {
+                return RedirectToAction("Index");
+            }
             return View(p);
         }
 

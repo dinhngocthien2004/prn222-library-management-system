@@ -2,9 +2,10 @@
 using BusinessObjects.Entities;
 using DataAccessObjects;
 using Library_Management_System.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Services;
 
 namespace Library_Management_System.Controllers
 {
@@ -19,25 +20,43 @@ namespace Library_Management_System.Controllers
             _userService = userService;
         }
 
+       
         public IActionResult Index()
         {
+            var role = HttpContext.Session.GetInt32("RoleID");
+
+            if (role == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var readers = _service.GetReaders();
             return View(readers);
         }
 
+       
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetInt32("RoleID") != 1)
+            {
+                return RedirectToAction("Index");
+            }
             ViewBag.UserId = new SelectList(_userService.GetUsers(), "UserId", "Email");
             return View();
         }
 
         [HttpPost]
+       
         public IActionResult Create(Reader r)
         {
+            if (HttpContext.Session.GetInt32("RoleID") != 1)
+            {
+                return RedirectToAction("Index");
+            }
             _service.SaveReader(r);
             return RedirectToAction(nameof(Index));
         }
 
+      
         public IActionResult Edit(int id)
         {
             var reader = _service.GetReaderById(id);
@@ -48,12 +67,18 @@ namespace Library_Management_System.Controllers
         }
 
         [HttpPost]
+        
         public IActionResult Edit(Reader r)
         {
+            if (HttpContext.Session.GetInt32("RoleID") != 1)
+            {
+                return RedirectToAction("Index");
+            }
             _service.UpdateReader(r);
             return RedirectToAction(nameof(Index));
         }
 
+       
         public IActionResult Delete(int id)
         {
             var reader = _service.GetReaderById(id);
@@ -61,8 +86,13 @@ namespace Library_Management_System.Controllers
         }
 
         [HttpPost]
+       
         public IActionResult Delete(Reader r)
         {
+            if (HttpContext.Session.GetInt32("RoleID") != 1)
+            {
+                return RedirectToAction("Index");
+            }
             _service.DeleteReader(r);
             return RedirectToAction(nameof(Index));
         }
