@@ -28,9 +28,17 @@ namespace Library_Management_System.Controllers
         }
         public IActionResult History()
         {
-            var loans = _loans.GetHistory();
+            var users = _loans.GetLoans()
+                .Where(l => l.UserId != null)
+                .GroupBy(l => l.UserId)
+                .Select(g => new
+                {
+                    UserId = g.Key,
+                    UserName = g.FirstOrDefault().ReaderName ?? "N/A"
+                })
+                .ToList();
 
-            return View(loans);
+            return View(users);
         }
 
         public IActionResult Index()
@@ -186,6 +194,22 @@ namespace Library_Management_System.Controllers
                     Category = l.Copy.Book.Category.CategoryName,
                     Quantity = 1,
                     BorrowDate = l.LoanDate
+                })
+                .ToList();
+
+            return View(loans);
+        }
+
+        public IActionResult UserLoans(int userId)
+        {
+            var loans = _loans.GetLoans()
+                .Where(l => l.UserId == userId)
+                .Select(l => new
+                {
+                    Book = l.Copy.Book.Title,
+                    Category = l.Copy.Book.Category.CategoryName,
+                    BorrowDate = l.LoanDate,
+                    ReturnDate = l.ReturnDate
                 })
                 .ToList();
 
