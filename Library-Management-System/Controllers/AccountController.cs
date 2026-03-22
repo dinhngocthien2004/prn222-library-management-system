@@ -11,7 +11,7 @@ namespace Library_Management_System.Controllers
 
         public AccountController(IUserService accounts)
         {
-            _accounts = accounts;
+            _accounts = accounts;   
         }
 
         // Hiển thị trang Login
