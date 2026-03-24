@@ -273,6 +273,7 @@ C:\Users\ADMIN\ProjectPRN222\prn222-library-management-system\Library-Management
 C:\Users\ADMIN\ProjectPRN222\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\LibraryManagementSystem.pdb
 C:\Users\ADMIN\ProjectPRN222\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\ADMIN\ProjectPRN222\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\ADMIN\ProjectPRN222\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\BCrypt.Net-Next.dll
 C:\Users\ADMIN\ProjectPRN222\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\Humanizer.dll
 C:\Users\ADMIN\ProjectPRN222\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\ADMIN\ProjectPRN222\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
