@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BusinessObjects.Entities.User>
+@{
+    var roles = ViewBag.Roles as List<BusinessObjects.Entities.Role>;
+}
+
+<div class="card">
+    <h2>🔑 Phân quyền</h2>
+
+    <table class="table table-hover mt-3">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Gán Role</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var u in Model)
+            {
+                if (u.Email == "admin@library.com")
+                {
+                    continue;
+                }
+                <tr>
+                    <td>@u.Email</td>
+                    <td>
+                        <form asp-controller="Roles" asp-action="AssignRole" method="post" class="d-flex gap-2">
+                            <input type="hidden" name="userId" value="@u.UserId" />
+
+                            <select name="roleId" class="form-select">
+                                @foreach (var r in ViewBag.Roles)
+                                {
+                                    if (r.RoleName != "Admin")
+                                    {
+                                        <option value="@r.RoleId">@r.RoleName</option>
+                                    }
+                                }
+                            </select>
+
+                            <button type="submit" class="btn btn-custom">Gán</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

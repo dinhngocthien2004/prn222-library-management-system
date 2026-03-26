@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\prn222-library-management-system\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj": {}
+    "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj": {}
   },
   "projects": {
-    "D:\\prn222-library-management-system\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj": {
+    "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\prn222-library-management-system\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj",
         "projectName": "BusinessObjects",
-        "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\BusinessObjects\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\BusinessObjects\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -82,43 +82,29 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\prn222-library-management-system\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj": {
+    "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\prn222-library-management-system\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj",
         "projectName": "DataAccessObjects",
-        "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\DataAccessObjects\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\DataAccessObjects\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -133,8 +119,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\prn222-library-management-system\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj": {
-                "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj"
+              "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\BusinessObjects\\BusinessObjects.csproj"
               }
             }
           }
@@ -165,43 +151,29 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\prn222-library-management-system\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj": {
+    "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\prn222-library-management-system\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj",
         "projectName": "LibraryManagementSystem",
-        "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\Library-Management-System\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Library-Management-System\\LibraryManagementSystem.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Library-Management-System\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -216,8 +188,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\prn222-library-management-system\\prn222-library-management-system\\Services\\Services.csproj": {
-                "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\Services\\Services.csproj"
+              "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Services\\Services.csproj"
               }
             }
           }
@@ -238,6 +210,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -260,24 +236,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -286,24 +244,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\prn222-library-management-system\\prn222-library-management-system\\Repositories\\Repositories.csproj": {
+    "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\prn222-library-management-system\\prn222-library-management-system\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\Repositories\\Repositories.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\Repositories\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Repositories\\Repositories.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -318,8 +276,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\prn222-library-management-system\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj": {
-                "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj"
+              "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\DataAccessObjects\\DataAccessObjects.csproj"
               }
             }
           }
@@ -350,43 +308,29 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\prn222-library-management-system\\prn222-library-management-system\\Services\\Services.csproj": {
+    "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\prn222-library-management-system\\prn222-library-management-system\\Services\\Services.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\Services\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -401,8 +345,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\prn222-library-management-system\\prn222-library-management-system\\Repositories\\Repositories.csproj": {
-                "projectPath": "D:\\prn222-library-management-system\\prn222-library-management-system\\Repositories\\Repositories.csproj"
+              "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Repositories\\Repositories.csproj": {
+                "projectPath": "C:\\Users\\ADMIN\\ProjectPRN222\\prn222-library-management-system\\Repositories\\Repositories.csproj"
               }
             }
           }
@@ -422,6 +366,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -433,26 +383,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[8.0.25, 8.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.312/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

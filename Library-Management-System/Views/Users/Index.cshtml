@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BusinessObjects.Entities.User>
+
+<div class="card">
+    <h2>👤 Quản lý người dùng</h2>
+
+    <table class="table table-hover mt-3">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Họ tên</th>
+                <th>Role</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+            @foreach (var u in Model)
+            {
+                if (u.UserRoles != null && u.UserRoles.Any(r => r.Role.RoleName == "Admin"))
+                {
+                    continue;
+                }
+               
+                <tr>
+                    <td>@u.Email</td>
+                    <td>@u.FullName</td>
+                    <td>
+                        @if (u.UserRoles != null)
+                        {
+                            foreach (var r in u.UserRoles)
+                            {
+                                <span class="badge bg-info">@r.Role.RoleName</span>
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="DeleteUser" asp-route-id="@u.UserId"
+                           class="btn btn-danger btn-sm">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Users/Create" class="btn btn-primary mt-3">
+        + Thêm User
+    </a>
+</div>

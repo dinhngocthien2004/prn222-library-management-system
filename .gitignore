@@ -1,1 +1,15 @@
+
+# Build folders
+bin/
+obj/
+
+# Visual Studio
 .vs/
+
+# User files
+*.user
+*.suo
+
+# DLL & debug
+*.dll
+*.pdb

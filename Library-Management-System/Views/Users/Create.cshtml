@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Thêm User";
+}
+
+<div class="card p-4 shadow-sm">
+    <h3>➕ Thêm người dùng</h3>
+    <a asp-controller="Users" asp-action="Create" class="btn btn-success">
+        + Thêm User
+    </a>
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label>Email</label>
+            <input name="email" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label>Họ tên</label>
+            <input name="fullName" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label>Password</label>
+            <input name="password" type="password" class="form-control" required />
+        </div>
+       
+        <button class="btn btn-success">Tạo</button>
+        <a href="/Users" class="btn btn-secondary">Quay lại</a>
+    </form>
+</div>

@@ -36,6 +36,8 @@ public partial class LibraryManagementDbContext : DbContext
     public virtual DbSet<Role> Roles { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+
+    public virtual DbSet<UserRole> UserRoles { get; set; }
     public virtual DbSet<BorrowRecord> BorrowRecords { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -272,7 +274,14 @@ public partial class LibraryManagementDbContext : DbContext
                 .HasConstraintName("FK_Users_Roles");
         });
 
-        OnModelCreatingPartial(modelBuilder);
+        modelBuilder.Entity<UserRole>()
+      .HasKey(ur => new { ur.UserId, ur.RoleId });
+
+        modelBuilder.Entity<UserRole>()
+            .HasOne(ur => ur.User)
+            .WithMany(u => u.UserRoles)
+            .HasForeignKey(ur => ur.UserId);
+
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
