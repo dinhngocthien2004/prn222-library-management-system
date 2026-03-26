@@ -11,5 +11,10 @@ namespace Services
     {
         IEnumerable<User> GetUsers();
         User? Login(string email, string password);
+
+        List<User> GetUsersExceptAdmin();
+        void CreateUser(User user);
+        void DeleteUser(int id);
+        void AssignRole(int userId, int roleId);
     }
 }

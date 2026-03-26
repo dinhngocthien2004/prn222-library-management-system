@@ -1,0 +1,35 @@
+﻿@model List<BusinessObjects.Entities.User>
+
+<h2>Quản lý người dùng</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>FullName</th>
+        <th>Role</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.UserId</td>
+            <td>@u.Email</td>
+            <td>@u.FullName</td>
+            <td>
+                @foreach (var r in u.UserRoles)
+                {
+                    <span>@r.Role.RoleName</span>
+            
+                    <br />
+                }
+            </td>
+            <td>
+                <a asp-action="DeleteUser" asp-route-id="@u.UserId">Xóa</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<a asp-action="CreateUser" class="btn btn-primary">Thêm User</a>namespace Library_Management_System.Views.Admin

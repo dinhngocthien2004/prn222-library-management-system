@@ -1,0 +1,32 @@
+﻿@model List<BusinessObjects.Entities.User>
+@{
+    var roles = ViewBag.Roles as List<BusinessObjects.Entities.Role>;
+}
+
+<h2>Phân quyền</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>User</th>
+        <th>Gán Role</th>
+    </tr>
+
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.Email</td>
+            <td>
+                <form asp-action="AssignRole" method="post">
+                    <input type="hidden" name="userId" value="@u.UserId" />
+                    <select name="roleId">
+                        @foreach (var r in roles)
+                        {
+                            <option value="@r.RoleId">@r.RoleName</option>
+                        }
+                    </select>
+                    <button type="submit" class="btn btn-success">Gán</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

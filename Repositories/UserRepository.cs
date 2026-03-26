@@ -15,6 +15,22 @@ namespace Repositories
         public IEnumerable<User> GetUsers() => _dao.GetAll();
         public User? FindByEmail(string email) => _dao.FindByEmail(email);
 
+        
+        public List<User> GetUsersExceptAdmin()
+        {
+            return _dao.GetUsersExceptAdmin();
+        }
+
        
+        public User GetById(int id) => _dao.GetById(id);
+
+        public void Add(User user) => _dao.Add(user);
+
+        public void Delete(int id) => _dao.Delete(id);
+
+        public void AssignRole(int userId, int roleId)
+        {
+            _dao.AssignRole(userId, roleId);
+        }
     }
 }

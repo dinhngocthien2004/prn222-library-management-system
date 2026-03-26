@@ -26,4 +26,6 @@ public partial class User
     public virtual ICollection<Reader> Readers { get; set; } = new List<Reader>();
 
     public virtual Role Role { get; set; } = null!;
+
+    public ICollection<UserRole> UserRoles { get; set; }
 }
