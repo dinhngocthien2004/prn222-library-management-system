@@ -37,21 +37,22 @@ public class UsersController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-       
+        var roles = _service.GetRoles(); // 🔥 lấy role
+        ViewBag.Roles = roles;           // 🔥 truyền qua View
+
         return View();
     }
 
     // POST: /Users/Create
     [HttpPost]
-    public IActionResult Create(string email, string fullName, string password)
-    { 
-
+    public IActionResult Create(string email, string fullName, string password, int roleId)
+    {
         var user = new User
         {
             Email = email,
             FullName = fullName,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(password),
-          
+            PasswordHash = password,
+            RoleId = roleId, // 🔥 lấy từ dropdown
             IsActive = true,
             JoinDate = DateTime.Now
         };

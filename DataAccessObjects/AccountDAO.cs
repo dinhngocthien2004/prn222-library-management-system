@@ -81,5 +81,12 @@ namespace DataAccessObjects
                 _ctx.SaveChanges();
             }
         }
+
+        public List<Role> GetRoles()
+        {
+            return _ctx.Roles
+                .Where(r => r.RoleName != "Admin") // không cho chọn Admin
+                .ToList();
+        }
     }
 }

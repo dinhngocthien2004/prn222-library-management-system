@@ -524,3 +524,4 @@ D:\prn222-library-management-system\prn222-library-management-system\Library-Man
 D:\prn222-library-management-system\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\LibraryManagementSystem.pdb
 D:\prn222-library-management-system\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\LibraryManagementSystem.genruntimeconfig.cache
 D:\prn222-library-management-system\prn222-library-management-system\Library-Management-System\obj\Debug\net8.0\ref\LibraryManagementSystem.dll
+C:\Users\Admin\source\repos\prn222-library-management-system\Library-Management-System\bin\Debug\net8.0\BCrypt.Net-Next.dll

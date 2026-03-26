@@ -13,6 +13,7 @@ namespace Services
         User? Login(string email, string password);
 
         List<User> GetUsersExceptAdmin();
+        List<Role> GetRoles();
         void CreateUser(User user);
         void DeleteUser(int id);
         void AssignRole(int userId, int roleId);

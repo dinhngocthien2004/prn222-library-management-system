@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<BusinessObjects.Entities.User>
 
+@{
+    var roleId = Context.Session.GetInt32("RoleID");
+}
 <div class="card">
     <h2>👤 Quản lý người dùng</h2>
 
@@ -26,24 +29,25 @@
                     <td>@u.Email</td>
                     <td>@u.FullName</td>
                     <td>
-                        @if (u.UserRoles != null)
-                        {
-                            foreach (var r in u.UserRoles)
-                            {
-                                <span class="badge bg-info">@r.Role.RoleName</span>
-                            }
-                        }
+                        <span class="badge bg-info">@u.Role?.RoleName</span>
                     </td>
                     <td>
-                        <a asp-action="DeleteUser" asp-route-id="@u.UserId"
-                           class="btn btn-danger btn-sm">Xóa</a>
+                        @if (roleId == 1)
+                        {
+                            <a asp-action="DeleteUser" asp-route-id="@u.UserId"
+                               class="btn btn-danger btn-sm">Xóa</a>
+                        }
                     </td>
+
                 </tr>
             }
         </tbody>
     </table>
 
-    <a href="/Users/Create" class="btn btn-primary mt-3">
-        + Thêm User
-    </a>
+    @if (roleId == 1) // 1 = Admin
+    {
+        <a href="/Users/Create" class="btn btn-primary mt-3">
+            + Thêm User
+        </a>
+    }
 </div>

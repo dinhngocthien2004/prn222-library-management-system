@@ -32,5 +32,10 @@ namespace Repositories
         {
             _dao.AssignRole(userId, roleId);
         }
+
+        public List<Role> GetRoles()
+        {
+            return _dao.GetRoles();
+        }   
     }
 }

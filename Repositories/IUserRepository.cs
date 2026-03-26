@@ -13,7 +13,8 @@ namespace Repositories
         User? FindByEmail(string email);
 
         List<User> GetUsersExceptAdmin();
-       
+        List<Role> GetRoles();
+
         User GetById(int id);
         void Add(User user);
         void Delete(int id);
