@@ -1,77 +1,62 @@
-﻿@model List<BusinessObjects.Entities.Loan>
+﻿@model IEnumerable<dynamic>
 
 @{
-    ViewData["Title"] = "Loan History";
+    ViewData["Title"] = "Danh Sách Người Dùng";
 }
 
 <div class="container mt-4">
 
     <div class="card shadow">
 
-        <div class="card-header bg-info text-white">
-            <h4 class="mb-0">📚 Loan History</h4>
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0 text-center">👥 Danh Sách Người Dùng</h4>
         </div>
 
         <div class="card-body">
 
+            <p class="text-muted text-center">
+                Danh sách các thành viên đã mượn ít nhất 1 cuốn sách
+            </p>
+
             <table class="table table-hover table-bordered align-middle">
 
-                <thead class="table-light">
+                <thead class="table-dark text-center">
                     <tr>
-                        <th>Book</th>
-                        <th>Reader</th>
-                        <th>Loan Date</th>
-                        <th>Due Date</th>
-                        <th>Return Date</th>
-                        <th>Status</th>
+                        <th style="width: 70%;">Người Dùng</th>
+                        <th style="width: 30%;">Thao Tác</th>
                     </tr>
                 </thead>
 
                 <tbody>
 
-                    @foreach (var item in Model)
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td class="text-center">
+                                    @(item.UserName ?? "N/A")
+                                </td>
+
+                                <td class="text-center">
+                                    <a asp-controller="Loans"
+                                       asp-action="UserLoans"
+                                       asp-route-userId="@item.UserId"
+                                       class="btn btn-info btn-sm px-3">
+                                        Chi Tiết
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-
-                            <td>
-                                @item.BookTitle
+                            <td colspan="2" class="text-center text-muted">
+                                Không có dữ liệu
                             </td>
-
-                            <td>
-                                @item.ReaderName
-                            </td>
-
-                            <td>
-                                @item.LoanDate?.ToString("dd/MM/yyyy")
-                            </td>
-
-                            <td>
-                                @item.DueDate.ToString("dd/MM/yyyy")
-                            </td>
-
-                            <td>
-                                @(item.ReturnDate == null
-                                                            ? "Not Returned"
-                                                            : item.ReturnDate.Value.ToString("dd/MM/yyyy"))
-                        </td>
-
-                            <td>
-
-                            @if (item.ReturnDate == null)
-                                {
-                                    <span class="badge bg-warning text-dark">
-                                        Borrowing
-                                    </span>
-                                }
-                                else
-                                {
-                                    <span class="badge bg-success">
-                                        Returned
-                                    </span>
-                                }
-
-                            </td>
-
                         </tr>
                     }
 
@@ -81,6 +66,15 @@
 
         </div>
 
+    </div>
+
+    <!-- NÚT QUAY VỀ NẰM NGOÀI CARD -->
+    <div class="mt-3">
+        <a asp-controller="Home"
+           asp-action="Index"
+           class="btn custom-back-btn">
+            ← Quay Lại Trang Chủ
+        </a>
     </div>
 
 </div>
