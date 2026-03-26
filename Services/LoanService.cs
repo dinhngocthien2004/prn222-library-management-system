@@ -1,10 +1,9 @@
 ﻿using BusinessObjects.Entities;
+using Microsoft.EntityFrameworkCore;
 using Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Services
 {
@@ -13,15 +12,30 @@ namespace Services
         private readonly ILoanRepository _repo;
         public LoanService(ILoanRepository repo) => _repo = repo;
 
-        public IEnumerable<Loan> GetLoans() => _repo.GetLoans();
+        // 🔥 FIX CHÍNH Ở ĐÂY
+        public IEnumerable<Loan> GetLoans()
+        {
+            return _repo.GetLoans()
+                .AsQueryable()
+                .Include(l => l.Copy)
+                    .ThenInclude(c => c.Book)
+                        .ThenInclude(b => b.Category)
+                .ToList();
+        }
+
         public Loan? GetLoanById(int id) => _repo.GetLoanById(id);
+
         public void SaveLoan(Loan p) => _repo.SaveLoan(p);
+
         public void UpdateLoan(Loan p) => _repo.UpdateLoan(p);
+
         public void DeleteLoan(Loan p) => _repo.DeleteLoan(p);
+
         public List<Loan> GetHistory()
         {
             return _repo.GetHistory();
         }
+
         public void ReturnBook(int id)
         {
             var loan = _repo.GetLoanById(id);
@@ -40,7 +54,5 @@ namespace Services
                          && l.IsReturned == false)
                 .Count();
         }
-
-
     }
 }
