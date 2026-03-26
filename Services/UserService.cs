@@ -23,7 +23,7 @@ namespace Services
         public void CreateUser(User user)
         {
             user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
-            user.RoleId = 2; // Member (phải tồn tại trong DB)
+          // user.RoleId = 2; // Member (phải tồn tại trong DB)
             _repo.Add(user);
         }
 
@@ -34,6 +34,10 @@ namespace Services
         public List<User> GetUsersExceptAdmin()
         {
             return _repo.GetUsersExceptAdmin();
+        }
+        public List<Role> GetRoles()
+        {
+            return _repo.GetRoles();
         }
     }
 }
